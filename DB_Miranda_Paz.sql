@@ -22,7 +22,19 @@ CREATE TABLE Medicos(
 	Pass VARCHAR (100) NOT NULL,
 	Dni VARCHAR (15) NOT NULL,
 	Telefono VARCHAR (20) NULL,
-	/*AGENDA*/
+)
+GO
+CREATE TABLE Dias(
+	Id SMALLINT IDENTITY(1,1) PRIMARY KEY NOT NULL,
+	Nombre VARCHAR (15) NOT NULL
+)
+GO
+CREATE TABLE MedicosDisponiblesxDia(
+	IdMedico INT FOREIGN KEY REFERENCES Medicos (Id),
+	IdDia SMALLINT FOREIGN KEY REFERENCES DIAS(Id),
+	HoraEntrada SMALLINT NOT NULL,
+	HoraSalida SMALLINT NOT NULL,
+	PRIMARY KEY (IdMedico, IdDia)
 )
 GO
 INSERT INTO Medicos
@@ -112,7 +124,7 @@ CREATE TABLE EstadosTurnos(
 )
 GO
 INSERT INTO EstadosTurnos
-VALUES('Nuevo'), ('Cancelado'),('Reprogramado'),('No asistió'),('Atendido')
+VALUES('Nuevo'),('Cancelado'),('Reprogramado'),('No asistió'),('Atendido')
 GO
 CREATE TABLE Turnos(
 	Id INT PRIMARY KEY IDENTITY(1,1),
