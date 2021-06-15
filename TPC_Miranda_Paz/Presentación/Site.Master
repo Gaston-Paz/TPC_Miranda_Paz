@@ -4,7 +4,7 @@
 
 <html lang="es">
 <head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%: Page.Title %> - Mi aplicación ASP.NET</title>
@@ -13,9 +13,15 @@
         <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
 
-    <webopt:bundlereference runat="server" path="~/Content/css" />
+    <webopt:BundleReference runat="server" Path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-
+    <link href="style.css" rel="stylesheet" />
+    <%--fontawesome icon--%>
+    <link
+        rel="stylesheet"
+        href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
+        integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk"
+        crossorigin="anonymous" />
 </head>
 <body>
     <form runat="server">
@@ -39,25 +45,24 @@
             </Scripts>
         </asp:ScriptManager>
 
-        <div class="navbar bg-primary navbar-fixed-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" runat="server" href="~/">Nombre de la aplicación</a>
-                </div>
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li><a runat="server" href="~/">Inicio</a></li>
-                        <li><a runat="server" href="~/About">Acerca de</a></li>
-                        <li><a runat="server" href="~/Contact">Contacto</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+        <%--header--%>
+		<header id="header">
+			<nav class="navbar navbar-light color-primary">
+				<a class="navbar-brand" href="#">
+					<img
+						src="https://laslomas.com.ar/wp-content/uploads/2020/10/logo_header.png"
+						width="50%"
+						alt=""
+					/>
+				</a>
+				<span>Usuario</span>
+			</nav>
+			<nav class="nav nav-border">
+				<a class="nav-link active text-body" href="#">Inicio</a>
+				<a class="nav-link text-body" href="#">Turnos</a>
+				<a class="nav-link text-body" href="#">Medicos</a>
+			</nav>
+		</header>
 
 
         <div class="container">
@@ -66,8 +71,13 @@
             <hr />
 
 
-            <footer>
-                <p>&copy; <%: DateTime.Now.Year %> - Mi aplicación ASP.NET</p>
+           <%-- footer--%>
+            <footer class="fixed-bottom color-primary py-2">
+                <p class="text-center mb-0">
+                    &copy; <%: DateTime.Now.Year %> - Mi aplicación ASP.NET "Turnero" by
+				<a href="https://github.com/Gaston-Paz">Gaston Paz</a> -
+				<a href="https://github.com/Maxi-rpc">Maximiliano Miranda</a>
+                </p>
             </footer>
         </div>
 
