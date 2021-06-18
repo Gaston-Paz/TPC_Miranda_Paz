@@ -5,7 +5,8 @@
 
 body{
     padding-top: 0px;
-    padding-bottom: 0px
+    padding-bottom: 0px;
+    background-color: red;
 }
 
 .color-primary {
@@ -22,3 +23,12 @@ body{
         border-radius: 5px;
         color: var(--color-secondary) !important;
     }
+
+.test-overflow{
+    max-height: 600px;
+    overflow: auto;
+}
+
+body{
+    background-color: red;
+}

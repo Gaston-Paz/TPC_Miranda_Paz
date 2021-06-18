@@ -61,6 +61,7 @@
 				<a class="nav-link active text-body" href="#">Inicio</a>
 				<a class="nav-link text-body" href="#">Turnos</a>
 				<a class="nav-link text-body" href="Medicos.aspx">Medicos</a>
+                <a class="nav-link text-body" href="Pacientes.aspx">Pacientes</a>
 			</nav>
 		</header>
 
