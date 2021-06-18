@@ -54,7 +54,7 @@ namespace Negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("INSERT INTO Administradores (Nombre,Apellido,Email,Pass,Dni,Telefono) VALUES (@nombre, @apellido, @email, @pass, @dni, @telefono)");
+                datos.setearConsulta("INSERT INTO Administradores (Nombre,Apellido,Email,Pass,Dni,Telefono, Estado) VALUES (@nombre, @apellido, @email, @pass, @dni, @telefono,'1')");
 
                 datos.setearParametro("@nombre", nuevo.Nombre);
                 datos.setearParametro("@apellido", nuevo.Apellido);
@@ -62,6 +62,7 @@ namespace Negocio
                 datos.setearParametro("@pass", nuevo.Password);
                 datos.setearParametro("@dni", nuevo.Dni);
                 datos.setearParametro("@telefono", nuevo.Telefono);
+                datos.setearParametro("@estado", nuevo.Estado);
 
                 datos.ejecutarAccion();
 
