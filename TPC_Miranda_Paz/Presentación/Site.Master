@@ -60,15 +60,15 @@
 			<nav class="nav nav-border">
 				<a class="nav-link active text-body" href="#">Inicio</a>
 				<a class="nav-link text-body" href="#">Turnos</a>
-				<a class="nav-link text-body" href="#">Medicos</a>
+				<a class="nav-link text-body" href="Medicos.aspx">Medicos</a>
 			</nav>
 		</header>
 
 
-        <div class="container">
+        <div class="container py-4">
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
-            <hr />
+            
 
 
            <%-- footer--%>
