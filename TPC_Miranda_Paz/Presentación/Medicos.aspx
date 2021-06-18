@@ -12,7 +12,7 @@
 								align-items-center
 							"
 						>
-							<div>Staff</div>
+							<div>Profesionales</div>
 							<form class="form-inline my-2 my-lg-0">
 								<input
 									class="form-control mr-sm-2"
@@ -26,73 +26,32 @@
 							<table class="table table-bordered table-hover">
 								<thead class="thead-dark">
 									<tr>
-										<th scope="col">#</th>
-										<th scope="col">First</th>
-										<th scope="col">Last</th>
-										<th scope="col">Handle</th>
+										<th scope="col">Id</th>
+										<th scope="col">Nombre</th>
+										<th scope="col">Apellido</th>
+										<th scope="col">Especialidad</th>
+										<th scope="col">Matricula</th>
+										<th scope="col">Email</th>
 									</tr>
 								</thead>
 								<tbody>
-									<tr>
-										<th scope="row">1</th>
-										<td>Mark</td>
-										<td>Otto</td>
-										<td>@mdo</td>
-									</tr>
-									<tr>
-										<th scope="row">2</th>
-										<td>Jacob</td>
-										<td>Thornton</td>
-										<td>@fat</td>
-									</tr>
-									<tr>
-										<th scope="row">3</th>
-										<td>Larry</td>
-										<td>the Bird</td>
-										<td>@twitter</td>
-									</tr>
-									<tr>
-										<th scope="row">4</th>
-										<td>Larry</td>
-										<td>the Bird</td>
-										<td>@twitter</td>
-									</tr>
-									<tr>
-										<th scope="row">5</th>
-										<td>Larry</td>
-										<td>the Bird</td>
-										<td>@twitter</td>
-									</tr>
-									<tr>
-										<th scope="row">6</th>
-										<td>Larry</td>
-										<td>the Bird</td>
-										<td>@twitter</td>
-									</tr>
-									<tr>
-										<th scope="row">7</th>
-										<td>Larry</td>
-										<td>the Bird</td>
-										<td>@twitter</td>
-									</tr>
-									<tr>
-										<th scope="row">8</th>
-										<td>Larry</td>
-										<td>the Bird</td>
-										<td>@twitter</td>
-									</tr>
-									<tr>
-										<th scope="row">9</th>
-										<td>Larry</td>
-										<td>the Bird</td>
-										<td>@twitter</td>
-									</tr>
-									<tr>
-										<th scope="row">10</th>
-										<td>Larry</td>
-										<td>the Bird</td>
-										<td>@twitter</td>
-									</tr>
+
+                                    <% foreach (Dominio.Medico item in listaMedicos)
+                                        { %>
+										<tr>
+
+											<th> <%= item.Id %> </th>
+											<th> <%= item.Nombre %> </th>
+											<th> <%= item.Apellido %> </th>
+											<th> <%= item.Especialidad.Nombre %> </th>
+											<th> <%= item.Martricula %> </th>
+											<th> <%= item.Email %> </th>
+
+										</tr>
+
+
+                                       <% } %>
+
 								</tbody>
 							</table>
 						</div>

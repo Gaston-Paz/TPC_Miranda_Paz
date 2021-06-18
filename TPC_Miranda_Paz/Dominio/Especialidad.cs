@@ -12,5 +12,11 @@ namespace Dominio
 
         public string Nombre { get; set; }
 
+        public Especialidad(string nombre, int id)
+        {
+            Nombre = nombre;
+            Id = id;
+        }
+
     }
 }

@@ -21,5 +21,20 @@ namespace Dominio
         public string Email { get; set; }
 
         public DateTime FechaNacimiento { get; set; }
+
+        public Paciente(int id, string nombre, string apellido, string dni, string email, DateTime fecha)
+        {
+            Id = id;
+
+            Nombre = nombre;
+
+            Apellido = apellido;
+
+            Dni = dni;
+
+            Email = email;
+
+            FechaNacimiento = fecha;
+        }
     }
 }

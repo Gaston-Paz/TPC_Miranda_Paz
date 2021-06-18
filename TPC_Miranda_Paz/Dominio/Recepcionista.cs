@@ -8,5 +8,6 @@ namespace Dominio
 {
     public class Recepcionista : Usuario
     {
+        public int Id { get; set; }
     }
 }

@@ -7,36 +7,31 @@ using Dominio;
 
 namespace Negocio
 {
-   public class MedicoNegocio
+    public class PacienteNegocio
     {
-        public List<Medico> listar()
+        public List<Paciente> listar()
         {
-            List<Medico> lista = new List<Medico>();
+            List<Paciente> lista = new List<Paciente>();
             AccesoDatos datos = new AccesoDatos();
 
             try
             {
-                string SelectColum = "SELECT M.Id, M.Nombre, M.Apellido, M.Matricula, M.Email, M.Pass, M.Dni, M.Telefono, E.Nombre, E.Id ";
-                string FromDB = "FROM Medicos M INNER JOIN Especialidades E ON IdEspecialidad = E.id";
+                string SelectColum = "SELECT Id, Nombre, Apellido, Email, Dni, Telefono, FechaNac FROM Pacientes";
 
 
-                datos.setearConsulta(SelectColum + FromDB);
+                datos.setearConsulta(SelectColum);
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
                 {
-                    Medico aux = new Medico();
+                    Paciente aux = new Paciente();
                     aux.Id = (int)datos.Lector["Id"];
                     aux.Nombre = (string)datos.Lector["Nombre"];
                     aux.Apellido = (string)datos.Lector["Apellido"];
-                    aux.Martricula = (string)datos.Lector["Matricula"];
                     aux.Email = (string)datos.Lector["Email"];
-                    aux.Password = (string)datos.Lector["Pass"];
                     aux.Dni = (string)datos.Lector["Dni"];
                     aux.Telefono = (string)datos.Lector["Telefono"];
-                    aux.Especialidad = new Especialidad((string)datos.Lector.GetString(8), (int)datos.Lector.GetInt32(9));
-          
-                   
+                    aux.FechaNacimiento = (DateTime)datos.Lector["FechaNac"];
 
                     lista.Add(aux);
                 }
@@ -53,21 +48,19 @@ namespace Negocio
             }
         }
 
-        public void agregar(Medico nuevo)
+        public void agregar(Paciente nuevo)
         {
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("INSERT INTO Medicos (Nombre,Apellido,Matricula,Email,Pass,Dni,Telefono,IdEspecialidad) VALUES (@nombre, @apellido, @matricula, @email, @pass, @dni, @telefono, @especialidad)");
+                datos.setearConsulta("INSERT INTO Pacientes (Nombre,Apellido,Email,Dni,Telefono, FechaNac) VALUES (@nombre, @apellido, @email, @dni, @telefono, @fechaNac)");
 
                 datos.setearParametro("@nombre", nuevo.Nombre);
                 datos.setearParametro("@apellido", nuevo.Apellido);
-                datos.setearParametro("@matricula", nuevo.Martricula);
                 datos.setearParametro("@email", nuevo.Email);
-                datos.setearParametro("@pass", nuevo.Password);
+                datos.setearParametro("@fechaNac", nuevo.FechaNacimiento);
                 datos.setearParametro("@dni", nuevo.Dni);
                 datos.setearParametro("@telefono", nuevo.Telefono);
-                datos.setearParametro("@especialidad", nuevo.Especialidad.Id);
 
                 datos.ejecutarAccion();
 
@@ -82,21 +75,19 @@ namespace Negocio
             }
         }
 
-        public void modificar(Medico nuevo)
+        public void modificar(Paciente nuevo)
         {
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("UPDATE Medicos SET Nombre = @nombre, Apellido = @apellido, Matricula = @matricula, Email = @email, Pass = @pass, Dni = @dni, Telefono = @telefono, IdEspecialidad = @especialidad WHERE Id = @id");
+                datos.setearConsulta("UPDATE Pacientes SET Nombre = @nombre, Apellido = @apellido, Email = @email, FechaNac = @fechaNac, Dni = @dni, Telefono = @telefono, WHERE Id = @id");
 
                 datos.setearParametro("@nombre", nuevo.Nombre);
                 datos.setearParametro("@apellido", nuevo.Apellido);
-                datos.setearParametro("@matricula", nuevo.Martricula);
                 datos.setearParametro("@email", nuevo.Email);
-                datos.setearParametro("@pass", nuevo.Password);
+                datos.setearParametro("@fechaNac", nuevo.FechaNacimiento);
                 datos.setearParametro("@dni", nuevo.Dni);
                 datos.setearParametro("@telefono", nuevo.Telefono);
-                datos.setearParametro("@especialidad", nuevo.Especialidad.Id);
 
                 datos.setearParametro("@id", nuevo.Id);
 
@@ -119,7 +110,7 @@ namespace Negocio
 
             try
             {
-                datos.setearConsulta("DELETE FROM Medicos WHERE Id = " + id);
+                datos.setearConsulta("DELETE FROM Pacientes WHERE Id = " + id);
                 datos.ejecutarAccion();
             }
             catch (Exception ex)
@@ -132,6 +123,5 @@ namespace Negocio
                 datos.cerrarConexion();
             }
         }
-
     }
 }

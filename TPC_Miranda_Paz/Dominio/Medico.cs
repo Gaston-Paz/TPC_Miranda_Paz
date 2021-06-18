@@ -13,6 +13,17 @@ namespace Dominio
         public Especialidad Especialidad { get; set; }
 
         public string Martricula { get; set; }
+
+        public Medico(int id, string apellido, string nombre, string matricula)
+        {
+            Id = id;
+
+            Apellido = apellido;
+
+            Nombre = nombre;
+
+            Martricula = matricula;
+        }
      
 
     }

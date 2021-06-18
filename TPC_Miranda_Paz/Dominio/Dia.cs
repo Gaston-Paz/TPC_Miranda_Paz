@@ -6,17 +6,10 @@ using System.Threading.Tasks;
 
 namespace Dominio
 {
-    public class EstadoTurno
+    class Dia
     {
         public int Id { get; set; }
 
         public string Nombre { get; set; }
-
-        public EstadoTurno(int id, string nombre)
-        {
-            Id = id;
-
-            Nombre = nombre;
-        }
     }
 }
