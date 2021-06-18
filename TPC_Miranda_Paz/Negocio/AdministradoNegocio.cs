@@ -7,24 +7,24 @@ using Dominio;
 
 namespace Negocio
 {
-    public class RecepcionistaNegocio
+    class AdministradoNegocio
     {
-        public List<Recepcionista> listar()
+
+        public List<Administrador> listar()
         {
-            List<Recepcionista> lista = new List<Recepcionista>();
+            List<Administrador> lista = new List<Administrador>();
             AccesoDatos datos = new AccesoDatos();
 
             try
             {
-                string SelectColum = "SELECT Id, Nombre, Apellido, Email, Pass, Dni, Telefono, Estado FROM Recepcionistas ";
-                
+                string SelectColum = "SELECT Id, Nombre, Apellido, Email, Pass, Dni, Telefono, Estado FROM Administradores";
 
                 datos.setearConsulta(SelectColum);
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
                 {
-                    Recepcionista aux = new Recepcionista();
+                    Administrador aux = new Administrador();
                     aux.Id = (int)datos.Lector["Id"];
                     aux.Nombre = (string)datos.Lector["Nombre"];
                     aux.Apellido = (string)datos.Lector["Apellido"];
@@ -49,12 +49,12 @@ namespace Negocio
             }
         }
 
-        public void agregar(Recepcionista nuevo)
+        public void agregar(Administrador nuevo)
         {
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("INSERT INTO Recepcionistas (Nombre,Apellido,Email,Pass,Dni,Telefono,Estado) VALUES (@nombre, @apellido, @email, @pass, @dni, @telefono,@estado)");
+                datos.setearConsulta("INSERT INTO Administradores (Nombre,Apellido,Email,Pass,Dni,Telefono) VALUES (@nombre, @apellido, @email, @pass, @dni, @telefono)");
 
                 datos.setearParametro("@nombre", nuevo.Nombre);
                 datos.setearParametro("@apellido", nuevo.Apellido);
@@ -62,7 +62,6 @@ namespace Negocio
                 datos.setearParametro("@pass", nuevo.Password);
                 datos.setearParametro("@dni", nuevo.Dni);
                 datos.setearParametro("@telefono", nuevo.Telefono);
-                datos.setearParametro("@estado", nuevo.Estado);
 
                 datos.ejecutarAccion();
 
@@ -77,12 +76,12 @@ namespace Negocio
             }
         }
 
-        public void modificar(Recepcionista nuevo)
+        public void modificar(Administrador nuevo)
         {
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("UPDATE Recepcionistas SET Nombre = @nombre, Apellido = @apellido, Email = @email, Pass = @pass, Dni = @dni, Telefono = @telefono, Estado = @estado WHERE Id = @id");
+                datos.setearConsulta("UPDATE Administradores SET Nombre = @nombre, Apellido = @apellido, Email = @email, Pass = @pass, Dni = @dni, Telefono = @telefono, Estadp = @estado WHERE Id = @id");
 
                 datos.setearParametro("@nombre", nuevo.Nombre);
                 datos.setearParametro("@apellido", nuevo.Apellido);
@@ -113,7 +112,7 @@ namespace Negocio
 
             try
             {
-                datos.setearConsulta("DELETE FROM Recepcionistas WHERE Id = " + id);
+                datos.setearConsulta("DELETE FROM Administradores WHERE Id = " + id);
                 datos.ejecutarAccion();
             }
             catch (Exception ex)

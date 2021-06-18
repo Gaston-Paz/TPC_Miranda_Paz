@@ -14,6 +14,8 @@ namespace Dominio
 
         public string Martricula { get; set; }
 
+        public bool Estado { get; set; }
+
         public Medico(int id, string apellido, string nombre, string matricula)
         {
             Id = id;
@@ -25,6 +27,7 @@ namespace Dominio
             Martricula = matricula;
         }
      
+        public Medico() { }
 
     }
 }

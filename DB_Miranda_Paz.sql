@@ -22,6 +22,7 @@ CREATE TABLE Medicos(
 	Pass VARCHAR (100) NOT NULL,
 	Dni VARCHAR (15) NOT NULL,
 	Telefono VARCHAR (20) NULL,
+	Estado BIT DEFAULT(1)
 )
 GO
 CREATE TABLE Dias(
@@ -79,32 +80,34 @@ VALUES ('Joaquin', 'Achaval Duria', 'M116688' , '1', 'AchavalDuria@Joaquin.com',
 ('Alejandro', 'Virasoro', 'M688978', '20', 'avirasoro@hotmail.com.ar', 'virajandro', '37548788', '(789) 789-2541'),
 ('Luciano Federico', 'Yomayel', 'M111111', '20', 'lyomayel@hotmail.com', 'luchiano', '25631125','(625) 229-4746')
 GO
-CREATE TABLE Recepcionista(
+CREATE TABLE Recepcionistas(
 	Id INT PRIMARY KEY NOT NULL IDENTITY(1,1),
 	Nombre VARCHAR (60) NOT NULL,
 	Apellido VARCHAR (60) NOT NULL,
 	Email VARCHAR (100) NOT NULL,
 	Pass VARCHAR (100) NOT NULL,
 	Dni VARCHAR (15) NOT NULL,
-	Telefono VARCHAR (20) NULL
+	Telefono VARCHAR (20) NULL,
+	Estado BIT DEFAULT(1)
 )
 GO
-INSERT INTO Recepcionista
+INSERT INTO Recepcionistas
 VALUES ('Florencia', 'Rodriguez', 'flor-rodriguez@mail.com', '123456', '37059672', '1144558899'),
 ('Agustina', 'Perez', 'aguspe@mail.com', '789456', '37059678', '1155447788'),
 ('Rodrigo', 'Alsina', 'rodrial@mail.com', '159753', '35789877', '1122554477')
 GO
-CREATE TABLE Administrador(
+CREATE TABLE Administradores(
 	Id INT PRIMARY KEY NOT NULL IDENTITY(1,1),
 	Nombre VARCHAR (60) NOT NULL,
 	Apellido VARCHAR (60) NOT NULL,
 	Email VARCHAR (100) NOT NULL,
 	Pass VARCHAR (100) NOT NULL,
 	Dni VARCHAR (15) NOT NULL,
-	Telefono VARCHAR (20) NULL
+	Telefono VARCHAR (20) NULL,
+	Estado BIT DEFAULT(1)
 )
 GO
-INSERT INTO Administrador
+INSERT INTO Administradores
 VALUES ('Gastón', 'Paz', 'gastonpaz@mail.com', 'gaspaz', '38013023', '1165656565'),
 ('Maximiliano', 'Miranda','maximiranda@mail.com', 'mirama', '38014024', '1145454545')
 GO
@@ -115,7 +118,8 @@ CREATE TABLE Pacientes(
 	Dni VARCHAR (15) NOT NULL,
 	Email VARCHAR (100) NOT NULL,
 	Telefono VARCHAR (20) NULL,
-	FechaNac DATE NOT NULL
+	FechaNac DATE NOT NULL,
+	Estado BIT DEFAULT(1)
 )
 GO
 CREATE TABLE EstadosTurnos(

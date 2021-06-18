@@ -16,7 +16,7 @@ namespace Negocio
 
             try
             {
-                string SelectColum = "SELECT Id, Nombre, Apellido, Email, Dni, Telefono, FechaNac FROM Pacientes";
+                string SelectColum = "SELECT Id, Nombre, Apellido, Email, Dni, Telefono, FechaNac, Estado FROM Pacientes";
 
 
                 datos.setearConsulta(SelectColum);
@@ -32,6 +32,7 @@ namespace Negocio
                     aux.Dni = (string)datos.Lector["Dni"];
                     aux.Telefono = (string)datos.Lector["Telefono"];
                     aux.FechaNacimiento = (DateTime)datos.Lector["FechaNac"];
+                    aux.Estado = (bool)datos.Lector["Estado"];
 
                     lista.Add(aux);
                 }
@@ -53,7 +54,7 @@ namespace Negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("INSERT INTO Pacientes (Nombre,Apellido,Email,Dni,Telefono, FechaNac) VALUES (@nombre, @apellido, @email, @dni, @telefono, @fechaNac)");
+                datos.setearConsulta("INSERT INTO Pacientes (Nombre,Apellido,Email,Dni,Telefono, FechaNac, Estado) VALUES (@nombre, @apellido, @email, @dni, @telefono, @fechaNac,@estado)");
 
                 datos.setearParametro("@nombre", nuevo.Nombre);
                 datos.setearParametro("@apellido", nuevo.Apellido);
@@ -61,6 +62,7 @@ namespace Negocio
                 datos.setearParametro("@fechaNac", nuevo.FechaNacimiento);
                 datos.setearParametro("@dni", nuevo.Dni);
                 datos.setearParametro("@telefono", nuevo.Telefono);
+                datos.setearParametro("@estado", nuevo.Estado);
 
                 datos.ejecutarAccion();
 
@@ -80,7 +82,7 @@ namespace Negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("UPDATE Pacientes SET Nombre = @nombre, Apellido = @apellido, Email = @email, FechaNac = @fechaNac, Dni = @dni, Telefono = @telefono, WHERE Id = @id");
+                datos.setearConsulta("UPDATE Pacientes SET Nombre = @nombre, Apellido = @apellido, Email = @email, FechaNac = @fechaNac, Dni = @dni, Telefono = @telefono, Estado = @estado WHERE Id = @id");
 
                 datos.setearParametro("@nombre", nuevo.Nombre);
                 datos.setearParametro("@apellido", nuevo.Apellido);
@@ -88,6 +90,7 @@ namespace Negocio
                 datos.setearParametro("@fechaNac", nuevo.FechaNacimiento);
                 datos.setearParametro("@dni", nuevo.Dni);
                 datos.setearParametro("@telefono", nuevo.Telefono);
+                datos.setearParametro("@estado", nuevo.Estado);
 
                 datos.setearParametro("@id", nuevo.Id);
 

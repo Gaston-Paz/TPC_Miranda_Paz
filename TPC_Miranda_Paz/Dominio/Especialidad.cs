@@ -18,5 +18,7 @@ namespace Dominio
             Id = id;
         }
 
+        public Especialidad() { }
+
     }
 }

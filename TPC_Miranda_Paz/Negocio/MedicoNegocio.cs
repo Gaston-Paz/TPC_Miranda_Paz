@@ -16,7 +16,7 @@ namespace Negocio
 
             try
             {
-                string SelectColum = "SELECT M.Id, M.Nombre, M.Apellido, M.Matricula, M.Email, M.Pass, M.Dni, M.Telefono, E.Nombre, E.Id ";
+                string SelectColum = "SELECT M.Id, M.Nombre, M.Apellido, M.Matricula, M.Email, M.Pass, M.Dni, M.Telefono, E.Nombre, E.Id, M.Estado ";
                 string FromDB = "FROM Medicos M INNER JOIN Especialidades E ON IdEspecialidad = E.id";
 
 
@@ -35,6 +35,7 @@ namespace Negocio
                     aux.Dni = (string)datos.Lector["Dni"];
                     aux.Telefono = (string)datos.Lector["Telefono"];
                     aux.Especialidad = new Especialidad((string)datos.Lector.GetString(8), (int)datos.Lector.GetInt32(9));
+                    aux.Estado = (bool)datos.Lector["Estado"];
           
                    
 
@@ -58,7 +59,7 @@ namespace Negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("INSERT INTO Medicos (Nombre,Apellido,Matricula,Email,Pass,Dni,Telefono,IdEspecialidad) VALUES (@nombre, @apellido, @matricula, @email, @pass, @dni, @telefono, @especialidad)");
+                datos.setearConsulta("INSERT INTO Medicos (Nombre,Apellido,Matricula,Email,Pass,Dni,Telefono,IdEspecialidad, Estado) VALUES (@nombre, @apellido, @matricula, @email, @pass, @dni, @telefono, @especialidad,@estado)");
 
                 datos.setearParametro("@nombre", nuevo.Nombre);
                 datos.setearParametro("@apellido", nuevo.Apellido);
@@ -68,6 +69,7 @@ namespace Negocio
                 datos.setearParametro("@dni", nuevo.Dni);
                 datos.setearParametro("@telefono", nuevo.Telefono);
                 datos.setearParametro("@especialidad", nuevo.Especialidad.Id);
+                datos.setearParametro("@estado", nuevo.Estado);
 
                 datos.ejecutarAccion();
 
@@ -87,7 +89,7 @@ namespace Negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("UPDATE Medicos SET Nombre = @nombre, Apellido = @apellido, Matricula = @matricula, Email = @email, Pass = @pass, Dni = @dni, Telefono = @telefono, IdEspecialidad = @especialidad WHERE Id = @id");
+                datos.setearConsulta("UPDATE Medicos SET Nombre = @nombre, Apellido = @apellido, Matricula = @matricula, Email = @email, Pass = @pass, Dni = @dni, Telefono = @telefono, IdEspecialidad = @especialidad, Estado = @estado WHERE Id = @id");
 
                 datos.setearParametro("@nombre", nuevo.Nombre);
                 datos.setearParametro("@apellido", nuevo.Apellido);
@@ -97,6 +99,7 @@ namespace Negocio
                 datos.setearParametro("@dni", nuevo.Dni);
                 datos.setearParametro("@telefono", nuevo.Telefono);
                 datos.setearParametro("@especialidad", nuevo.Especialidad.Id);
+                datos.setearParametro("@estado", nuevo.Estado);
 
                 datos.setearParametro("@id", nuevo.Id);
 

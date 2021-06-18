@@ -8,5 +8,8 @@ namespace Dominio
 {
     public class Administrador : Usuario
     {
+        public int Id { get; set; }
+
+        public bool Estado { get; set; }
     }
 }

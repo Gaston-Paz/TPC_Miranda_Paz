@@ -18,5 +18,7 @@ namespace Dominio
 
             Nombre = nombre;
         }
+
+        public EstadoTurno() { }
     }
 }
