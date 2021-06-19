@@ -6,7 +6,6 @@
 body{
     padding-top: 0px;
     padding-bottom: 0px;
-    background-color: red;
 }
 
 .color-primary {
@@ -25,10 +24,6 @@ body{
     }
 
 .test-overflow{
-    max-height: 600px;
+    max-height: 492px !important;
     overflow: auto;
-}
-
-body{
-    background-color: red;
 }

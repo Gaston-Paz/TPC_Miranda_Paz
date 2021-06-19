@@ -90,8 +90,8 @@
                             aria-label="Search" />
                     </form>
                 </div>
-                <div class="card-body" class="test-overflow">
-                    <div >
+                <div class="card-body ">
+                    <div class="test-overflow">
                     <table class="table table-bordered table-hover">
                         <thead class="thead-dark">
                             <tr>
@@ -99,6 +99,7 @@
                                 <th scope="col">Nombre</th>
                                 <th scope="col">Apellido</th>
                                 <th scope="col">Especialidad</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -111,6 +112,9 @@
                                 <th><%= item.Nombre %> </th>
                                 <th><%= item.Apellido %> </th>
                                 <th><%= item.Especialidad.Nombre %> </th>
+                                <th>
+                                     <a href="#" class=""><i class="fas fa-edit"></i></a>
+                                </th>
 
                             </tr>
 
