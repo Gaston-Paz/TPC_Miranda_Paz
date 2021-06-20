@@ -60,11 +60,11 @@
                         </div>
                         <div class="form-group">
                             <select class="form-control" id="exampleFormControlSelect1">
-                              <option>1</option>
-                              <option>2</option>
-                              <option>3</option>
-                              <option>4</option>
-                              <option>5</option>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
                             </select>
                         </div>
                         <button type="submit" class="btn btn-primary">Enviar</button>
@@ -92,37 +92,37 @@
                 </div>
                 <div class="card-body ">
                     <div class="test-overflow">
-                    <table class="table table-bordered table-hover">
-                        <thead class="thead-dark">
-                            <tr>
-                                <th scope="col">Id</th>
-                                <th scope="col">Nombre</th>
-                                <th scope="col">Apellido</th>
-                                <th scope="col">Especialidad</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
+                        <table class="table table-bordered table-hover">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th scope="col">Id</th>
+                                    <th scope="col">Nombre</th>
+                                    <th scope="col">Apellido</th>
+                                    <th scope="col">Especialidad</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
 
-                            <% foreach (Dominio.Medico item in listaMedicos)
-                                { %>
-                            <tr>
+                                <% foreach (Dominio.Medico item in listaMedicos)
+                                    { %>
+                                <tr>
 
-                                <th><%= item.Id %> </th>
-                                <th><%= item.Nombre %> </th>
-                                <th><%= item.Apellido %> </th>
-                                <th><%= item.Especialidad.Nombre %> </th>
-                                <th>
-                                     <a href="#" class=""><i class="fas fa-edit"></i></a>
-                                </th>
+                                    <th><%= item.Id %> </th>
+                                    <th><%= item.Nombre %> </th>
+                                    <th><%= item.Apellido %> </th>
+                                    <th><%= item.Especialidad.Nombre %> </th>
+                                    <th>
+                                        <a href="#" class=""><i class="fas fa-edit"></i></a>
+                                    </th>
 
-                            </tr>
+                                </tr>
 
 
-                            <% } %>
-                        </tbody>
-                    </table>
-                        </div>
+                                <% } %>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
