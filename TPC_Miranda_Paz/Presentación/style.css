@@ -22,3 +22,8 @@ body{
         border-radius: 5px;
         color: var(--color-secondary) !important;
     }
+
+.test-overflow {
+    max-height: 492px !important;
+    overflow: auto;
+}

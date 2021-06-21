@@ -2,7 +2,82 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
     <div class="row">
-				<div class="col-12">
+
+		        <div class="col-4">
+            <div class="card">
+                <div class="card-header">Formulario: Médico</div>
+                <div class="card-body">
+                    <h5 class="card-title">Registrar Médico</h5>
+                    <form>
+                        <div class="form-group">
+                            <input
+                                type="text"
+                                class="form-control"
+                                id="nombre"
+                                placeholder="Nombre" />
+                        </div>
+                        <div class="form-group">
+                            <input
+                                type="text"
+                                class="form-control"
+                                id="apellido"
+                                placeholder="Apellido" />
+                        </div>
+                        <div class="form-group">
+                            <input
+                                type="text"
+                                class="form-control"
+                                id="dni"
+                                placeholder="DNI" />
+                        </div>
+                        <div class="form-group">
+                            <input
+                                type="text"
+                                class="form-control"
+                                id="telefono"
+                                placeholder="Telefono" />
+                        </div>
+                        <div class="form-group">
+                            <input
+                                type="email"
+                                class="form-control"
+                                id="email"
+                                aria-describedby="emailHelp"
+                                placeholder="Email" />
+                        </div>
+                        <div class="form-group">
+                            <input
+                                type="password"
+                                class="form-control"
+                                id="password"
+                                placeholder="Contraseña" />
+                        </div>
+                        <div class="form-group">
+                            <input
+                                type="text"
+                                class="form-control"
+                                id="matricula"
+                                placeholder="Matrícula" />
+                        </div>
+                        <div class="form-group">
+                            <select class="form-control" id="exampleFormControlSelect1">
+                                <option>Clinico Medico</option>
+                                <option>Alergia</option>
+                                <option>Otorrinolaringologo</option>
+                                <option>Oftalmologo</option>
+                                <option>Neumonologo</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Registar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+
+
+				<div class="col">
 					<div class="card">
 						<div
 							class="
@@ -23,6 +98,7 @@
 							</form>
 						</div>
 						<div class="card-body">
+                            <div class="test-overflow">
 							<table class="table table-bordered table-hover">
 								<thead class="thead-dark">
 									<tr>
@@ -30,8 +106,7 @@
 										<th scope="col">Nombre</th>
 										<th scope="col">Apellido</th>
 										<th scope="col">Especialidad</th>
-										<th scope="col">Matricula</th>
-										<th scope="col">Email</th>
+										<th></th>
 									</tr>
 								</thead>
 								<tbody>
@@ -44,8 +119,7 @@
 											<th> <%= item.Nombre %> </th>
 											<th> <%= item.Apellido %> </th>
 											<th> <%= item.Especialidad.Nombre %> </th>
-											<th> <%= item.Martricula %> </th>
-											<th> <%= item.Email %> </th>
+											<th><a href="#" class=""><i class="fas fa-edit"></i></a></th>
 
 										</tr>
 
@@ -54,9 +128,10 @@
 
 								</tbody>
 							</table>
+                            </div>
 						</div>
 					</div>
 				</div>
-			</div>
+	</div>
 
 </asp:Content>
