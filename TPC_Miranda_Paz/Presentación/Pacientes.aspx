@@ -111,6 +111,19 @@
                                     <th><a href="#" class=""><i class="fas fa-edit"></i></a></th>
                                 </tr>
 
+                                <tr>
+                                    <% foreach (Dominio.Paciente item in listaPacientes)
+                                        { %>
+                                            <th scope="col"> <%= item.Id %> </th>
+                                            <th scope="col"> <%= item.Nombre %> </th>
+                                            <th scope="col"> <%= item.Apellido %> </th>
+                                            <th scope="col"> <%= item.Dni %> </th>
+                                            <th><a href="#" class=""><i class="fas fa-edit"></i></a></th>
+                                        
+
+                                     <% } %>
+                                </tr>
+
                             </tbody>
                         </table>
                     </div>

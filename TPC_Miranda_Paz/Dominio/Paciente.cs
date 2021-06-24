@@ -24,6 +24,8 @@ namespace Dominio
 
         public bool Estado { get; set; }
 
+        public Paciente() { }
+
         public Paciente(int id, string nombre, string apellido, string dni, string email, DateTime fecha)
         {
             Id = id;
@@ -39,6 +41,6 @@ namespace Dominio
             FechaNacimiento = fecha;
         }
 
-        public Paciente() { }
+        
     }
 }

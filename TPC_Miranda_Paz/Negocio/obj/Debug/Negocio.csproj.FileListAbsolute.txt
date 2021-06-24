@@ -2,8 +2,8 @@ C:\Users\Gastón\Documents\GitHub\TPC_Miranda_Paz\TPC_Miranda_Paz\Negocio\bin\De
 C:\Users\Gastón\Documents\GitHub\TPC_Miranda_Paz\TPC_Miranda_Paz\Negocio\bin\Debug\Negocio.pdb
 C:\Users\Gastón\Documents\GitHub\TPC_Miranda_Paz\TPC_Miranda_Paz\Negocio\bin\Debug\Dominio.dll
 C:\Users\Gastón\Documents\GitHub\TPC_Miranda_Paz\TPC_Miranda_Paz\Negocio\bin\Debug\Dominio.pdb
-C:\Users\Gastón\Documents\GitHub\TPC_Miranda_Paz\TPC_Miranda_Paz\Negocio\obj\Debug\Negocio.csprojAssemblyReference.cache
 C:\Users\Gastón\Documents\GitHub\TPC_Miranda_Paz\TPC_Miranda_Paz\Negocio\obj\Debug\Negocio.csproj.CoreCompileInputs.cache
 C:\Users\Gastón\Documents\GitHub\TPC_Miranda_Paz\TPC_Miranda_Paz\Negocio\obj\Debug\Negocio.csproj.CopyComplete
 C:\Users\Gastón\Documents\GitHub\TPC_Miranda_Paz\TPC_Miranda_Paz\Negocio\obj\Debug\Negocio.dll
 C:\Users\Gastón\Documents\GitHub\TPC_Miranda_Paz\TPC_Miranda_Paz\Negocio\obj\Debug\Negocio.pdb
+C:\Users\Gastón\Documents\GitHub\TPC_Miranda_Paz\TPC_Miranda_Paz\Negocio\obj\Debug\Negocio.csproj.AssemblyReference.cache
