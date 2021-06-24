@@ -1,7 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Pacientes.aspx.cs" Inherits="Presentación.Pacientes" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
-    <div class="row">
+
+<div class="row">
         <div class="col-4">
             <div class="card">
                 <div class="card-header">Formulario: Paciente</div>
@@ -46,28 +47,13 @@
                         </div>
                         <div class="form-group">
                             <input
-                                type="password"
+                                type="date"
                                 class="form-control"
-                                id="password"
-                                placeholder="Contraseña" />
+                                id="fechaNacimiento"
+                                placeholder="Fecha de nacimiento" />
                         </div>
-                        <div class="form-group">
-                            <input
-                                type="text"
-                                class="form-control"
-                                id="matricula"
-                                placeholder="Matrícula" />
-                        </div>
-                        <div class="form-group">
-                            <select class="form-control" id="exampleFormControlSelect1">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                            </select>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Enviar</button>
+                        
+                        <button type="submit" class="btn btn-primary">Registar</button>
                     </form>
                 </div>
             </div>
@@ -81,7 +67,7 @@
 								justify-content-between
 								align-items-center
 							">
-                    <div>Profesionales</div>
+                    <div>Pacientes</div>
                     <form class="form-inline my-2 my-lg-0">
                         <input
                             class="form-control mr-sm-2"
@@ -98,28 +84,46 @@
                                     <th scope="col">Id</th>
                                     <th scope="col">Nombre</th>
                                     <th scope="col">Apellido</th>
-                                    <th scope="col">Especialidad</th>
+                                    <th scope="col">Dni</th>
                                     <th></th>
                                 </tr>
                             </thead>
                             <tbody>
-
-                                <% foreach (Dominio.Paciente item in listaPacientes)
-                                    { %>
                                 <tr>
-
-                                    <th><%= item.Id %> </th>
-                                    <th><%= item.Nombre %> </th>
-                                    <th><%= item.Apellido %> </th>
-                                    <th><%= item.Dni %> </th>
-                                    <th>
-                                        <a href="#" class=""><i class="fas fa-edit"></i></a>
-                                    </th>
-
+                                    <th scope="col">Id</th>
+                                    <th scope="col">Nombre</th>
+                                    <th scope="col">Apellido</th>
+                                    <th scope="col">Especialidad</th>
+                                    <th><a href="#" class=""><i class="fas fa-edit"></i></a></th>
+                                </tr>
+                                <tr>
+                                    <th scope="col">Id</th>
+                                    <th scope="col">Nombre</th>
+                                    <th scope="col">Apellido</th>
+                                    <th scope="col">Especialidad</th>
+                                    <th><a href="#" class=""><i class="fas fa-edit"></i></a></th>
+                                </tr>
+                                <tr>
+                                    <th scope="col">Id</th>
+                                    <th scope="col">Nombre</th>
+                                    <th scope="col">Apellido</th>
+                                    <th scope="col">Especialidad</th>
+                                    <th><a href="#" class=""><i class="fas fa-edit"></i></a></th>
                                 </tr>
 
+                                <tr>
+                                    <% foreach (Dominio.Paciente item in listaPacientes)
+                                        { %>
+                                            <th scope="col"> <%= item.Id %> </th>
+                                            <th scope="col"> <%= item.Nombre %> </th>
+                                            <th scope="col"> <%= item.Apellido %> </th>
+                                            <th scope="col"> <%= item.Dni %> </th>
+                                            <th><a href="#" class=""><i class="fas fa-edit"></i></a></th>
+                                        
 
-                                <% } %>
+                                     <% } %>
+                                </tr>
+
                             </tbody>
                         </table>
                     </div>
@@ -127,5 +131,12 @@
             </div>
         </div>
     </div>
+
+
+
+
+
+
+
 
 </asp:Content>

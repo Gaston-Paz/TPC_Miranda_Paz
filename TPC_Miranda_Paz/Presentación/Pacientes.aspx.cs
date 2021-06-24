@@ -20,13 +20,13 @@ namespace Presentación
                 listaPacientes = pacienteNegocio.listar();
 
                 Session.Add("Pacientes", listaPacientes);
-
             }
             catch (Exception ex)
             {
 
-                Response.Redirect("Login.aspx");
+                throw;
             }
+            
         }
     }
 }
