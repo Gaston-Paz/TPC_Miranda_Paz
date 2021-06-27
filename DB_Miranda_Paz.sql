@@ -23,26 +23,6 @@ CREATE TABLE Medicos(
 	Telefono VARCHAR (20) NULL,
 	Estado BIT DEFAULT(1)
 )
-
-GO
-CREATE TABLE EspecialidadesxMedico(
-	IdEspecialidad INT NOT NULL FOREIGN KEY REFERENCES Especialidades (ID),
-	IdMedico INT NOT NULL FOREIGN KEY REFERENCES Medicos (ID),
-	PRIMARY KEY (IdEspecialidad, IdMedico)
-)
-GO
-CREATE TABLE Dias(
-	Id SMALLINT IDENTITY(1,1) PRIMARY KEY NOT NULL,
-	Nombre VARCHAR (15) NOT NULL UNIQUE
-)
-GO
-CREATE TABLE MedicosDisponiblesxDia(
-	IdMedico INT FOREIGN KEY REFERENCES Medicos (Id),
-	IdDia SMALLINT FOREIGN KEY REFERENCES DIAS(Id),
-	HoraEntrada SMALLINT NOT NULL,
-	HoraSalida SMALLINT NOT NULL,
-	PRIMARY KEY (IdMedico, IdDia)
-)
 GO
 INSERT INTO Medicos
 VALUES ('Joaquin', 'Achaval Duria', 'M116688' , 'AchavalDuria@Joaquin.com', 'joacoduria', '98975462', '(387) 962-2847','1'),
@@ -85,6 +65,71 @@ VALUES ('Joaquin', 'Achaval Duria', 'M116688' , 'AchavalDuria@Joaquin.com', 'joa
 ('Sofia Noemi', 'Vigliaccio', 'M444123', 'svigliaccio@frgp.utn.edu.ar', 'sofisoy', '44321581','(564) 377-2363','1'),
 ('Alejandro', 'Virasoro', 'M688978', 'avirasoro@hotmail.com.ar', 'virajandro', '37548788', '(789) 789-2541','1'),
 ('Luciano Federico', 'Yomayel', 'M111111', 'lyomayel@hotmail.com', 'luchiano', '25631125','(625) 229-4746','1')
+GO
+CREATE TABLE EspecialidadesxMedico(
+	IdEspecialidad INT NOT NULL FOREIGN KEY REFERENCES Especialidades (ID),
+	IdMedico INT NOT NULL FOREIGN KEY REFERENCES Medicos (ID),
+	PRIMARY KEY (IdEspecialidad, IdMedico)
+)
+GO
+INSERT INTO EspecialidadesxMedico
+VALUES(1,1),
+(2,2),
+(3,3),
+(4,4),
+(5,5),
+(6,6),
+(7,7),
+(8,8),
+(9,9),
+(10,10),
+(11,11),
+(12,12),
+(13,13),
+(14,14),
+(15,15),
+(16,16),
+(17,17),
+(18,18),
+(19,19),
+(20,20),
+(21,21),
+(22,22),
+(23,23),
+(24,24),
+(25,25),
+(26,26),
+(27,27),
+(28,28),
+(29,29),
+(30,30),
+(31,31),
+(32,32),
+(33,33),
+(34,34),
+(1,35),
+(2,36),
+(3,37),
+(4,38),
+(5,39),
+(6,40),
+(1,2),
+(2,1),
+(15,16),
+(17,16)
+GO
+CREATE TABLE Dias(
+	Id SMALLINT IDENTITY(1,1) PRIMARY KEY NOT NULL,
+	Nombre VARCHAR (15) NOT NULL UNIQUE
+)
+GO
+CREATE TABLE MedicosDisponiblesxDia(
+	IdMedico INT FOREIGN KEY REFERENCES Medicos (Id),
+	IdDia SMALLINT FOREIGN KEY REFERENCES DIAS(Id),
+	HoraEntrada SMALLINT NOT NULL,
+	HoraSalida SMALLINT NOT NULL,
+	PRIMARY KEY (IdMedico, IdDia)
+)
 GO
 CREATE TABLE Recepcionistas(
 	Id INT PRIMARY KEY NOT NULL IDENTITY(1,1),

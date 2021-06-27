@@ -63,7 +63,7 @@
                             <asp:DropDownList ID="ListEspecialidades" runat="server" CssClass="form-control">
                                 <asp:ListItem Value="-1">Especialidad</asp:ListItem>
                             </asp:DropDownList>
-                        </div>
+                                                    </div>
                         <button type="submit" class="btn btn-primary">Registar</button>
                     </form>
                 </div>
