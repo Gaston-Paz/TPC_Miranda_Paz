@@ -20,5 +20,7 @@ namespace Dominio
 
         public Especialidad() { }
 
+
+
     }
 }

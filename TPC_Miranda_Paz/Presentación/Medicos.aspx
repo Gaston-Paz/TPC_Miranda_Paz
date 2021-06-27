@@ -112,13 +112,19 @@
 								<tbody>
 
                                     <% foreach (Dominio.Medico item in listaMedicos)
-                                        { %>
+                                        { string especialidades = "";
+                                            int aux = 0;%>
 										<tr>
 
 											<th> <%= item.Id %> </th>
 											<th> <%= item.Nombre %> </th>
 											<th> <%= item.Apellido %> </th>
-											<th> <%= item.Especialidad.Nombre %> </th>
+											<% foreach (Dominio.Especialidad items in item.Especialidades)
+                                                {
+                                                    if(aux == 0) { especialidades = especialidades + items.Nombre; aux++; }
+                                                    else { especialidades = especialidades + ", " + items.Nombre; }
+                                                } %>
+                                            <th> <%= especialidades %> </th>
 											<th><a href="#" class=""><i class="fas fa-edit"></i></a></th>
 
 										</tr>
