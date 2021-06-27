@@ -60,13 +60,7 @@
                                 placeholder="Matrícula" />
                         </div>
                         <div class="form-group">
-                            <select class="form-control" id="exampleFormControlSelect1">
-                                <option>Clinico Medico</option>
-                                <option>Alergia</option>
-                                <option>Otorrinolaringologo</option>
-                                <option>Oftalmologo</option>
-                                <option>Neumonologo</option>
-                            </select>
+                            <asp:DropDownList ID="ListEspecialidades" runat="server"></asp:DropDownList>
                         </div>
                         <button type="submit" class="btn btn-primary">Registar</button>
                     </form>
