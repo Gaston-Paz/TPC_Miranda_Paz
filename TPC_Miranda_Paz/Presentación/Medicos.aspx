@@ -60,14 +60,10 @@
                                 placeholder="Matrícula" />
                         </div>
                         <div class="form-group">
-                            <select class="form-control" id="exampleFormControlSelect1">
-                                <option>Clinico Medico</option>
-                                <option>Alergia</option>
-                                <option>Otorrinolaringologo</option>
-                                <option>Oftalmologo</option>
-                                <option>Neumonologo</option>
-                            </select>
-                        </div>
+                            <asp:DropDownList ID="ListEspecialidades" runat="server" CssClass="form-control">
+                                <asp:ListItem Value="-1">Especialidad</asp:ListItem>
+                            </asp:DropDownList>
+                                                    </div>
                         <button type="submit" class="btn btn-primary">Registar</button>
                     </form>
                 </div>
@@ -112,13 +108,19 @@
 								<tbody>
 
                                     <% foreach (Dominio.Medico item in listaMedicos)
-                                        { %>
+                                        { string especialidades = "";
+                                            int aux = 0;%>
 										<tr>
 
 											<th> <%= item.Id %> </th>
 											<th> <%= item.Nombre %> </th>
 											<th> <%= item.Apellido %> </th>
-											<th> <%= item.Especialidad.Nombre %> </th>
+											<% foreach (Dominio.Especialidad items in item.Especialidades)
+                                                {
+                                                    if(aux == 0) { especialidades = especialidades + items.Nombre; aux++; }
+                                                    else { especialidades = especialidades + ", " + items.Nombre; }
+                                                } %>
+                                            <th> <%= especialidades %> </th>
 											<th><a href="#" class=""><i class="fas fa-edit"></i></a></th>
 
 										</tr>

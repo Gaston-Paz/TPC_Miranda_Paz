@@ -10,7 +10,7 @@ namespace Dominio
     {
         public int Id { get; set; }
 
-        public Especialidad Especialidad { get; set; }
+        public List<Especialidad> Especialidades { get; set; }
 
         public string Martricula { get; set; }
 

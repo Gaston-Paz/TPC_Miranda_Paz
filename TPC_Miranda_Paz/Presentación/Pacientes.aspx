@@ -51,7 +51,7 @@
                                 class="form-control"
                                 id="fechaNacimiento"
                                 placeholder="Fecha de nacimiento" />
-                        </div>
+                         </div>
                         
                         <button type="submit" class="btn btn-primary">Registar</button>
                     </form>

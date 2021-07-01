@@ -13,14 +13,13 @@ namespace Negocio
         {
             List<Medico> lista = new List<Medico>();
             AccesoDatos datos = new AccesoDatos();
+            EspecialidadesMedicoNegocio especilidadMedico = new EspecialidadesMedicoNegocio();
 
             try
             {
-                string SelectColum = "SELECT M.Id, M.Nombre, M.Apellido, M.Matricula, M.Email, M.Pass, M.Dni, M.Telefono, E.Nombre, E.Id, M.Estado ";
-                string FromDB = "FROM Medicos M INNER JOIN Especialidades E ON IdEspecialidad = E.id";
+                string SelectColum = "SELECT * FROM Medicos ";
 
-
-                datos.setearConsulta(SelectColum + FromDB);
+                datos.setearConsulta(SelectColum);
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
@@ -34,7 +33,7 @@ namespace Negocio
                     aux.Password = (string)datos.Lector["Pass"];
                     aux.Dni = (string)datos.Lector["Dni"];
                     aux.Telefono = (string)datos.Lector["Telefono"];
-                    aux.Especialidad = new Especialidad((string)datos.Lector.GetString(8), (int)datos.Lector.GetInt32(9));
+                    aux.Especialidades = especilidadMedico.listar(aux);
                     aux.Estado = (bool)datos.Lector["Estado"];
           
                    
@@ -68,7 +67,7 @@ namespace Negocio
                 datos.setearParametro("@pass", nuevo.Password);
                 datos.setearParametro("@dni", nuevo.Dni);
                 datos.setearParametro("@telefono", nuevo.Telefono);
-                datos.setearParametro("@especialidad", nuevo.Especialidad.Id);
+                //datos.setearParametro("@especialidad", nuevo.Especialidad.Id);
                 datos.setearParametro("@estado", nuevo.Estado);
 
                 datos.ejecutarAccion();
@@ -98,7 +97,7 @@ namespace Negocio
                 datos.setearParametro("@pass", nuevo.Password);
                 datos.setearParametro("@dni", nuevo.Dni);
                 datos.setearParametro("@telefono", nuevo.Telefono);
-                datos.setearParametro("@especialidad", nuevo.Especialidad.Id);
+                //datos.setearParametro("@especialidad", nuevo.Especialidad.Id);
                 datos.setearParametro("@estado", nuevo.Estado);
 
                 datos.setearParametro("@id", nuevo.Id);
