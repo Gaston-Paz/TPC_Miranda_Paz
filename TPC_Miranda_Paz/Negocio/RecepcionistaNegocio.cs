@@ -126,5 +126,77 @@ namespace Negocio
                 datos.cerrarConexion();
             }
         }
+        public int chequear_dni(string dni)
+        {
+
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+
+                int x = 0;
+
+                string consulta = "SELECT * FROM RECEPCIONISTAS WHERE DNI = @dni";
+
+                datos.setearParametro("@dni", dni);
+                datos.setearConsulta(consulta);
+                datos.ejecutarLectura();
+
+                while (datos.Lector.Read())
+                {
+
+                    x++;
+                }
+
+                return x;
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
+        }
+
+        public int chequear_email(string email)
+        {
+
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+
+                int x = 0;
+
+                string consulta = "SELECT * FROM RECEPCIONISTAS WHERE EMAIL = @email";
+
+                datos.setearParametro("@email", email);
+                datos.setearConsulta(consulta);
+                datos.ejecutarLectura();
+
+                while (datos.Lector.Read())
+                {
+
+                    x++;
+                }
+
+                return x;
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
+        }
+
     }
 }
