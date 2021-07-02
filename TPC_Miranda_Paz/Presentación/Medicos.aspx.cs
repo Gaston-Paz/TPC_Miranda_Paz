@@ -40,5 +40,10 @@ namespace Presentación
             }
           
         }
+
+        protected void BtnEditarMedico_Click(object sender, EventArgs e)
+        {
+            TxtNombre.ReadOnly = false;
+        }
     }
 }
