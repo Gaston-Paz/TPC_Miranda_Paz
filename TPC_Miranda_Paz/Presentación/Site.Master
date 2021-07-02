@@ -15,13 +15,15 @@
 
     <webopt:BundleReference runat="server" Path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-    <link href="style.css" rel="stylesheet" />
     <%--fontawesome icon--%>
     <link
         rel="stylesheet"
         href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
         integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk"
         crossorigin="anonymous" />
+
+    <link href="style.css" rel="stylesheet" />
+    
 </head>
 <body>
     <form runat="server">
@@ -69,18 +71,18 @@
         <div class="container py-4">
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
-            
+        </div>  
 
 
            <%-- footer--%>
-            <footer class="fixed-bottom color-primary py-2">
+            <footer class="color-primary py-2">
                 <p class="text-center mb-0">
                     &copy; <%: DateTime.Now.Year %> - Mi aplicación ASP.NET "Turnero" by
 				<a href="https://github.com/Gaston-Paz">Gaston Paz</a> -
 				<a href="https://github.com/Maxi-rpc">Maximiliano Miranda</a>
                 </p>
             </footer>
-        </div>
+        
 
     </form>
 </body>

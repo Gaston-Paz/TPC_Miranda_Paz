@@ -14,42 +14,82 @@
 </head>
 <body>
     <section class="container">
-			<div class="row justify-content-center vh-100 align-content-center">
-				<div class="col-4">
-					<form>
-						<div class="text-center pb-3">
-							<img
-								src="https://laslomas.com.ar/wp-content/uploads/2020/10/logo_header.png"
-								alt=""
-								width="80%"
-							/>
-						</div>
-						<div class="text-center">
-							<h1 class="h3">Iniciar Sesion</h1>
-						</div>
-						<div class="form-group">
-							<input
-								type="email"
-								class="form-control"
-								id="exampleInputEmail1"
-								aria-describedby="emailHelp"
-								placeholder="Email"
-							/>
-						</div>
-						<div class="form-group">
-							<input
-								type="password"
-								class="form-control"
-								id="exampleInputPassword1"
-								placeholder="Password"
-							/>
-						</div>
-						<button type="submit" class="btn btn-outline-primary btn-block">
+        <div class="row justify-content-center vh-100 align-content-center">
+            <div class="col-4">
+                <form id="formLogin" runat="server">
+                    <div class="text-center pb-3">
+                        <img
+                            src="https://laslomas.com.ar/wp-content/uploads/2020/10/logo_header.png"
+                            alt=""
+                            width="80%" />
+                    </div>
+                    <div class="text-center">
+                        <h1 class="h3">Iniciar Sesion</h1>
+                    </div>
+                    <div class="form-group">
+                        <input
+                            type="email"
+                            class="form-control"
+                            id="email"
+                            aria-describedby="emailHelp"
+                            placeholder="Email"
+                            required />
+                        <div class="invalid-feedback">
+                            El campo no puede estar vacio.
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input
+                            type="password"
+                            class="form-control"
+                            id="password"
+                            placeholder="Password"
+                            required />
+                        <div class="invalid-feedback">
+                            El campo no puede estar vacio.
+                        </div>
+                    </div>
+                    <asp:Button ID="btnLogin" runat="server" Text="Iniciar" autopostback="false" OnClientClick="return validar()" CssClass="btn btn-outline-primary btn-block" />
+                    <%--<button type="submit" class="btn btn-outline-primary btn-block">
 							Iniciar
-						</button>
-					</form>
-				</div>
-			</div>
-		</section>
+						</button>--%>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function validar() {
+            console.log("validar in"); // se ejecuta
+
+            var formLogin = document.getElementById("formLogin");
+            console.log(formLogin); // trae el form
+
+            var email = document.getElementById("email");
+            var pass = document.getElementById("password");
+            console.log(email.value + pass.value); // trae inputs
+
+            if (email.value == "" || pass.value == "") {
+
+                if (email.value == "") {
+                    email.classList.add("is-invalid");
+
+                } else {
+                    email.classList.remove("is-invalid");
+                }
+
+                if (pass.value == "") {
+                    pass.classList.add("is-invalid");
+
+                } else {
+                    pass.classList.remove("is-invalid");
+                }
+                return false;
+            }
+
+            console.log("validar out"); // termina la funcion
+            return true;
+        }
+    </script>
 </body>
 </html>
