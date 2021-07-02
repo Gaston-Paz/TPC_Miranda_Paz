@@ -8,52 +8,71 @@
                 <div class="card-header">Formulario: Paciente</div>
                 <div class="card-body">
                     <h5 class="card-title">Registrar Paciente</h5>
-                    <form>
+
+                    <form action="Pacientes.aspx" >
                         <div class="form-group">
                             <input
                                 type="text"
                                 class="form-control"
                                 id="nombre"
-                                placeholder="Nombre" />
-                        </div>
+                                name="nombre"
+                                placeholder="Nombre"
+                                runat="server"/>
+                                                  </div>
                         <div class="form-group">
                             <input
                                 type="text"
                                 class="form-control"
                                 id="apellido"
-                                placeholder="Apellido" />
+                                name="apellido"
+                                placeholder="Apellido"
+                                runat="server"/>
                         </div>
                         <div class="form-group">
                             <input
                                 type="text"
                                 class="form-control"
                                 id="dni"
-                                placeholder="DNI" />
+                                name="dni"
+                                placeholder="DNI"
+                                runat="server"/>
+                            <div class="invalid-feedback">
+                                 DNI ya registrado
+                            </div>
                         </div>
                         <div class="form-group">
                             <input
                                 type="text"
                                 class="form-control"
                                 id="telefono"
-                                placeholder="Telefono" />
+                                name="telefono"
+                                placeholder="Telefono"
+                                runat="server"/>
                         </div>
                         <div class="form-group">
                             <input
                                 type="email"
                                 class="form-control"
                                 id="email"
+                                name="email"
                                 aria-describedby="emailHelp"
-                                placeholder="Email" />
+                                placeholder="Email"
+                                runat="server"/>
+                            <div class="invalid-feedback">
+                                 Email ya registrado
+                            </div>
                         </div>
                         <div class="form-group">
                             <input
                                 type="date"
                                 class="form-control"
                                 id="fechaNacimiento"
-                                placeholder="Fecha de nacimiento" />
+                                name="fechanacimiento"
+                                placeholder="Fecha de nacimiento"
+                                runat="server"/>
                          </div>
+                        <asp:Button ID="Button1" runat="server" Text="Registrar" CssClass="btn btn-primary" OnClick="Registar_Click"/>
                         
-                        <button type="submit" class="btn btn-primary">Registar</button>
                     </form>
                 </div>
             </div>
@@ -89,40 +108,20 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <th scope="col">Id</th>
-                                    <th scope="col">Nombre</th>
-                                    <th scope="col">Apellido</th>
-                                    <th scope="col">Especialidad</th>
-                                    <th><a href="#" class=""><i class="fas fa-edit"></i></a></th>
-                                </tr>
-                                <tr>
-                                    <th scope="col">Id</th>
-                                    <th scope="col">Nombre</th>
-                                    <th scope="col">Apellido</th>
-                                    <th scope="col">Especialidad</th>
-                                    <th><a href="#" class=""><i class="fas fa-edit"></i></a></th>
-                                </tr>
-                                <tr>
-                                    <th scope="col">Id</th>
-                                    <th scope="col">Nombre</th>
-                                    <th scope="col">Apellido</th>
-                                    <th scope="col">Especialidad</th>
-                                    <th><a href="#" class=""><i class="fas fa-edit"></i></a></th>
-                                </tr>
-
-                                <tr>
+                                                           
                                     <% foreach (Dominio.Paciente item in listaPacientes)
+                                
                                         { %>
+                                        <tr>
                                             <th scope="col"> <%= item.Id %> </th>
                                             <th scope="col"> <%= item.Nombre %> </th>
                                             <th scope="col"> <%= item.Apellido %> </th>
                                             <th scope="col"> <%= item.Dni %> </th>
                                             <th><a href="#" class=""><i class="fas fa-edit"></i></a></th>
-                                        
+                                        </tr>
 
                                      <% } %>
-                                </tr>
+                                
 
                             </tbody>
                         </table>
@@ -133,10 +132,6 @@
     </div>
 
 
-
-
-
-
-
-
 </asp:Content>
+
+
