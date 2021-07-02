@@ -8,7 +8,7 @@
                 <div class="card-body">
                     <h5 class="card-title">Registrar Recepcionista</h5>
 
-                    <form action="Administrativos.aspx" >
+                    <form>
                         <div class="form-group">
                             <input type="text" class="form-control" id="nombre_recep" name="nombre_recep" placeholder="Nombre" runat="server"/>
                          </div>
@@ -38,6 +38,7 @@
                 </div>
             </div>
         </div>
+
         <div class="col">
             <div class="card">
                 <div class="card-header d-flex justify-content-between align-items-center">
@@ -61,6 +62,7 @@
                             <tbody>
                                                            
                                     <% foreach (Dominio.Recepcionista item in listaRecepcionista)
+    
                                        {  %>
                                         <tr>
                                             <th scope="col"> <%= item.Id %> </th>
@@ -82,7 +84,6 @@
         </div>
     </div>
 
-    
 <div class="row mt-4">
         <div class="col-4">
             <div class="card">
@@ -90,7 +91,7 @@
                 <div class="card-body">
                     <h5 class="card-title">Registrar Administrador</h5>
 
-                    <form action="Administrativos.aspx">
+                    <form>
                         <div class="form-group">
                             <input type="text" class="form-control" id="nombre_admin" name="nombre_admin" placeholder="Nombre" runat="server" />
                         </div>
@@ -116,8 +117,8 @@
                         <div class="form-group">
                             <input type="text" class="form-control" id="pass_admin" name="pass_admin" placeholder="Contraseña" runat="server" />
                         </div>
-                        <asp:Button ID="Btn_Registar_admin" runat="server" Text="Button" CssClass="btn btn-primary" OnClick="Btn_Registar_admin_Click" />
                     </form>
+                        <asp:Button ID="Btn_Registar_admin" runat="server" Text="Button" CssClass="btn btn-primary" OnClick="Btn_Registar_admin_Click" />
                 </div>
             </div>
 

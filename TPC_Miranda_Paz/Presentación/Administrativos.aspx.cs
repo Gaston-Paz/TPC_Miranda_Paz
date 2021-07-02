@@ -85,7 +85,53 @@ namespace Presentación
 
         protected void Btn_Registar_admin_Click(object sender, EventArgs e)
         {
-            int x = 1;
+            bool agregar = true;
+            Administrador nuevo = new Administrador();
+            AdministradoNegocio administradoNegocio = new AdministradoNegocio();
+            try
+            {
+                nuevo.Nombre = nombre_admin.Value;
+                nuevo.Apellido = apellido_admin.Value;
+                nuevo.Dni = dni_admin.Value;
+                nuevo.Email = email_admin.Value;
+                nuevo.Telefono = telefono_admin.Value;
+                nuevo.Password = pass_admin.Value;
+                nuevo.Estado = true;
+
+                Session.Add("Administrador", nuevo);
+
+                if (administradoNegocio.chequear_dni(nuevo.Dni) > 0)
+                {
+                    /// DNI REPETIDO
+                    //dni.Attributes["class"] = "is-invalid";
+                    dni_admin.Attributes.Add("class", "form-control is-invalid");
+                    agregar = false;
+                }
+
+                if (administradoNegocio.chequear_email(nuevo.Email) > 0)
+                {
+                    email_admin.Attributes.Add("class", "form-control is-invalid");
+                    agregar = false;
+                }
+
+
+
+
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+            if (agregar == true)
+            {
+                administradoNegocio.agregar(nuevo);
+                Session.Remove("Administrador");
+                Response.Redirect("Administrativos.aspx");
+
+            }
         }
+
+
     }
 }
