@@ -1,2 +1,3 @@
 
-TPC_Miranda_Paz/.vs/TPC_Miranda_Paz/v16/.suo
+*.suo
+*.cache
