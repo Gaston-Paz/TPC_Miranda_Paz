@@ -129,6 +129,9 @@
                         </table>--%>
 
 
+                        <%--ACA ESTA LA GRILLA CARGADA SOLAMENTE CON LOS PACIENTES CON ESTADO ACTIVO--%>
+                        <%--TIENEN FUNCIONAMIENTO LOS BOTONES DE ELIMINAR Y GUARDAR CAMBIOS--%>
+
                         <asp:GridView ID="GridView1" runat="server" OnLoad="GridView1_Load" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="Id" DataSourceID="SqlDataSource1" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
                             <Columns>
                                 <asp:BoundField DataField="Nombre" HeaderText="Nombre" SortExpression="Nombre" />
