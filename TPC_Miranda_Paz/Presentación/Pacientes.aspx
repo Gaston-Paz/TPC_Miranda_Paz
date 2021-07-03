@@ -99,7 +99,7 @@
                 </div>
                 <div class="card-body ">
                     <div class="test-overflow">
-                        <table class="table table-bordered table-hover">
+                     <%--   <table class="table table-bordered table-hover">
                             <thead class="thead-dark">
                                 <tr>
                                     <th scope="col">Id</th>
@@ -126,7 +126,33 @@
                                 
 
                             </tbody>
-                        </table>
+                        </table>--%>
+
+
+                        <asp:GridView ID="GridView1" runat="server" OnLoad="GridView1_Load" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="Id" DataSourceID="SqlDataSource1" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
+                            <Columns>
+                                <asp:BoundField DataField="Nombre" HeaderText="Nombre" SortExpression="Nombre" />
+                                <asp:BoundField DataField="Apellido" HeaderText="Apellido" SortExpression="Apellido" />
+                                <asp:BoundField DataField="Dni" HeaderText="Dni" SortExpression="Dni" />
+                                <asp:CommandField ShowSelectButton="True" />
+                                
+                                    
+
+                            </Columns>
+                            <HeaderStyle BackColor="Black" />
+                                
+                        </asp:GridView>
+                               
+
+                                <a id="modal" href="#" class="" data-toggle="modal" data-target="#exampleModal" runat="server"><i class="fas fa-edit"></i></a>
+
+                        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:DB_Miranda_PazConnectionString %>" SelectCommand="SELECT * FROM [Pacientes] WHERE ([Estado] = @Estado)">
+                            <SelectParameters>
+                                <asp:Parameter DefaultValue="TRUE" Name="Estado" Type="Boolean" />
+                            </SelectParameters>
+                        </asp:SqlDataSource>
+
+
                     </div>
                 </div>
             </div>
@@ -145,9 +171,14 @@
                     </button>
                 </div>
 
-
-
-
+                <div class="modal-body row">
+                    <div class="col-2">
+                        <asp:Label ID="LblId" runat="server" Text="Id"></asp:Label>
+                    </div>
+                    <div class="col">
+                        <asp:TextBox ID="TxtId" runat="server" ReadOnly="true"></asp:TextBox>
+                    </div>
+            </div>
                 <div class="modal-body row">
                     <div class="col-2">
                         <asp:Label ID="LblNombre" runat="server" Text="Nombre"></asp:Label>
@@ -197,7 +228,7 @@
                         <input
                             type="date"
                             class="form-control"
-                            id="Date1"
+                            id="fechaNac"
                             name="fechanacimiento"
                             placeholder="Fecha de nacimiento"
                             runat="server" />
@@ -206,9 +237,9 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                <asp:Button ID="Button1" runat="server" Text="Eliminar" CssClass="btn btn-danger" />
+                <asp:Button ID="BtnEliminar" runat="server" Text="Eliminar" CssClass="btn btn-danger" OnClick="BtnEliminar_Click"/>
                 <asp:Button ID="Button2" runat="server" Text="Editar" CssClass="btn btn-warning" />
-                <asp:Button ID="BtnModificar" runat="server" Text="Guardar cambios" CssClass="btn btn-primary" />
+                <asp:Button ID="BtnModificar" runat="server" Text="Guardar cambios" CssClass="btn btn-primary" OnClick="BtnModificar_Click"/>
             </div>
         </div>
     </div>

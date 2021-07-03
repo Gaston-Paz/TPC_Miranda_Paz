@@ -12,12 +12,12 @@ namespace Presentación
     public partial class Pacientes : System.Web.UI.Page
     {
         public List<Paciente> listaPacientes;
- 
+        public string prueba;
         protected void Page_Load(object sender, EventArgs e)
         {                        
             try
             {
-                
+                 
                 PacienteNegocio pacienteNegocio = new PacienteNegocio();
                 listaPacientes = pacienteNegocio.listar();
 
@@ -84,10 +84,106 @@ namespace Presentación
 
         
         public List<Paciente> listaBusqueda = new List<Paciente>();
-        
+
+        protected void GridView1_Load(object sender, EventArgs e)
+        {
+            GridView1.CssClass = "table table-bordered table-hover";
+            GridView1.HeaderStyle.CssClass = "thead-dark";
+
+        }
+
+
+
+        protected void BtnModificar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Paciente nuevo = new Paciente();
+                PacienteNegocio pacienteNegocio = new PacienteNegocio();
+
+                nuevo.Nombre = TxtNombre.Text;
+                nuevo.Apellido = TxtApellido.Text;
+                nuevo.Dni = TxtDNI.Text;
+                nuevo.Telefono = TxtTelefono.Text;
+                nuevo.Email = TxtEmail.Text;
+                nuevo.FechaNacimiento = DateTime.Parse(fechaNac.Value);
+                nuevo.Estado = true;
+                nuevo.Id = int.Parse(TxtId.Text);
+
+                pacienteNegocio.modificar(nuevo);
+
+                listaPacientes = pacienteNegocio.listar();
+                Session.Remove("Pacientes");
+                Session.Add("Pacientes", listaPacientes);
+
+
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+            Response.Redirect("Pacientes.aspx");
+
+        }
+
+        protected void BtnEliminar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                PacienteNegocio pacienteNegocio = new PacienteNegocio();
+
+                pacienteNegocio.eliminar(int.Parse(TxtId.Text));
+
+                listaPacientes = pacienteNegocio.listar();
+                Session.Remove("Pacientes");
+                Session.Add("Pacientes", listaPacientes);
+
+
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+            Response.Redirect("Pacientes.aspx");
+
+        }
+
+        protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int index = GridView1.SelectedIndex;
+
+            GridViewRow devuelto = GridView1.SelectedRow;
+
+            string dni = devuelto.Cells[2].Text;
+
+            Paciente aux = new Paciente();
+
+            foreach (Paciente item in listaPacientes)
+            {
+                if (dni == item.Dni)
+                {
+                    /// CARGO LOS TEXT DEL MODAL
+                    TxtId.Text = item.Id.ToString();
+                    TxtNombre.Text = item.Nombre;
+                    TxtApellido.Text = item.Apellido;
+                    TxtDNI.Text = item.Dni;
+                    TxtEmail.Text = item.Email;
+                    TxtTelefono.Text = item.Telefono;
+                    fechaNac.Value = item.FechaNacimiento.ToString();
+                }
+            }
+
+
+
+        }
+
+
+
         //protected void TextBox1_TextChanged(object sender, EventArgs e)
         //{
-            
+
         //    List<Paciente> aux = (List<Paciente>)Session["Pacientes"];
 
         //    foreach (Paciente item in aux)
