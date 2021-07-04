@@ -78,22 +78,13 @@ namespace Presentación
         protected global::System.Web.UI.WebControls.Button BtnRegistrar;
 
         /// <summary>
-        /// Control GridView1.
+        /// Control GridPacientes.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView1;
-
-        /// <summary>
-        /// Control modal.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor modal;
+        protected global::System.Web.UI.WebControls.GridView GridPacientes;
 
         /// <summary>
         /// Control SqlDataSource1.

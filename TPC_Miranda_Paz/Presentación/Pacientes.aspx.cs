@@ -87,8 +87,8 @@ namespace Presentación
 
         protected void GridView1_Load(object sender, EventArgs e)
         {
-            GridView1.CssClass = "table table-bordered table-hover";
-            GridView1.HeaderStyle.CssClass = "thead-dark";
+            GridPacientes.CssClass = "table table-bordered table-hover";
+            GridPacientes.HeaderStyle.CssClass = "thead-dark";
 
         }
 
@@ -152,13 +152,11 @@ namespace Presentación
 
         protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int index = GridView1.SelectedIndex;
+            int index = GridPacientes.SelectedIndex;
 
-            GridViewRow devuelto = GridView1.SelectedRow;
+            GridViewRow devuelto = GridPacientes.SelectedRow;
 
             string dni = devuelto.Cells[2].Text;
-
-            Paciente aux = new Paciente();
 
             foreach (Paciente item in listaPacientes)
             {
@@ -175,9 +173,10 @@ namespace Presentación
                 }
             }
 
-
+        
 
         }
+
 
 
 

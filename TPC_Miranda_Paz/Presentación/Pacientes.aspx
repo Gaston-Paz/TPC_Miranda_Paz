@@ -93,8 +93,6 @@
                             placeholder="Buscar"
                             aria-label="Search"
                             runat="server"/>
-                    <%--<asp:TextBox ID="TxtBuscar" runat="server" CssClass="form-control mr-sm-2" OnTextChanged="TextBox1_TextChanged"></asp:TextBox>--%>
-
                     </form>
                 </div>
                 <div class="card-body ">
@@ -132,22 +130,24 @@
                         <%--ACA ESTA LA GRILLA CARGADA SOLAMENTE CON LOS PACIENTES CON ESTADO ACTIVO--%>
                         <%--TIENEN FUNCIONAMIENTO LOS BOTONES DE ELIMINAR Y GUARDAR CAMBIOS--%>
 
-                        <asp:GridView ID="GridView1" runat="server" OnLoad="GridView1_Load" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="Id" DataSourceID="SqlDataSource1" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
+                        <asp:GridView ID="GridPacientes" runat="server" OnLoad="GridView1_Load" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="Id" DataSourceID="SqlDataSource1" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
                             <Columns>
                                 <asp:BoundField DataField="Nombre" HeaderText="Nombre" SortExpression="Nombre" />
                                 <asp:BoundField DataField="Apellido" HeaderText="Apellido" SortExpression="Apellido" />
                                 <asp:BoundField DataField="Dni" HeaderText="Dni" SortExpression="Dni" />
                                 <asp:CommandField ShowSelectButton="True" />
-                                
+                                <asp:TemplateField HeaderText="" ItemStyle-Width="50">
+                                <ItemTemplate>
+                                    <a id="modal" href="#" class="" data-toggle="modal" data-target="#exampleModal" runat="server"><i class="fas fa-edit"></i></a>
+                                </ItemTemplate>
+                            </asp:TemplateField>
                                     
 
                             </Columns>
                             <HeaderStyle BackColor="Black" />
                                 
                         </asp:GridView>
-                               
 
-                                <a id="modal" href="#" class="" data-toggle="modal" data-target="#exampleModal" runat="server"><i class="fas fa-edit"></i></a>
 
                         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:DB_Miranda_PazConnectionString %>" SelectCommand="SELECT * FROM [Pacientes] WHERE ([Estado] = @Estado)">
                             <SelectParameters>
@@ -247,6 +247,8 @@
         </div>
     </div>
         </div>
+
+
 
 </asp:Content>
 
