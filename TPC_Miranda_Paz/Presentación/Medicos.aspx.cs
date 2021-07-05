@@ -22,12 +22,20 @@ namespace Presentación
                 EspecialidadNegocio especialidadNegocio = new EspecialidadNegocio();
                 listaEspecialidades = especialidadNegocio.listar();
 
+                GridMedicos.DataSource = listaMedicos;
+                GridMedicos.DataBind();
+                //DropDownList1.DataSource = listaEspecialidades;
+                //DropDownList1.DataTextField = "Nombre";
+                //DropDownList1.DataValueField = "Id";
+                //DropDownList1.DataBind();
+
                 foreach (Dominio.Especialidad item in listaEspecialidades)
                 {
                     ListItem aux = new ListItem(item.Nombre, item.Id.ToString());
                     ListEspecialidades.Items.Add(aux);
                     ListEspecialidades2.Items.Add(aux);
                     ListEspecialidades3.Items.Add(aux);
+                    DropDownList1.Items.Add(aux);
 
                 }
 
@@ -69,5 +77,25 @@ namespace Presentación
         {
 
         }
+
+        protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int valor = int.Parse(DropDownList1.SelectedItem.Value);
+            List<Medico> listaFiltrada = new List<Medico>();
+            foreach (Medico item in listaMedicos)
+            {
+                foreach (Especialidad items in item.Especialidades)
+                {
+                    if(items.Id == valor)
+                    {
+                        listaFiltrada.Add(item);
+                    }
+                }
+            }
+            GridMedicos.DataSource = listaFiltrada;
+            GridMedicos.DataBind();
+        }
+
+
     }
 }

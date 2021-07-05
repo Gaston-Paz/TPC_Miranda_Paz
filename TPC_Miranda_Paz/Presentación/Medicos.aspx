@@ -86,6 +86,9 @@
 
 
 
+                            <asp:DropDownList ID="DropDownList1" runat="server" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
+                                
+                            </asp:DropDownList>
 
 				<div class="col">
 					<div class="card">
@@ -109,7 +112,7 @@
 						</div>
 						<div class="card-body">
                             <div class="test-overflow">
-							<table class="table table-bordered table-hover">
+							<%--<table class="table table-bordered table-hover">
 								<thead class="thead-dark">
 									<tr>
 										<th scope="col">Id</th>
@@ -143,7 +146,13 @@
                                        <% } %>
 
 								</tbody>
-							</table>
+							</table>--%>
+
+                                <asp:GridView ID="GridMedicos" runat="server">
+                                    
+                                </asp:GridView>
+
+
                             </div>
 						</div>
 					</div>
