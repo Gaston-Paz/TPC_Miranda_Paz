@@ -78,7 +78,7 @@
 
                             </tbody>
                         </table>--%>
-                        <asp:GridView ID="GridRecepcionista" runat="server" AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="Id" DataSourceID="SqlDataSource1" AllowPaging="True" OnLoad="GridRecepcionista_Load" OnSelectedIndexChanged="GridRecepcionista_SelectedIndexChanged">
+                        <asp:GridView ID="GridRecepcionista" runat="server" AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="Id" DataSourceID="SqlDataSource1" AllowPaging="True" OnLoad="GridRecepcionista_Load" OnSelectedIndexChanged="GridRecepcionista_SelectedIndexChanged" SelectedRowStyle-CssClass="bg-success">
                             <Columns>
                                 <asp:BoundField DataField="Nombre" HeaderText="Nombre" SortExpression="Nombre" />
                                 <asp:BoundField DataField="Apellido" HeaderText="Apellido" SortExpression="Apellido" />
@@ -87,17 +87,20 @@
                                 <asp:CommandField ShowSelectButton="True" />
                                 <asp:TemplateField HeaderText="" ItemStyle-Width="50">
                                 <ItemTemplate>
-                                    <a id="modal" href="#" class="" data-toggle="modal" data-target="#exampleModal" runat="server"><i class="fas fa-edit"></i></a>
+                                    <a id="modal" href="#" class="" data-toggle="modal" data-target="#exampleModal"  data-backdrop="static" runat="server"><i class="fas fa-edit"></i></a>
                                 </ItemTemplate>
+
+<ItemStyle Width="50px"></ItemStyle>
                             </asp:TemplateField>
                             </Columns>
+                            <SelectedRowStyle CssClass="bg-success" />
                         </asp:GridView>
 
 
 
 
 
-                        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:DB_Miranda_PazConnectionString2 %>" SelectCommand="SELECT * FROM [Recepcionistas] WHERE ([Estado] = @Estado)">
+                        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:DB_Miranda_PazConnectionString3 %>" SelectCommand="SELECT * FROM [Recepcionistas] WHERE ([Estado] = @Estado)">
                             <SelectParameters>
                                 <asp:Parameter DefaultValue="true" Name="Estado" Type="Boolean" />
                             </SelectParameters>
@@ -187,6 +190,8 @@
                                 <% } %>
                             </tbody>
                         </table>--%>
+ 
+                            
                         <asp:GridView ID="GridAdmin" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="Id" DataSourceID="SqlDataSource2" OnLoad="GridAdmin_Load" OnSelectedIndexChanged="GridAdmin_SelectedIndexChanged">
                             <Columns>
                                 <asp:BoundField DataField="Nombre" HeaderText="Nombre" SortExpression="Nombre" />
@@ -196,19 +201,21 @@
                                 <asp:CommandField ShowSelectButton="True" />
                                 <asp:TemplateField HeaderText="" ItemStyle-Width="50">
                                 <ItemTemplate>
-                                    <a id="modal" href="#" class="" data-toggle="modal" data-target="#exampleModal" runat="server"><i class="fas fa-edit"></i></a>
+                                    <a id="modal" href="#" class="" data-toggle="modal" data-target="#exampleModal"  data-backdrop="static" runat="server"><i class="fas fa-edit"></i></a>
                                 </ItemTemplate>
+
+<ItemStyle Width="50px"></ItemStyle>
                             </asp:TemplateField>
                             </Columns>
+                            <SelectedRowStyle CssClass="bg-success" />
                         </asp:GridView>
-
-
                         <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:DB_Miranda_PazConnectionString3 %>" SelectCommand="SELECT * FROM [Administradores] WHERE ([Estado] = @Estado)">
                             <SelectParameters>
                                 <asp:Parameter DefaultValue="true" Name="Estado" Type="Boolean" />
                             </SelectParameters>
                         </asp:SqlDataSource>
 
+                            
 
                     </div>
                 </div>

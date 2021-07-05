@@ -15,17 +15,20 @@ namespace Presentación
         public List<Administrador> listaAdmin;
         protected void Page_Load(object sender, EventArgs e)
         {
-            try
-            {
                 listaRecepcionista = new List<Recepcionista>();
                 listaAdmin = new List<Administrador>();
                 RecepcionistaNegocio recepcionistaNegocio = new RecepcionistaNegocio();
                 AdministradoNegocio administradoNegocio = new AdministradoNegocio();
+            try
+            {
 
                 listaAdmin = administradoNegocio.listar();
                 listaRecepcionista = recepcionistaNegocio.listar();
 
-                Session.Add("Recepcionistas", recepcionistaNegocio);
+                Session.Add("Recepcionistas", listaRecepcionista);
+                    Session.Add("Administradores", listaAdmin);
+
+
             }
             catch (Exception ex)
             {
@@ -140,7 +143,8 @@ namespace Presentación
 
         protected void GridRecepcionista_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int index = GridRecepcionista.SelectedIndex;
+    
+                int index = GridRecepcionista.SelectedIndex;
 
             GridViewRow devuelto = GridRecepcionista.SelectedRow;
 
@@ -160,6 +164,7 @@ namespace Presentación
                     TxtPass.Text = item.Password;
                 }
             }
+
 
         }
 
@@ -193,5 +198,6 @@ namespace Presentación
                 }
             }
         }
+
     }
 }

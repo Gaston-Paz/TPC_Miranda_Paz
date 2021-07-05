@@ -2,13 +2,14 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
 
+
 <div class="row">
         <div class="col-4">
             <div class="card">
                 <div class="card-header">Formulario: Paciente</div>
                 <div class="card-body">
                     <h5 class="card-title">Registrar Paciente</h5>
-
+             
                     <form action="Pacientes.aspx" >
                         <div class="form-group">
                             <input
@@ -76,6 +77,7 @@
                 </div>
             </div>
         </div>
+               
         <div class="col">
             <div class="card">
                 <div
@@ -95,6 +97,8 @@
                             runat="server"/>
                     </form>
                 </div>
+
+
                 <div class="card-body ">
                     <div class="test-overflow">
                      <%--   <table class="table table-bordered table-hover">
@@ -130,7 +134,8 @@
                         <%--ACA ESTA LA GRILLA CARGADA SOLAMENTE CON LOS PACIENTES CON ESTADO ACTIVO--%>
                         <%--TIENEN FUNCIONAMIENTO LOS BOTONES DE ELIMINAR Y GUARDAR CAMBIOS--%>
 
-                        <asp:GridView ID="GridPacientes" runat="server" OnLoad="GridView1_Load" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="Id" DataSourceID="SqlDataSource1" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
+
+                        <asp:GridView ID="GridPacientes" runat="server" OnLoad="GridView1_Load" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="Id" DataSourceID="SqlDataSource1" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" AutoPostBack="true">
                             <Columns>
                                 <asp:BoundField DataField="Nombre" HeaderText="Nombre" SortExpression="Nombre" />
                                 <asp:BoundField DataField="Apellido" HeaderText="Apellido" SortExpression="Apellido" />
@@ -138,22 +143,27 @@
                                 <asp:CommandField ShowSelectButton="True" />
                                 <asp:TemplateField HeaderText="" ItemStyle-Width="50">
                                 <ItemTemplate>
-                                    <a id="modal" href="#" class="" data-toggle="modal" data-target="#exampleModal" runat="server"><i class="fas fa-edit"></i></a>
+                                    <a id="modal" href="#" class="" data-toggle="modal" data-target="#exampleModal"  data-backdrop="static" runat="server"><i class="fas fa-edit"></i></a>
                                 </ItemTemplate>
+
+                            <ItemStyle Width="50px"></ItemStyle>
                             </asp:TemplateField>
-                                    
 
                             </Columns>
                             <HeaderStyle BackColor="Black" />
                                 
+                            <SelectedRowStyle CssClass="bg-success" />
+                                
                         </asp:GridView>
 
 
-                        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:DB_Miranda_PazConnectionString %>" SelectCommand="SELECT * FROM [Pacientes] WHERE ([Estado] = @Estado)">
+                        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:DB_Miranda_PazConnectionString3 %>" SelectCommand="SELECT * FROM [Pacientes] WHERE ([Estado] = @Estado)">
                             <SelectParameters>
-                                <asp:Parameter DefaultValue="TRUE" Name="Estado" Type="Boolean" />
+                                <asp:Parameter DefaultValue="true" Name="Estado" Type="Boolean" />
                             </SelectParameters>
                         </asp:SqlDataSource>
+                    
+
 
 
                     </div>
@@ -164,6 +174,7 @@
 
 
     <!-- Modal -->
+
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -241,13 +252,13 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                 <asp:Button ID="BtnEliminar" runat="server" Text="Eliminar" CssClass="btn btn-danger" OnClick="BtnEliminar_Click"/>
-                <asp:Button ID="Button2" runat="server" Text="Editar" CssClass="btn btn-warning" />
+                <asp:Button ID="BtnEditar" runat="server" Text="Editar" CssClass="btn btn-warning" OnClick="BtnEditar_Click" />
                 <asp:Button ID="BtnModificar" runat="server" Text="Guardar cambios" CssClass="btn btn-primary" OnClick="BtnModificar_Click"/>
             </div>
         </div>
     </div>
         </div>
-
+            
 
 
 </asp:Content>

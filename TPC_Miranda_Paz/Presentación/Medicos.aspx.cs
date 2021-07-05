@@ -26,6 +26,8 @@ namespace Presentación
                 {
                     ListItem aux = new ListItem(item.Nombre, item.Id.ToString());
                     ListEspecialidades.Items.Add(aux);
+                    ListEspecialidades2.Items.Add(aux);
+                    ListEspecialidades3.Items.Add(aux);
 
                 }
 
@@ -44,6 +46,28 @@ namespace Presentación
         protected void BtnEditarMedico_Click(object sender, EventArgs e)
         {
             TxtNombre.ReadOnly = false;
+        }
+
+        protected void Button3_Click(object sender, EventArgs e)
+        {
+  
+            if(ListEspecialidades.SelectedValue != "-1" && ListEspecialidades2.Visible == false)
+            {
+                ListEspecialidades2.Visible = true;
+            }
+            else
+            {
+                if(ListEspecialidades2.SelectedValue != "-1" && ListEspecialidades3.Visible == false)
+                {
+                    ListEspecialidades3.Visible = true;
+                }
+            }
+            
+        }
+
+        protected void BtnRegistrar_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

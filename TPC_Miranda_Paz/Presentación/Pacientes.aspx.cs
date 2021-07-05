@@ -17,11 +17,11 @@ namespace Presentación
         {                        
             try
             {
-                 
                 PacienteNegocio pacienteNegocio = new PacienteNegocio();
                 listaPacientes = pacienteNegocio.listar();
 
                 Session.Add("Pacientes", listaPacientes);
+
             }
             catch (Exception ex)
             {
@@ -87,8 +87,10 @@ namespace Presentación
 
         protected void GridView1_Load(object sender, EventArgs e)
         {
+
             GridPacientes.CssClass = "table table-bordered table-hover";
             GridPacientes.HeaderStyle.CssClass = "thead-dark";
+
 
         }
 
@@ -173,11 +175,15 @@ namespace Presentación
                 }
             }
 
-        
+           
+
 
         }
 
-
+        protected void BtnEditar_Click(object sender, EventArgs e)
+        {
+ 
+        }
 
 
         //protected void TextBox1_TextChanged(object sender, EventArgs e)
