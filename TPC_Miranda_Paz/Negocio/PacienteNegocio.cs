@@ -113,7 +113,7 @@ namespace Negocio
 
             try
             {
-                datos.setearConsulta("DELETE FROM Pacientes WHERE Id = " + id);
+                datos.setearConsulta("UPDATE Pacientes SET ESTADO = 0 WHERE Id = " + id);
                 datos.ejecutarAccion();
             }
             catch (Exception ex)

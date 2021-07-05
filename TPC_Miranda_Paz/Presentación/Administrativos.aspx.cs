@@ -15,17 +15,20 @@ namespace Presentación
         public List<Administrador> listaAdmin;
         protected void Page_Load(object sender, EventArgs e)
         {
-            try
-            {
                 listaRecepcionista = new List<Recepcionista>();
                 listaAdmin = new List<Administrador>();
                 RecepcionistaNegocio recepcionistaNegocio = new RecepcionistaNegocio();
                 AdministradoNegocio administradoNegocio = new AdministradoNegocio();
+            try
+            {
 
                 listaAdmin = administradoNegocio.listar();
                 listaRecepcionista = recepcionistaNegocio.listar();
 
-                Session.Add("Recepcionistas", recepcionistaNegocio);
+                Session.Add("Recepcionistas", listaRecepcionista);
+                    Session.Add("Administradores", listaAdmin);
+
+
             }
             catch (Exception ex)
             {
@@ -132,6 +135,69 @@ namespace Presentación
             }
         }
 
+        protected void GridRecepcionista_Load(object sender, EventArgs e)
+        {
+            GridRecepcionista.CssClass = "table table-bordered table-hover";
+            GridRecepcionista.HeaderStyle.CssClass = "thead-dark";
+        }
+
+        protected void GridRecepcionista_SelectedIndexChanged(object sender, EventArgs e)
+        {
+    
+                int index = GridRecepcionista.SelectedIndex;
+
+            GridViewRow devuelto = GridRecepcionista.SelectedRow;
+
+            string dni = devuelto.Cells[3].Text;
+
+            foreach (Recepcionista item in listaRecepcionista)
+            {
+                if (dni == item.Dni)
+                {
+                    /// CARGO LOS TEXT DEL MODAL
+                    TxtId.Text = item.Id.ToString();
+                    TxtNombre.Text = item.Nombre;
+                    TxtApellido.Text = item.Apellido;
+                    TxtDNI.Text = item.Dni;
+                    TxtEmail.Text = item.Email;
+                    TxtTelefono.Text = item.Telefono;
+                    TxtPass.Text = item.Password;
+                }
+            }
+
+
+        }
+
+        protected void GridAdmin_Load(object sender, EventArgs e)
+        {
+            GridAdmin.CssClass = "table table-bordered table-hover";
+            GridAdmin.HeaderStyle.CssClass = "thead-dark";
+        }
+
+        protected void GridAdmin_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int index = GridAdmin.SelectedIndex;
+
+            GridViewRow devuelto = GridAdmin.SelectedRow;
+
+            string dni = devuelto.Cells[3].Text;
+
+            foreach (Administrador item in listaAdmin)
+            {
+                if (dni == item.Dni)
+                {
+                    /// CARGO LOS TEXT DEL MODAL
+                    TxtId.Text = item.Id.ToString();
+                    TxtNombre.Text = item.Nombre;
+                    TxtApellido.Text = item.Apellido;
+                    TxtDNI.Text = item.Dni;
+                    TxtEmail.Text = item.Email;
+                    TxtTelefono.Text = item.Telefono;
+                    TxtPass.Text = item.Password;
+                    
+                }
+            }
+        }
 
     }
 }

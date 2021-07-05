@@ -64,7 +64,21 @@
                                 <asp:ListItem Value="-1">Especialidad</asp:ListItem>
                             </asp:DropDownList>
                                                     </div>
-                        <button type="submit" class="btn btn-primary">Registar</button>
+                        <div class="form-group">
+                                                        <asp:DropDownList ID="ListEspecialidades2" runat="server" CssClass="form-control" Visible="False">
+                                <asp:ListItem Value="-1">Especialidad</asp:ListItem>
+                            </asp:DropDownList>
+                            </div>
+                        <div class="form-group">
+                                                        <asp:DropDownList ID="ListEspecialidades3" runat="server" CssClass="form-control" Visible="False">
+
+                                <asp:ListItem Value="-1">Especialidad</asp:ListItem>
+                            </asp:DropDownList>
+                            </div>
+    
+
+                            <asp:Button ID="Button3" runat="server" Text="Agregar Especialidad" OnClick="Button3_Click" CssClass="btn btn-success" />
+                        <asp:Button ID="BtnRegistrar" runat="server" Text="Registar" OnClick="BtnRegistrar_Click" CssClass="btn btn-primary" />
                     </form>
                 </div>
             </div>
@@ -72,6 +86,9 @@
 
 
 
+                            <asp:DropDownList ID="DropDownList1" runat="server" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
+                                
+                            </asp:DropDownList>
 
 				<div class="col">
 					<div class="card">
@@ -95,7 +112,7 @@
 						</div>
 						<div class="card-body">
                             <div class="test-overflow">
-							<table class="table table-bordered table-hover">
+							<%--<table class="table table-bordered table-hover">
 								<thead class="thead-dark">
 									<tr>
 										<th scope="col">Id</th>
@@ -129,7 +146,13 @@
                                        <% } %>
 
 								</tbody>
-							</table>
+							</table>--%>
+
+                                <asp:GridView ID="GridMedicos" runat="server">
+                                    
+                                </asp:GridView>
+
+
                             </div>
 						</div>
 					</div>

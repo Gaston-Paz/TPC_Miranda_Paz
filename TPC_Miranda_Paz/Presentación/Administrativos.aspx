@@ -49,7 +49,7 @@
                 </div>
                 <div class="card-body ">
                     <div class="test-overflow">
-                        <table class="table table-bordered table-hover">
+                       <%-- <table class="table table-bordered table-hover">
                             <thead class="thead-dark">
                                 <tr>
                                     <th scope="col">Id</th>
@@ -77,7 +77,39 @@
                                 
 
                             </tbody>
-                        </table>
+                        </table>--%>
+                        <asp:GridView ID="GridRecepcionista" runat="server" AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="Id" DataSourceID="SqlDataSource1" AllowPaging="True" OnLoad="GridRecepcionista_Load" OnSelectedIndexChanged="GridRecepcionista_SelectedIndexChanged" SelectedRowStyle-CssClass="bg-success">
+                            <Columns>
+                                <asp:BoundField DataField="Nombre" HeaderText="Nombre" SortExpression="Nombre" />
+                                <asp:BoundField DataField="Apellido" HeaderText="Apellido" SortExpression="Apellido" />
+                                <asp:BoundField DataField="Email" HeaderText="Email" SortExpression="Email" />
+                                <asp:BoundField DataField="Dni" HeaderText="Dni" SortExpression="Dni" />
+                                <asp:CommandField ShowSelectButton="True" />
+                                <asp:TemplateField HeaderText="" ItemStyle-Width="50">
+                                <ItemTemplate>
+                                    <a id="modal" href="#" class="" data-toggle="modal" data-target="#exampleModal"  data-backdrop="static" runat="server"><i class="fas fa-edit"></i></a>
+                                </ItemTemplate>
+
+<ItemStyle Width="50px"></ItemStyle>
+                            </asp:TemplateField>
+                            </Columns>
+                            <SelectedRowStyle CssClass="bg-success" />
+                        </asp:GridView>
+
+
+
+
+
+                        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:DB_Miranda_PazConnectionString3 %>" SelectCommand="SELECT * FROM [Recepcionistas] WHERE ([Estado] = @Estado)">
+                            <SelectParameters>
+                                <asp:Parameter DefaultValue="true" Name="Estado" Type="Boolean" />
+                            </SelectParameters>
+                        </asp:SqlDataSource>
+
+
+
+
+
                     </div>
                 </div>
             </div>
@@ -133,7 +165,7 @@
                 </div>
                 <div class="card-body ">
                     <div class="test-overflow">
-                        <table class="table table-bordered table-hover">
+                       <%-- <table class="table table-bordered table-hover">
                             <thead class="thead-dark">
                                 <tr>
                                     <th scope="col">Id</th>
@@ -157,7 +189,34 @@
 
                                 <% } %>
                             </tbody>
-                        </table>
+                        </table>--%>
+ 
+                            
+                        <asp:GridView ID="GridAdmin" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="Id" DataSourceID="SqlDataSource2" OnLoad="GridAdmin_Load" OnSelectedIndexChanged="GridAdmin_SelectedIndexChanged">
+                            <Columns>
+                                <asp:BoundField DataField="Nombre" HeaderText="Nombre" SortExpression="Nombre" />
+                                <asp:BoundField DataField="Apellido" HeaderText="Apellido" SortExpression="Apellido" />
+                                <asp:BoundField DataField="Email" HeaderText="Email" SortExpression="Email" />
+                                <asp:BoundField DataField="Dni" HeaderText="Dni" SortExpression="Dni" />
+                                <asp:CommandField ShowSelectButton="True" />
+                                <asp:TemplateField HeaderText="" ItemStyle-Width="50">
+                                <ItemTemplate>
+                                    <a id="modal" href="#" class="" data-toggle="modal" data-target="#exampleModal"  data-backdrop="static" runat="server"><i class="fas fa-edit"></i></a>
+                                </ItemTemplate>
+
+<ItemStyle Width="50px"></ItemStyle>
+                            </asp:TemplateField>
+                            </Columns>
+                            <SelectedRowStyle CssClass="bg-success" />
+                        </asp:GridView>
+                        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:DB_Miranda_PazConnectionString3 %>" SelectCommand="SELECT * FROM [Administradores] WHERE ([Estado] = @Estado)">
+                            <SelectParameters>
+                                <asp:Parameter DefaultValue="true" Name="Estado" Type="Boolean" />
+                            </SelectParameters>
+                        </asp:SqlDataSource>
+
+                            
+
                     </div>
                 </div>
             </div>
@@ -170,14 +229,21 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Datos del recepcionista</h5>
+                    <h5 class="modal-title" id="exampleModalLabel" runat="server">Datos del recepcionista</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
 
 
-
+                <div class="modal-body row">
+                    <div class="col-2">
+                        <asp:Label ID="LblId" runat="server" Text="Id"></asp:Label>
+                    </div>
+                    <div class="col">
+                        <asp:TextBox ID="TxtId" runat="server" ReadOnly="true"></asp:TextBox>
+                    </div>
+            </div>
                 <div class="modal-body row">
                     <div class="col-2">
                         <asp:Label ID="LblNombre" runat="server" Text="Nombre"></asp:Label>
