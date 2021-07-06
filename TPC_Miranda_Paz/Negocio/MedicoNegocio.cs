@@ -58,7 +58,7 @@ namespace Negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("INSERT INTO Medicos (Nombre,Apellido,Matricula,Email,Pass,Dni,Telefono,IdEspecialidad, Estado) VALUES (@nombre, @apellido, @matricula, @email, @pass, @dni, @telefono, @especialidad,@estado)");
+                datos.setearConsulta("INSERT INTO Medicos (Nombre,Apellido,Matricula,Email,Pass,Dni,Telefono, Estado) VALUES (@nombre, @apellido, @matricula, @email, @pass, @dni, @telefono, @estado)");
 
                 datos.setearParametro("@nombre", nuevo.Nombre);
                 datos.setearParametro("@apellido", nuevo.Apellido);
@@ -67,10 +67,10 @@ namespace Negocio
                 datos.setearParametro("@pass", nuevo.Password);
                 datos.setearParametro("@dni", nuevo.Dni);
                 datos.setearParametro("@telefono", nuevo.Telefono);
-                //datos.setearParametro("@especialidad", nuevo.Especialidad.Id);
                 datos.setearParametro("@estado", nuevo.Estado);
 
                 datos.ejecutarAccion();
+
 
             }
             catch (Exception ex)

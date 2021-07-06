@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Pacientes.aspx.cs" Inherits="Presentación.Pacientes" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+                        <%--<asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>--%>
 
 
 
@@ -133,14 +134,15 @@
 
                         <%--ACA ESTA LA GRILLA CARGADA SOLAMENTE CON LOS PACIENTES CON ESTADO ACTIVO--%>
                         <%--TIENEN FUNCIONAMIENTO LOS BOTONES DE ELIMINAR Y GUARDAR CAMBIOS--%>
+                        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                            <ContentTemplate>
 
-
-                        <asp:GridView ID="GridPacientes" runat="server" OnLoad="GridView1_Load" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="Id" DataSourceID="SqlDataSource1" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" AutoPostBack="true">
+                        <asp:GridView ID="GridPacientes" runat="server" OnLoad="GridView1_Load" AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="Id" DataSourceID="SqlDataSource1" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" AutoPostBack="true">
                             <Columns>
                                 <asp:BoundField DataField="Nombre" HeaderText="Nombre" SortExpression="Nombre" />
                                 <asp:BoundField DataField="Apellido" HeaderText="Apellido" SortExpression="Apellido" />
                                 <asp:BoundField DataField="Dni" HeaderText="Dni" SortExpression="Dni" />
-                                <asp:CommandField ShowSelectButton="True" />
+                                <asp:CommandField ShowSelectButton="True"/>
                                 <asp:TemplateField HeaderText="" ItemStyle-Width="50">
                                 <ItemTemplate>
                                     <a id="modal" href="#" class="" data-toggle="modal" data-target="#exampleModal"  data-backdrop="static" runat="server"><i class="fas fa-edit"></i></a>
@@ -163,6 +165,8 @@
                             </SelectParameters>
                         </asp:SqlDataSource>
                     
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
 
 
 
