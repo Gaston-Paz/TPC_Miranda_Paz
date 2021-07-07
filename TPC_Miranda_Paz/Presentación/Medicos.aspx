@@ -227,7 +227,7 @@
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                             <asp:Button ID="Button1" runat="server" Text="Eliminar" CssClass="btn btn-danger" />
-                            <asp:Button ID="BtnEditar" runat="server" Text="Editar" CssClass="btn btn-warning" OnClick="BtnEditarMedico_Click"/>
+                            <asp:Button ID="BtnEditar" runat="server" Text="Editar" CssClass="btn btn-warning" OnClientClick="return habilitar()" OnClick="BtnEditarMedico_Click"/>
                             <asp:Button ID="BtnModificar" runat="server" Text="Guardar cambios" CssClass="btn btn-primary" />
                         </div>
 
@@ -238,9 +238,29 @@
     </asp:UpdatePanel>
 
     <script>
+        function habilitar() {
+            var TxtNombre = document.getElementById("<%=TxtNombre.ClientID%>");
+            TxtNombre.removeAttribute("readonly", 0);
 
-        let TxtMatricula = document.getElementById("TxtMatricula");
-        TxtMatricula.classList.remove("disable");
+            var TxtApellido = document.getElementById("<%=TxtApellido.ClientID%>");
+            TxtApellido.removeAttribute("readonly", 0);
+
+            var TxtDNI = document.getElementById("<%=TxtDNI.ClientID%>");
+            TxtDNI.removeAttribute("readonly", 0);
+
+            var TxtDNI = document.getElementById("<%=TxtDNI.ClientID%>");
+            TxtDNI.removeAttribute("readonly", 0);
+
+            var TxtTelefono = document.getElementById("<%=TxtTelefono.ClientID%>");
+            TxtTelefono.removeAttribute("readonly", 0);
+
+            var TxtMatricula = document.getElementById("<%=TxtMatricula.ClientID%>");
+            TxtMatricula.removeAttribute("readonly", 0);
+
+            
+            console.log("habilitar");
+            return false;
+        }
 
     </script>
 

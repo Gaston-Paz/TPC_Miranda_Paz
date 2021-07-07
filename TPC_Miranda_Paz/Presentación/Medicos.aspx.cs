@@ -82,14 +82,14 @@ namespace Presentación
         protected void BtnEditarMedico_Click(object sender, EventArgs e)
         {
             ///SE HABILITAN LOS CAMPOS DEL MODAL PARA PODER EDITARLOS
-            TxtId.ReadOnly = false;
-            TxtNombre.ReadOnly = false;
-            TxtApellido.ReadOnly = false;
-            TxtDNI.ReadOnly = false;
-            TxtEmail.ReadOnly = false;
-            TxtTelefono.ReadOnly = false;
-            TxtMatricula.ReadOnly = false;
-            TxtPass.ReadOnly = false;
+            //TxtId.ReadOnly = false;
+            //TxtNombre.ReadOnly = false;
+            //TxtApellido.ReadOnly = false;
+            //TxtDNI.ReadOnly = false;
+            //TxtEmail.ReadOnly = false;
+            //TxtTelefono.ReadOnly = false;
+            //TxtMatricula.ReadOnly = false;
+            //TxtPass.ReadOnly = false;
 
         }
 
