@@ -17,6 +17,9 @@ namespace Presentación
         {                        
             try
             {
+
+
+
                 PacienteNegocio pacienteNegocio = new PacienteNegocio();
                 listaPacientes = pacienteNegocio.listar();
 
@@ -175,8 +178,8 @@ namespace Presentación
                 }
             }
 
-           
 
+            
 
         }
 
