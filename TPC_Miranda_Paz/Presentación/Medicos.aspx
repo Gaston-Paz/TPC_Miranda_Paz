@@ -5,7 +5,7 @@
         <ContentTemplate>
             <div class="row">
 
-                <div class="col-4">
+                <div class="col-3">
 
                     <%--FORMULARIO DE REGISTRO--%>
 
@@ -72,9 +72,9 @@
                             <asp:DropDownList ID="ListEspecialidadesGrid" CssClass="form-control" runat="server" AutoPostBack="true" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
                                 <asp:ListItem Value="-1">Todos</asp:ListItem>
                             </asp:DropDownList>
-                            <form class="form-inline my-2 my-lg-0">
-                                <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search" />
-                            </form>
+                            <div class="form-inline my-2 my-lg-0">
+                                <asp:TextBox ID="TxtBuscar" runat="server" OnTextChanged="TxtBuscar_TextChanged" Text="Buscar" CssClass="form-control mr-sm-2" AutoPostBack="true"></asp:TextBox>
+                            </div>
                         </div>
 
                         <%--GRILLA DE MEDICOS--%>
@@ -183,7 +183,7 @@
                                 <asp:Label ID="LblMatricula" runat="server" Text="Matrícula"></asp:Label>
                             </div>
                             <div class="col">
-                                <asp:TextBox ID="TxtMatricula" runat="server" CssClass="form-control disable" ></asp:TextBox>
+                                <asp:TextBox ID="TxtMatricula" runat="server" CssClass="form-control disable" ReadOnly="true"></asp:TextBox>
                             </div>
                         </div>
                         <div class="modal-body row">
@@ -227,7 +227,7 @@
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                             <asp:Button ID="Button1" runat="server" Text="Eliminar" CssClass="btn btn-danger" />
-                            <asp:Button ID="BtnEditar" runat="server" Text="Editar" CssClass="btn btn-warning" OnClientClick="return habilitar()" OnClick="BtnEditarMedico_Click"/>
+                            <asp:Button ID="BtnEditar" runat="server" Text="Editar" CssClass="btn btn-warning" OnClientClick="return habilitar()"/>
                             <asp:Button ID="BtnModificar" runat="server" Text="Guardar cambios" CssClass="btn btn-primary" />
                         </div>
 
@@ -247,6 +247,12 @@
 
             var TxtDNI = document.getElementById("<%=TxtDNI.ClientID%>");
             TxtDNI.removeAttribute("readonly", 0);
+
+            var TxtEmail = document.getElementById("<%=TxtEmail.ClientID%>");
+            TxtEmail.removeAttribute("readonly", 0);
+
+            var TxtPass = document.getElementById("<%=TxtPass.ClientID%>");
+            TxtPass.removeAttribute("readonly", 0);
 
             var TxtDNI = document.getElementById("<%=TxtDNI.ClientID%>");
             TxtDNI.removeAttribute("readonly", 0);

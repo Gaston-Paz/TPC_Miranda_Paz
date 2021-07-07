@@ -21,7 +21,17 @@ namespace Presentación
                 MedicoNegocio medicoNegocio = new MedicoNegocio();
                 listaMedicos = medicoNegocio.listar();
                 EspecialidadNegocio especialidadNegocio = new EspecialidadNegocio();
-                listaEspecialidades = especialidadNegocio.listar();
+                listaEspecialidades = new List<Especialidad>();
+
+                List<Especialidad> listaEspecialidadesAux = new List<Especialidad>();
+
+                listaEspecialidadesAux = especialidadNegocio.listar();
+                listaEspecialidades.Add(new Especialidad("Seleccionar", 0));
+
+                foreach (Especialidad item in listaEspecialidadesAux)
+                {
+                    listaEspecialidades.Add(item);
+                }
 
                 if (!IsPostBack) { 
                 ///CARGO LA GRILLA
@@ -63,7 +73,9 @@ namespace Presentación
                 ListEspecialidadesGrid.DataSource = listaEspecialidades;
                 ListEspecialidadesGrid.DataTextField = "Nombre";
                 ListEspecialidadesGrid.DataValueField = "Id";
-                ListEspecialidadesGrid.DataBind();
+
+
+                    ListEspecialidadesGrid.DataBind();
 
                 ///GUARDO EN SESION MEDICOS Y ESPECIALIDADES
                 Session.Add("Especialidades", listaEspecialidades);
@@ -79,30 +91,17 @@ namespace Presentación
           
         }
 
-        protected void BtnEditarMedico_Click(object sender, EventArgs e)
-        {
-            ///SE HABILITAN LOS CAMPOS DEL MODAL PARA PODER EDITARLOS
-            //TxtId.ReadOnly = false;
-            //TxtNombre.ReadOnly = false;
-            //TxtApellido.ReadOnly = false;
-            //TxtDNI.ReadOnly = false;
-            //TxtEmail.ReadOnly = false;
-            //TxtTelefono.ReadOnly = false;
-            //TxtMatricula.ReadOnly = false;
-            //TxtPass.ReadOnly = false;
-
-        }
 
         protected void BtnAgregarEspecialidad_Click(object sender, EventArgs e)
         {
             ///SE MUESTRA UN NUEVO DROP PARA SUMAR ESPECIALIDADES
-            if(ListEspecialidades.SelectedValue != "-1" && ListEspecialidades2.Visible == false)
+            if(ListEspecialidades.SelectedValue != "0" && ListEspecialidades2.Visible == false)
             {
                 ListEspecialidades2.Visible = true;
             }
             else
             {
-                if(ListEspecialidades2.SelectedValue != "-1" && ListEspecialidades3.Visible == false)
+                if(ListEspecialidades2.SelectedValue != "0" && ListEspecialidades3.Visible == false)
                 {
                     ListEspecialidades3.Visible = true;
                 }
@@ -246,6 +245,59 @@ namespace Presentación
             }
         }
 
+        protected void TxtBuscar_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (listaFiltrada == null)
+                {
+                    listaFiltrada = new List<Medico>();
+
+                    foreach (Medico item in listaMedicos)
+                    {
+                        if (System.Text.RegularExpressions.Regex.IsMatch(item.Nombre, TxtBuscar.Text, System.Text.RegularExpressions.RegexOptions.IgnoreCase))
+                        {
+                            listaFiltrada.Add(item);
+                        }
+                        else
+                        {
+                            if (System.Text.RegularExpressions.Regex.IsMatch(item.Apellido, TxtBuscar.Text, System.Text.RegularExpressions.RegexOptions.IgnoreCase))
+                            {
+                                listaFiltrada.Add(item);
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    List<Medico> listaAux = new List<Medico>();
+
+                    foreach (Medico item in listaFiltrada)
+                    {
+                        if (System.Text.RegularExpressions.Regex.IsMatch(item.Nombre, TxtBuscar.Text, System.Text.RegularExpressions.RegexOptions.IgnoreCase))
+                        {
+                            listaAux.Add(item);
+                        }
+                        else
+                        {
+                            if (System.Text.RegularExpressions.Regex.IsMatch(item.Apellido, TxtBuscar.Text, System.Text.RegularExpressions.RegexOptions.IgnoreCase))
+                            {
+                                listaAux.Add(item);
+                            }
+                        }
+                    }
+                    listaFiltrada.Clear();
+                    listaFiltrada = listaAux;
+                }
+                GridMedicos.DataSource = listaFiltrada;
+                GridMedicos.DataBind();
+            }
+            catch (Exception ex)
+            {
+
+                Response.Redirect("Login.aspx");
+            }
+        }
 
     }
 }
