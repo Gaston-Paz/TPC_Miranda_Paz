@@ -5,7 +5,7 @@
 
 
 <div class="row">
-        <div class="col-4">
+        <div class="col-3">
             <div class="card">
                 <div class="card-header">Formulario: Paciente</div>
                 <div class="card-body">

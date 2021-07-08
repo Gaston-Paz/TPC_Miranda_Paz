@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
 <div class="row">
-        <div class="col-4">
+        <div class="col-3">
             <div class="card">
                 <div class="card-header">Formulario: Turnos</div>
                 <div class="card-body">
