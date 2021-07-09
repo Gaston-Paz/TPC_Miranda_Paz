@@ -24,6 +24,7 @@ namespace Negocio
 
                 while (datos.Lector.Read())
                 {
+                    if((bool)datos.Lector["Estado"] == true) { 
                     Paciente aux = new Paciente();
                     aux.Id = (int)datos.Lector["Id"];
                     aux.Nombre = (string)datos.Lector["Nombre"];
@@ -35,6 +36,7 @@ namespace Negocio
                     aux.Estado = (bool)datos.Lector["Estado"];
 
                     lista.Add(aux);
+                    }
                 }
                 return lista;
             }

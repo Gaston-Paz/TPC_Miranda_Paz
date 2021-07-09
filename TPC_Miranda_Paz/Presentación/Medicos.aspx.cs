@@ -73,9 +73,7 @@ namespace Presentación
                 ListEspecialidadesGrid.DataSource = listaEspecialidades;
                 ListEspecialidadesGrid.DataTextField = "Nombre";
                 ListEspecialidadesGrid.DataValueField = "Id";
-
-
-                    ListEspecialidadesGrid.DataBind();
+                ListEspecialidadesGrid.DataBind();
 
                 ///GUARDO EN SESION MEDICOS Y ESPECIALIDADES
                 Session.Add("Especialidades", listaEspecialidades);
@@ -269,7 +267,6 @@ namespace Presentación
                             }
                         }
                     }
-                    //fechaNac.Value = item.FechaNacimiento.ToString();
                 }
             }
         }
@@ -318,6 +315,7 @@ namespace Presentación
                     listaFiltrada.Clear();
                     listaFiltrada = listaAux;
                 }
+
                 GridMedicos.DataSource = listaFiltrada;
                 GridMedicos.DataBind();
             }
@@ -344,12 +342,14 @@ namespace Presentación
             try
             {
                 ///SE GUARDA UN MEDICO NUEVO AUX
-
+                bool agregar = true;
                 Medico nuevo = new Medico();
+                EspecialidadesMedicoNegocio especialidadesMedicoNegocio = new EspecialidadesMedicoNegocio();
                 MedicoNegocio medicoNegocio = new MedicoNegocio();
                 List<Especialidad> nueva = new List<Especialidad>();
 
                 ///ASIGNO TODAS LAS PROP
+                nuevo.Id = int.Parse(TxtId.Text);
                 nuevo.Nombre = TxtNombre.Text;
                 nuevo.Apellido = TxtApellido.Text;
                 nuevo.Dni = TxtDNI.Text;
@@ -357,12 +357,71 @@ namespace Presentación
                 nuevo.Password = TxtPass.Text;
                 nuevo.Telefono = TxtTelefono.Text;
                 nuevo.Martricula = TxtMatricula.Text;
+                nuevo.Estado = true;
+                nuevo.Especialidades = new List<Especialidad>();
+
+                foreach (Especialidad item in listaEspecialidades)
+                {
+                    if (item.Nombre == ListEspecialidades.SelectedItem.Text)
+                    {
+                        nuevo.Especialidades.Add(item);
+                    }
+                    if (ListEspecialidades2.Visible == true && item.Nombre == ListEspecialidades2.SelectedItem.Text)
+                    {
+                        nuevo.Especialidades.Add(item);
+                    }
+                    if (ListEspecialidades3.Visible == true && item.Nombre == ListEspecialidades3.SelectedItem.Text)
+                    {
+                        nuevo.Especialidades.Add(item);
+                    }
+
+                }
+
+
+                if (medicoNegocio.chequear_email(nuevo.Email) > 0)
+                {
+                    /// EMAIL REPETIDO
+                    TxtEmail.CssClass = "form-control is-invalid";
+                    agregar = false;
+                }
+
+                if (agregar == true)
+                {
+                    ///GUARDO EN LA DB
+                    medicoNegocio.modificar(nuevo);
+                    nuevo.Especialidades = especialidadesMedicoNegocio.chequearEspecialidad(nuevo.Especialidades, nuevo.Id);
+                    especialidadesMedicoNegocio.agregar(nuevo.Especialidades, nuevo.Id);
+
+                }
+
             }
             catch (Exception ex)
             {
 
                 Response.Redirect("Login.aspx");
             }
+            Response.Redirect("Medicos.aspx");
         }
+
+        protected void BtnEliminar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int id = int.Parse(TxtId.Text);
+                MedicoNegocio medicoNegocio = new MedicoNegocio();
+
+                medicoNegocio.eliminar(id);
+
+                
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+            Response.Redirect("Medicos.aspx");
+        }
+
+
     }
 }

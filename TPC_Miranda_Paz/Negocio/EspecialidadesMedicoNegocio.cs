@@ -72,6 +72,47 @@ namespace Negocio
             }
         }
 
+        public List<Especialidad> chequearEspecialidad(List<Especialidad> aChequear, int id)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            int x = 0;
+            List<Especialidad> chequeo = new List<Especialidad>();
+            try
+            {
+ 
+                string consulta = "SELECT * FROM EspecialidadesxMedico WHERE IdMedico = @id";
+
+                datos.setearParametro("@id", id);
+                datos.setearConsulta(consulta);
+                datos.ejecutarLectura();
+
+                while (datos.Lector.Read())
+                {
+                    int idEspe = (int)datos.Lector["IdEspecialidad"];
+                    foreach (Especialidad item in aChequear)
+                    {
+                        if(item.Id != idEspe)
+                        {
+                            chequeo.Add(item);
+                        }
+
+                    }
+                    
+                }
+                return chequeo;
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
+        }
         //public void modificar(Especialidad nuevo)
         //{
         //    AccesoDatos datos = new AccesoDatos();

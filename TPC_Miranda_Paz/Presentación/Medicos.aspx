@@ -71,11 +71,13 @@
                 </div>
 
 
-                <%--ENCABEZADO DE GRILLA CON MEDICOS CARGADOS--%>
 
 
                 <div class="col">
                     <div class="card">
+
+                <%--ENCABEZADO DE GRILLA CON MEDICOS CARGADOS--%>
+
                         <div class="card-header d-flex justify-content-between align-items-center">
                             <div>Profesionales</div>
                             <asp:Label ID="LblEspecialidades" runat="server" Text="Especialidades"></asp:Label>
@@ -169,7 +171,7 @@
                                 <asp:Label ID="LblEmail" runat="server" Text="Email"></asp:Label>
                             </div>
                             <div class="col">
-                                <asp:TextBox ID="TxtEmail" runat="server" ReadOnly="True" CssClass="form-control"></asp:TextBox>
+                                <asp:TextBox ID="TxtEmail" runat="server" ReadOnly="false" CssClass="form-control"></asp:TextBox>
                             </div>
                         </div>
                         <div class="modal-body row">
@@ -177,7 +179,7 @@
                                 <asp:Label ID="LblPass" runat="server" Text="Contraseña"></asp:Label>
                             </div>
                             <div class="col">
-                                <asp:TextBox ID="TxtPass" runat="server" ReadOnly="True" CssClass="form-control"></asp:TextBox>
+                                <asp:TextBox ID="TxtPass" runat="server" ReadOnly="false" CssClass="form-control"></asp:TextBox>
                             </div>
                         </div>
                         <div class="modal-body row">
@@ -185,7 +187,7 @@
                                 <asp:Label ID="LblTelefono" runat="server" Text="Teléfono"></asp:Label>
                             </div>
                             <div class="col">
-                                <asp:TextBox ID="TxtTelefono" runat="server" ReadOnly="True" CssClass="form-control"></asp:TextBox>
+                                <asp:TextBox ID="TxtTelefono" runat="server" ReadOnly="false" CssClass="form-control"></asp:TextBox>
                             </div>
                         </div>
                         <div class="modal-body row">
@@ -221,23 +223,13 @@
                             </div>
                         </div>
 
-                        <div class="modal-body row">
-                            <div class="col-3">
-                                <asp:Label ID="LblNacimiento" runat="server" Text="Fecha de nacimiento"></asp:Label>
-                            </div>
-                            <div class="col">
-                                <div class="form-group">
-                                    <input type="date" class="form-control" id="Date1" name="fechanacimiento" placeholder="Fecha de nacimiento" runat="server" />
-                                </div>
-                            </div>
-                        </div>
 
                         <%--PIE DE MODAL--%>
 
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                            <asp:Button ID="Button1" runat="server" Text="Eliminar" CssClass="btn btn-danger" />
-                            <asp:Button ID="BtnEditar" runat="server" Text="Editar" CssClass="btn btn-warning" OnClientClick="return habilitar()"/>
+                            <asp:Button ID="BtnEliminar" runat="server" Text="Eliminar" CssClass="btn btn-danger" OnClick="BtnEliminar_Click" />
+                            <%--<asp:Button ID="BtnEditar" runat="server" Text="Editar" CssClass="btn btn-warning" OnClientClick="return habilitar()"/>--%>  
                             <asp:Button ID="BtnModificar" runat="server" Text="Guardar cambios" CssClass="btn btn-primary" OnClick="BtnModificar_Click" />
                         </div>
 
@@ -337,6 +329,7 @@
 
             return verificado;
         }
+
     </script>
 
 

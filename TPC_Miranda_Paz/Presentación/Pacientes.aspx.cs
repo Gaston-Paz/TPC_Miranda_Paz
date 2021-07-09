@@ -12,18 +12,23 @@ namespace Presentación
     public partial class Pacientes : System.Web.UI.Page
     {
         public List<Paciente> listaPacientes;
+        public List<Paciente> listaBusqueda;
         public string prueba;
         protected void Page_Load(object sender, EventArgs e)
-        {                        
+        {
+                PacienteNegocio pacienteNegocio = new PacienteNegocio();
+                listaPacientes = pacienteNegocio.listar();
             try
             {
 
+                if (!IsPostBack)
+                {
+                    ///CARGO LA GRILLA
+                    GridPacientes.DataSource = listaPacientes;
+                    GridPacientes.DataBind();
 
-
-                PacienteNegocio pacienteNegocio = new PacienteNegocio();
-                listaPacientes = pacienteNegocio.listar();
-
-                Session.Add("Pacientes", listaPacientes);
+                    Session.Add("Pacientes", listaPacientes);
+                }
 
             }
             catch (Exception ex)
@@ -31,12 +36,17 @@ namespace Presentación
 
                 throw;
             }
-            
+
         }
 
-       
+        protected void GridPacientes_Load(object sender, EventArgs e)
+        {
+            GridPacientes.CssClass = "table table-bordered table-hover";
+            GridPacientes.HeaderStyle.CssClass = "thead-dark";
+        }
 
-        protected void Button2_Click(object sender, EventArgs e)
+
+        protected void BtnRegistrar_Click(object sender, EventArgs e)
         {
             bool agregar = true;
             Paciente nuevo = new Paciente();
@@ -56,18 +66,17 @@ namespace Presentación
                 if (pacienteNegocio.chequear_dni(nuevo.Dni) > 0)
                 {
                     /// DNI REPETIDO
-                    //dni.Attributes["class"] = "is-invalid";
                     dni.Attributes.Add("class", "form-control is-invalid");
                     agregar = false;
                 }
-            
+
                 if (pacienteNegocio.chequear_email(nuevo.Email) > 0)
                 {
                     email.Attributes.Add("class", "form-control is-invalid");
                     agregar = false;
                 }
 
-                
+
 
 
             }
@@ -84,20 +93,6 @@ namespace Presentación
 
             }
         }
-
-        
-        public List<Paciente> listaBusqueda = new List<Paciente>();
-
-        protected void GridView1_Load(object sender, EventArgs e)
-        {
-
-            GridPacientes.CssClass = "table table-bordered table-hover";
-            GridPacientes.HeaderStyle.CssClass = "thead-dark";
-
-
-        }
-
-
 
         protected void BtnModificar_Click(object sender, EventArgs e)
         {
@@ -155,7 +150,7 @@ namespace Presentación
 
         }
 
-        protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
+        protected void GridPacientes_SelectedIndexChanged(object sender, EventArgs e)
         {
             int index = GridPacientes.SelectedIndex;
 
@@ -183,48 +178,61 @@ namespace Presentación
 
         }
 
-        protected void BtnEditar_Click(object sender, EventArgs e)
+        
+
+        protected void TxtBuscar_TextChanged(object sender, EventArgs e)
         {
- 
+            try
+            {
+                if (listaBusqueda == null)
+                {
+                    listaBusqueda = new List<Paciente>();
+
+                    foreach (Paciente item in listaBusqueda)
+                    {
+                        if (System.Text.RegularExpressions.Regex.IsMatch(item.Nombre, TxtBuscar.Text, System.Text.RegularExpressions.RegexOptions.IgnoreCase))
+                        {
+                            listaBusqueda.Add(item);
+                        }
+                        else
+                        {
+                            if (System.Text.RegularExpressions.Regex.IsMatch(item.Apellido, TxtBuscar.Text, System.Text.RegularExpressions.RegexOptions.IgnoreCase))
+                            {
+                                listaBusqueda.Add(item);
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    List<Paciente> listaAux = new List<Paciente>();
+
+                    foreach (Paciente item in listaBusqueda)
+                    {
+                        if (System.Text.RegularExpressions.Regex.IsMatch(item.Nombre, TxtBuscar.Text, System.Text.RegularExpressions.RegexOptions.IgnoreCase))
+                        {
+                            listaAux.Add(item);
+                        }
+                        else
+                        {
+                            if (System.Text.RegularExpressions.Regex.IsMatch(item.Apellido, TxtBuscar.Text, System.Text.RegularExpressions.RegexOptions.IgnoreCase))
+                            {
+                                listaAux.Add(item);
+                            }
+                        }
+                    }
+                    listaBusqueda.Clear();
+                    listaBusqueda = listaAux;
+                }
+                GridPacientes.DataSource = listaBusqueda;
+                GridPacientes.DataBind();
+
+            }
+            catch (Exception ex)
+            {
+
+                Response.Redirect("Login.aspx");
+            }
         }
-
-
-        //protected void TextBox1_TextChanged(object sender, EventArgs e)
-        //{
-
-        //    List<Paciente> aux = (List<Paciente>)Session["Pacientes"];
-
-        //    foreach (Paciente item in aux)
-        //    {
-        //        if (System.Text.RegularExpressions.Regex.IsMatch(item.Nombre, TxtBuscar.Text, System.Text.RegularExpressions.RegexOptions.IgnoreCase))
-        //        {
-        //            listaBusqueda.Add(item);
-        //        }
-        //        else
-        //        {
-        //            if (System.Text.RegularExpressions.Regex.IsMatch(item.Apellido, TxtBuscar.Text, System.Text.RegularExpressions.RegexOptions.IgnoreCase))
-        //            {
-        //                listaBusqueda.Add(item);
-        //            }
-        //            else
-        //            {
-        //                if (System.Text.RegularExpressions.Regex.IsMatch(item.Dni, TxtBuscar.Text, System.Text.RegularExpressions.RegexOptions.IgnoreCase))
-        //                {
-        //                    listaBusqueda.Add(item);
-        //                }
-        //                else
-        //                {
-        //                    if (System.Text.RegularExpressions.Regex.IsMatch(item.Email, TxtBuscar.Text, System.Text.RegularExpressions.RegexOptions.IgnoreCase))
-        //                    {
-        //                        listaBusqueda.Add(item);
-        //                    }
-        //                }
-        //            }
-        //        }
-        //    }
-
-
-        //    Response.Redirect("Pacientes.aspx");
-        //}
     }
 }

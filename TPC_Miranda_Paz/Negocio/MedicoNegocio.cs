@@ -24,6 +24,9 @@ namespace Negocio
 
                 while (datos.Lector.Read())
                 {
+                    if((bool)datos.Lector["Estado"] == true)
+                    {
+
                     Medico aux = new Medico();
                     aux.Id = (int)datos.Lector["Id"];
                     aux.Nombre = (string)datos.Lector["Nombre"];
@@ -35,10 +38,9 @@ namespace Negocio
                     aux.Telefono = (string)datos.Lector["Telefono"];
                     aux.Especialidades = especilidadMedico.listar(aux);
                     aux.Estado = (bool)datos.Lector["Estado"];
-          
-                   
 
                     lista.Add(aux);
+                    }
                 }
                 return lista;
             }
@@ -88,7 +90,7 @@ namespace Negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("UPDATE Medicos SET Nombre = @nombre, Apellido = @apellido, Matricula = @matricula, Email = @email, Pass = @pass, Dni = @dni, Telefono = @telefono, IdEspecialidad = @especialidad, Estado = @estado WHERE Id = @id");
+                datos.setearConsulta("UPDATE Medicos SET Nombre = @nombre, Apellido = @apellido, Matricula = @matricula, Email = @email, Pass = @pass, Dni = @dni, Telefono = @telefono, Estado = @estado WHERE Id = @id");
 
                 datos.setearParametro("@nombre", nuevo.Nombre);
                 datos.setearParametro("@apellido", nuevo.Apellido);
@@ -97,7 +99,6 @@ namespace Negocio
                 datos.setearParametro("@pass", nuevo.Password);
                 datos.setearParametro("@dni", nuevo.Dni);
                 datos.setearParametro("@telefono", nuevo.Telefono);
-                //datos.setearParametro("@especialidad", nuevo.Especialidad.Id);
                 datos.setearParametro("@estado", nuevo.Estado);
 
                 datos.setearParametro("@id", nuevo.Id);
@@ -121,7 +122,7 @@ namespace Negocio
 
             try
             {
-                datos.setearConsulta("DELETE FROM Medicos WHERE Id = " + id);
+                datos.setearConsulta("UPDATE MEDICOS SET ESTADO = 0 WHERE ID = " + id);
                 datos.ejecutarAccion();
             }
             catch (Exception ex)
