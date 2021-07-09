@@ -64,7 +64,8 @@
 				<a class="nav-link text-body" href="Turnos.aspx">Turnos</a>
 				<a class="nav-link text-body" href="Medicos.aspx">Medicos</a>
                 <a class="nav-link text-body" href="Pacientes.aspx">Pacientes</a>
-                <a class="nav-link text-body" href="Administrativos.aspx">Administrativos</a>
+                <a class="nav-link text-body" href="Administrativos.aspx">Administradores</a>
+                <a class="nav-link text-body" href="Recepcionistas.aspx">Recepcionistas</a>
 			</nav>
 		</header>
 

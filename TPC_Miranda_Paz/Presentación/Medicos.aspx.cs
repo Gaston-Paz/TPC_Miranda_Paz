@@ -389,7 +389,7 @@ namespace Presentación
                 {
                     ///GUARDO EN LA DB
                     medicoNegocio.modificar(nuevo);
-                    nuevo.Especialidades = especialidadesMedicoNegocio.chequearEspecialidad(nuevo.Especialidades, nuevo.Id);
+                    //nuevo.Especialidades = especialidadesMedicoNegocio.chequearEspecialidad(nuevo.Especialidades, nuevo.Id);
                     especialidadesMedicoNegocio.agregar(nuevo.Especialidades, nuevo.Id);
 
                 }

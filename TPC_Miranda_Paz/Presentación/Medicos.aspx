@@ -171,7 +171,7 @@
                                 <asp:Label ID="LblEmail" runat="server" Text="Email"></asp:Label>
                             </div>
                             <div class="col">
-                                <asp:TextBox ID="TxtEmail" runat="server" ReadOnly="false" CssClass="form-control"></asp:TextBox>
+                                <asp:TextBox ID="TxtEmail" runat="server" ReadOnly="True" CssClass="form-control"></asp:TextBox>
                             </div>
                         </div>
                         <div class="modal-body row">
@@ -179,7 +179,7 @@
                                 <asp:Label ID="LblPass" runat="server" Text="Contraseña"></asp:Label>
                             </div>
                             <div class="col">
-                                <asp:TextBox ID="TxtPass" runat="server" ReadOnly="false" CssClass="form-control"></asp:TextBox>
+                                <asp:TextBox ID="TxtPass" runat="server" ReadOnly="True" CssClass="form-control"></asp:TextBox>
                             </div>
                         </div>
                         <div class="modal-body row">
@@ -187,7 +187,7 @@
                                 <asp:Label ID="LblTelefono" runat="server" Text="Teléfono"></asp:Label>
                             </div>
                             <div class="col">
-                                <asp:TextBox ID="TxtTelefono" runat="server" ReadOnly="false" CssClass="form-control"></asp:TextBox>
+                                <asp:TextBox ID="TxtTelefono" runat="server" ReadOnly="True" CssClass="form-control"></asp:TextBox>
                             </div>
                         </div>
                         <div class="modal-body row">
@@ -229,7 +229,7 @@
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                             <asp:Button ID="BtnEliminar" runat="server" Text="Eliminar" CssClass="btn btn-danger" OnClick="BtnEliminar_Click" />
-                            <%--<asp:Button ID="BtnEditar" runat="server" Text="Editar" CssClass="btn btn-warning" OnClientClick="return habilitar()"/>--%>  
+                            <asp:Button ID="BtnEditar" runat="server" Text="Editar" CssClass="btn btn-warning" OnClientClick="return habilitar()"/>  
                             <asp:Button ID="BtnModificar" runat="server" Text="Guardar cambios" CssClass="btn btn-primary" OnClick="BtnModificar_Click" />
                         </div>
 

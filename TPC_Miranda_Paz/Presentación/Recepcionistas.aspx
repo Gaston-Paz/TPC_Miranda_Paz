@@ -1,73 +1,67 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Administrativos.aspx.cs" Inherits="Presentación.Administrativos" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Recepcionistas.aspx.cs" Inherits="Presentación.Recepcionistas" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
-    <asp:UpdatePanel ID="UPAdmin" runat="server">
+    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
-
-
-
-           
-
-            <div class="row mt-4">
+ <div class="row">
                 <div class="col-3">
 
-                    <%--FORMULARIO DE REGISTRO ADMINISTRADORES--%>
+                    <%--FORMULARIO DE REGISTRO RECEPCIONISTA--%>
 
                     <div class="card">
-                        <div class="card-header">Formulario: Administrador</div>
+                        <div class="card-header">Formulario: Recepcionista</div>
                         <div class="card-body">
-                            <h5 class="card-title">Registrar Administrador</h5>
+                            <h5 class="card-title">Registrar Recepcionista</h5>
 
                             <form>
                                 <div class="form-group">
-                                    <input type="text" class="form-control" id="nombre_admin" name="nombre_admin" placeholder="Nombre" runat="server" />
+                                    <input type="text" class="form-control" id="nombre_recep" name="nombre_recep" placeholder="Nombre" runat="server" />
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control" id="apellido_admin" name="apellido_admin" placeholder="Apellido" runat="server" />
+                                    <input type="text" class="form-control" id="apellido_recep" name="apellido_recep" placeholder="Apellido" runat="server" />
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control" id="dni_admin" name="dni_admin" placeholder="DNI" runat="server" />
+                                    <input type="text" class="form-control" id="dni_recep" name="dni_recep" placeholder="DNI" runat="server" />
                                     <div class="invalid-feedback">
                                         DNI ya registrado
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control" id="telefono_admin" name="telefono_admin" placeholder="Telefono" runat="server" />
+                                    <input type="text" class="form-control" id="telefono_recep" name="telefono_recep" placeholder="Telefono" runat="server" />
                                 </div>
                                 <div class="form-group">
-                                    <input
-                                        type="email" class="form-control" id="email_admin" name="email_admin" aria-describedby="emailHelp" placeholder="Email" runat="server" />
+                                    <input type="email" class="form-control" id="email_recep" name="email_recep" aria-describedby="emailHelp" placeholder="Email" runat="server" />
                                     <div class="invalid-feedback">
                                         Email ya registrado
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control" id="pass_admin" name="pass_admin" placeholder="Contraseña" runat="server" />
+                                    <input type="text" class="form-control" id="pass_recep" name="pass_recep" placeholder="Contraseña" runat="server" />
                                 </div>
+                                <asp:Button ID="BtnRegistrar_Recepcionista" runat="server" Text="Registrar" CssClass="btn btn-primary" OnClientClick="return validarVacioRecep()" OnClick="BtnRegistrar_Recepcionista_Click" />
                             </form>
-                            <asp:Button ID="Btn_Registar_admin" runat="server" Text="Registrar" CssClass="btn btn-primary" OnClientClick="return validarVacioAdmin()" OnClick="Btn_Registar_admin_Click" />
                         </div>
                     </div>
-
                 </div>
+
                 <div class="col">
                     <div class="card">
 
-                        <%--ENCABEZADO DE GRILLA CON ADMINISTRADORES CARGADOS--%>
+                        <%--ENCABEZADO DE GRILLA CON RECEPCIONISTAS CARGADOS--%>
 
-                        <div class="card-header d-flex justify-content-between align-items-center ">
-                            <div>Administradores</div>
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <div>Recepcionistas</div>
                             <div class="form-inline my-2 my-lg-0">
-                                <asp:TextBox ID="TxtBuscar" Text="Buscar" CssClass="form-control mr-sm-2" OnTextChanged="TxtBuscar_TextChanged" AutoPostBack="true" runat="server"></asp:TextBox>
+                                <asp:TextBox ID="TxtBuscarRecepcionista" Text="Buscar" CssClass="form-control mr-sm-2" OnTextChanged="TxtBuscarRecepcionista_TextChanged" AutoPostBack="true" runat="server"></asp:TextBox>
                             </div>
                         </div>
 
-                        <%--GRILLA DE ADMINISTRADORES--%>
+                        <%--GRILLA DE RECEPCIONISTAS--%>
 
                         <div class="card-body ">
                             <div class="test-overflow">
 
-                                <asp:GridView ID="GridAdministradores" AutoGenerateColumns="false" OnLoad="GridAdministradores_Load" OnSelectedIndexChanged="GridAdmin_SelectedIndexChanged" runat="server">
+                                <asp:GridView ID="GridRecepcionista" OnLoad="GridRecepcionista_Load1" AutoGenerateColumns="false" OnSelectedIndexChanged="GridRecepcionista_SelectedIndexChanged" runat="server">
                                     <Columns>
                                         <asp:BoundField DataField="Nombre" HeaderText="Nombre" SortExpression="Nombre" />
                                         <asp:BoundField DataField="Apellido" HeaderText="Apellido" SortExpression="Apellido" />
@@ -83,15 +77,13 @@
                                     <SelectedRowStyle CssClass="bg-success" />
                                 </asp:GridView>
 
-
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-
-            <!-- MODAL -->
+             <!-- MODAL -->
 
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
@@ -100,7 +92,7 @@
                         <%--ENCABEZADO DE MODAL--%>
 
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel" runat="server">Datos del administrador</h5>
+                            <h5 class="modal-title" id="exampleModalLabel" runat="server">Datos del recepcionista</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -113,7 +105,7 @@
                                 <asp:Label ID="LblId" runat="server" Text="Id"></asp:Label>
                             </div>
                             <div class="col">
-                                <asp:TextBox ID="TxtId" runat="server" ReadOnly="true" CssClass="form-control"></asp:TextBox>
+                                <asp:TextBox ID="TxtId" runat="server" CssClass="form-control" ReadOnly="true"></asp:TextBox>
                             </div>
                         </div>
                         <div class="modal-body row">
@@ -121,7 +113,7 @@
                                 <asp:Label ID="LblNombre" runat="server" Text="Nombre"></asp:Label>
                             </div>
                             <div class="col">
-                                <asp:TextBox ID="TxtNombre" runat="server" CssClass="form-control" ReadOnly="true"></asp:TextBox>
+                                <asp:TextBox ID="TxtNombre" runat="server" CssClass="form-control" ReadOnly="True"></asp:TextBox>
                             </div>
                         </div>
                         <div class="modal-body row">
@@ -129,7 +121,7 @@
                                 <asp:Label ID="LblApellido" runat="server" Text="Apellido"></asp:Label>
                             </div>
                             <div class="col">
-                                <asp:TextBox ID="TxtApellido" runat="server" CssClass="form-control" ReadOnly="true"></asp:TextBox>
+                                <asp:TextBox ID="TxtApellido" runat="server" CssClass="form-control" ReadOnly="True"></asp:TextBox>
                             </div>
                         </div>
                         <div class="modal-body row">
@@ -137,7 +129,7 @@
                                 <asp:Label ID="LblDni" runat="server" Text="DNI"></asp:Label>
                             </div>
                             <div class="col">
-                                <asp:TextBox ID="TxtDNI" runat="server" CssClass="form-control" ReadOnly="true"></asp:TextBox>
+                                <asp:TextBox ID="TxtDNI" runat="server" CssClass="form-control" ReadOnly="True"></asp:TextBox>
                             </div>
                         </div>
                         <div class="modal-body row">
@@ -145,7 +137,7 @@
                                 <asp:Label ID="LblEmail" runat="server" Text="Email"></asp:Label>
                             </div>
                             <div class="col">
-                                <asp:TextBox ID="TxtEmail" runat="server" CssClass="form-control" ReadOnly="true"></asp:TextBox>
+                                <asp:TextBox ID="TxtEmail" runat="server" CssClass="form-control" ReadOnly="True"></asp:TextBox>
                             </div>
                         </div>
                         <div class="modal-body row">
@@ -153,7 +145,7 @@
                                 <asp:Label ID="LblPass" runat="server" Text="Contraseña"></asp:Label>
                             </div>
                             <div class="col">
-                                <asp:TextBox ID="TxtPass" runat="server" CssClass="form-control" ReadOnly="true"></asp:TextBox>
+                                <asp:TextBox ID="TxtPass" runat="server" CssClass="form-control" ReadOnly="True"></asp:TextBox>
                             </div>
                         </div>
                         <div class="modal-body row">
@@ -161,7 +153,7 @@
                                 <asp:Label ID="LblTelefono" runat="server" Text="Teléfono"></asp:Label>
                             </div>
                             <div class="col">
-                                <asp:TextBox ID="TxtTelefono" runat="server" CssClass="form-control" ReadOnly="true"></asp:TextBox>
+                                <asp:TextBox ID="TxtTelefono" runat="server" CssClass="form-control" ReadOnly="True"></asp:TextBox>
                             </div>
                         </div>
 
@@ -169,7 +161,7 @@
 
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                            <asp:Button ID="BtnEliminar" runat="server" Text="Eliminar" CssClass="btn btn-danger" OnClick="BtnEliminar_Click" />
+                            <asp:Button ID="BtnEliminar" runat="server" Text="Eliminar" CssClass="btn btn-danger" OnClick="BtnEliminar_Click"/>
                             <asp:Button ID="BtnEditar" runat="server" Text="Editar" CssClass="btn btn-warning" OnClientClick="return habilitar()" />
                             <asp:Button ID="BtnModificar" runat="server" Text="Guardar cambios" CssClass="btn btn-primary" OnClick="BtnModificar_Click" />
                         </div>
@@ -178,19 +170,21 @@
                 </div>
             </div>
 
-        </ContentTemplate>
 
+
+        </ContentTemplate>
     </asp:UpdatePanel>
 
-       <script>
-           function habilitar() {
-               var TxtNombre = document.getElementById("<%=TxtNombre.ClientID%>");
-                TxtNombre.removeAttribute("readonly", 0);
 
-                var TxtApellido = document.getElementById("<%=TxtApellido.ClientID%>");
-                TxtApellido.removeAttribute("readonly", 0);
+    <script>
+        function habilitar() {
+            var TxtNombre = document.getElementById("<%=TxtNombre.ClientID%>");
+            TxtNombre.removeAttribute("readonly", 0);
 
-                var TxtDNI = document.getElementById("<%=TxtDNI.ClientID%>");
+            var TxtApellido = document.getElementById("<%=TxtApellido.ClientID%>");
+            TxtApellido.removeAttribute("readonly", 0);
+
+            var TxtDNI = document.getElementById("<%=TxtDNI.ClientID%>");
             TxtDNI.removeAttribute("readonly", 0);
 
             var TxtEmail = document.getElementById("<%=TxtEmail.ClientID%>");
@@ -199,25 +193,24 @@
             var TxtPass = document.getElementById("<%=TxtPass.ClientID%>");
             TxtPass.removeAttribute("readonly", 0);
 
-                var TxtTelefono = document.getElementById("<%=TxtTelefono.ClientID%>");
-                TxtTelefono.removeAttribute("readonly", 0);
+            var TxtTelefono = document.getElementById("<%=TxtTelefono.ClientID%>");
+            TxtTelefono.removeAttribute("readonly", 0);
 
 
-                console.log("habilitar");
-                return false;
-            }
-        
+            console.log("habilitar");
+            return false;
+        }
 
 
-           function validarVacioAdmin() {
-               var verificado = true;
+        function validarVacioRecep() {
+            var verificado = true;
 
-               let nombre = document.getElementById("<%=nombre_admin.ClientID%>");
-            let apellido = document.getElementById("<%=apellido_admin.ClientID%>");
-            let dni = document.getElementById("<%=dni_admin.ClientID%>");
-            let email = document.getElementById("<%=email_admin.ClientID%>");
-            let tel = document.getElementById("<%=telefono_admin.ClientID%>");
-            let nac = document.getElementById("<%=pass_admin.ClientID%>");
+            let nombre = document.getElementById("<%=nombre_recep.ClientID%>");
+            let apellido = document.getElementById("<%=apellido_recep.ClientID%>");
+            let dni = document.getElementById("<%=dni_recep.ClientID%>");
+            let email = document.getElementById("<%=email_recep.ClientID%>");
+            let tel = document.getElementById("<%=telefono_recep.ClientID%>");
+            let nac = document.getElementById("<%=pass_recep.ClientID%>");
 
 
             if (nombre.value == "") {
@@ -257,7 +250,7 @@
 
             return verificado;
         }
-       </script>
 
+    </script>
 
 </asp:Content>

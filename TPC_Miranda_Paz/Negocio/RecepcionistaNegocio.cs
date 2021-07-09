@@ -24,6 +24,7 @@ namespace Negocio
 
                 while (datos.Lector.Read())
                 {
+                    if ((bool)datos.Lector["Estado"] == true) { 
                     Recepcionista aux = new Recepcionista();
                     aux.Id = (int)datos.Lector["Id"];
                     aux.Nombre = (string)datos.Lector["Nombre"];
@@ -35,6 +36,7 @@ namespace Negocio
                     aux.Estado = (bool)datos.Lector["Estado"];
 
                     lista.Add(aux);
+                    }
                 }
                 return lista;
             }
@@ -113,7 +115,7 @@ namespace Negocio
 
             try
             {
-                datos.setearConsulta("DELETE FROM Recepcionistas WHERE Id = " + id);
+                datos.setearConsulta("UPDATE Recepcionistas SET ESTADO = 0 WHERE Id = " + id);
                 datos.ejecutarAccion();
             }
             catch (Exception ex)

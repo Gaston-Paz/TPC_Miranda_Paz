@@ -113,47 +113,47 @@ namespace Negocio
             }
 
         }
-        //public void modificar(Especialidad nuevo)
-        //{
-        //    AccesoDatos datos = new AccesoDatos();
-        //    try
-        //    {
-        //        datos.setearConsulta("UPDATE Especialidades SET Nombre = @nombre WHERE Id = @id");
+        public void modificar(Especialidad nuevo, int id)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("UPDATE EspecialidadesxMedico SET IdEspecialidad = @idespecialidad WHERE IdMedico = @idmedico");
 
-        //        datos.setearParametro("@nombre", nuevo.Nombre);
-        //        datos.setearParametro("@id", nuevo.Id);
+                datos.setearParametro("@idespecialidad", nuevo.Id);
+                datos.setearParametro("@idmedico", id);
 
-        //        datos.ejecutarAccion();
+                datos.ejecutarAccion();
 
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw ex;
-        //    }
-        //    finally
-        //    {
-        //        datos.cerrarConexion();
-        //    }
-        //}
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
 
-        //public void eliminar(int id)
-        //{
-        //    AccesoDatos datos = new AccesoDatos();
+        public void eliminar(int id)
+        {
+            AccesoDatos datos = new AccesoDatos();
 
-        //    try
-        //    {
-        //        datos.setearConsulta("DELETE FROM Especialidades WHERE Id = " + id);
-        //        datos.ejecutarAccion();
-        //    }
-        //    catch (Exception ex)
-        //    {
+            try
+            {
+                datos.setearConsulta("DELETE FROM Especialidades WHERE Id = " + id);
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
 
-        //        throw ex;
-        //    }
-        //    finally
-        //    {
-        //        datos.cerrarConexion();
-        //    }
-        //}
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
     }
 }

@@ -52,16 +52,16 @@
                 <div class="col">
                     <div class="card">
 
-                        <%--ENCABEZADO DE GRILLA CON MEDICOS CARGADOS--%>
+                        <%--ENCABEZADO DE GRILLA CON PACIENTES CARGADOS--%>
 
                         <div class="card-header d-flex justify-content-between align-items-center">
                             <div>Pacientes</div>
                             <div class="form-inline my-2 my-lg-0">
-                             <asp:TextBox ID="TxtBuscar" Text="Buscar" CssClass="form-control mr-sm-2" runat="server" OnTextChanged="TextBox1_TextChanged" AutoPostBack="true"></asp:TextBox>
+                             <asp:TextBox ID="TxtBuscar" Text="Buscar" CssClass="form-control mr-sm-2" runat="server" OnTextChanged="TxtBuscar_TextChanged" AutoPostBack="true"></asp:TextBox>
                             </div>
                         </div>
 
-                        <%--GRILLA DE MEDICOS--%>
+                        <%--GRILLA DE PACIENTES--%>
 
                         <div class="card-body ">
                             <div class="test-overflow">
