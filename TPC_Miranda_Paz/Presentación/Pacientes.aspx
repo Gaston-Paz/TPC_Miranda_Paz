@@ -56,9 +56,9 @@
 
                         <div class="card-header d-flex justify-content-between align-items-center">
                             <div>Pacientes</div>
-                            <form class="form-inline my-2 my-lg-0">
-                                <asp:TextBox ID="TxtBuscar" runat="server" Text="Buscar" CssClass="form-control mr-sm-2" OnTextChanged="TxtBuscar_TextChanged" AutoPostBack="true"></asp:TextBox>
-                            </form>
+                            <div class="form-inline my-2 my-lg-0">
+                             <asp:TextBox ID="TxtBuscar" Text="Buscar" CssClass="form-control mr-sm-2" runat="server" OnTextChanged="TextBox1_TextChanged" AutoPostBack="true"></asp:TextBox>
+                            </div>
                         </div>
 
                         <%--GRILLA DE MEDICOS--%>

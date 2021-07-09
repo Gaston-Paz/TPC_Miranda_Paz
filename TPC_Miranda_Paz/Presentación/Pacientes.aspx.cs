@@ -178,9 +178,7 @@ namespace Presentación
 
         }
 
-        
-
-        protected void TxtBuscar_TextChanged(object sender, EventArgs e)
+        protected void TextBox1_TextChanged(object sender, EventArgs e)
         {
             try
             {
@@ -188,7 +186,7 @@ namespace Presentación
                 {
                     listaBusqueda = new List<Paciente>();
 
-                    foreach (Paciente item in listaBusqueda)
+                    foreach (Paciente item in listaPacientes)
                     {
                         if (System.Text.RegularExpressions.Regex.IsMatch(item.Nombre, TxtBuscar.Text, System.Text.RegularExpressions.RegexOptions.IgnoreCase))
                         {
