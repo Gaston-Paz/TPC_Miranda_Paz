@@ -212,6 +212,7 @@
             let tel = document.getElementById("<%=telefono_recep.ClientID%>");
             let nac = document.getElementById("<%=pass_recep.ClientID%>");
 
+            /*var array = [nombre, apellido]*/
 
             if (nombre.value == "") {
                 nombre.classList.add("is-invalid");
