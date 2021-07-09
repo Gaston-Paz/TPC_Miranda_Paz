@@ -7,7 +7,7 @@ using Dominio;
 
 namespace Negocio
 {
-    class EspecialidadesMedicoNegocio
+    public class EspecialidadesMedicoNegocio
     {
         public List<Especialidad> listar(Medico aux)
         {
@@ -43,27 +43,34 @@ namespace Negocio
             }
         }
 
-        //public void agregar(Especialidad nuevo)
-        //{
-        //    AccesoDatos datos = new AccesoDatos();
-        //    try
-        //    {
-        //        datos.setearConsulta("INSERT INTO Especialidades (Nombre) VALUES (@nombre)");
+        public void agregar(List<Especialidad> nuevo,int id)
+        {
+            
+            try
+            {
 
-        //        datos.setearParametro("@nombre", nuevo.Nombre);
+                foreach (Especialidad item in nuevo)
+                {
+                    AccesoDatos datos = new AccesoDatos();
+                    datos.setearConsulta("INSERT INTO EspecialidadesxMedico (IdEspecialidad, IdMedico) VALUES (@especialidad, @medico)");
+                    datos.setearParametro("@especialidad",item.Id);
+                    datos.setearParametro("@medico", id);
 
-        //        datos.ejecutarAccion();
+                    datos.ejecutarAccion();
+                    datos.cerrarConexion();
+                }
+                
 
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw ex;
-        //    }
-        //    finally
-        //    {
-        //        datos.cerrarConexion();
-        //    }
-        //}
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                
+            }
+        }
 
         //public void modificar(Especialidad nuevo)
         //{

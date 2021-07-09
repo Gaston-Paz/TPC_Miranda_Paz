@@ -135,5 +135,35 @@ namespace Negocio
             }
         }
 
+        public int buscarMedico(Medico medico)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            int id=0;
+
+            try
+            {
+                datos.setearConsulta("select Id from Medicos where Email like @email");
+                datos.setearParametro("@email", medico.Email);
+                datos.ejecutarLectura();
+
+                while (datos.Lector.Read())
+                {
+                    id = (int)datos.Lector["Id"];
+                }
+
+                return id;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
     }
 }

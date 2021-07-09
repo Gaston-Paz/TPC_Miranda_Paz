@@ -115,7 +115,8 @@ namespace Presentación
 
             Medico nuevo = new Medico();
             MedicoNegocio medicoNegocio = new MedicoNegocio();
-            List<Especialidad> nueva = new List<Especialidad>();
+            EspecialidadesMedicoNegocio especialidadesMedicoNegocio = new EspecialidadesMedicoNegocio();
+            
 
             ///ASIGNO TODAS LAS PROP
             nuevo.Nombre = nombre.Value;
@@ -123,7 +124,9 @@ namespace Presentación
             nuevo.Dni = dni.Value;
             nuevo.Email = email.Value;
             nuevo.Password = password.Value;
+            nuevo.Telefono = telefono.Value;
             nuevo.Martricula = matricula.Value;
+            nuevo.Estado = true;
             nuevo.Especialidades = new List<Especialidad>();
 
             foreach (Especialidad item in listaEspecialidades)
@@ -147,8 +150,10 @@ namespace Presentación
 
             ///GUARDO EN LA DB
             medicoNegocio.agregar(nuevo);
-            
+            nuevo.Id = medicoNegocio.buscarMedico(nuevo);
+            especialidadesMedicoNegocio.agregar(nuevo.Especialidades, nuevo.Id);
 
+            formClear();
         }
 
         protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
@@ -299,5 +304,41 @@ namespace Presentación
             }
         }
 
+        protected void formClear()
+        {
+            nombre.Value = "";
+            apellido.Value = "";
+            dni.Value = "";
+            email.Value = "";
+            password.Value = "";
+            telefono.Value = "";
+            matricula.Value = "";
+        }
+
+        protected void BtnModificar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ///SE GUARDA UN MEDICO NUEVO AUX
+
+                Medico nuevo = new Medico();
+                MedicoNegocio medicoNegocio = new MedicoNegocio();
+                List<Especialidad> nueva = new List<Especialidad>();
+
+                ///ASIGNO TODAS LAS PROP
+                nuevo.Nombre = TxtNombre.Text;
+                nuevo.Apellido = TxtApellido.Text;
+                nuevo.Dni = TxtDNI.Text;
+                nuevo.Email = TxtEmail.Text;
+                nuevo.Password = TxtPass.Text;
+                nuevo.Telefono = TxtTelefono.Text;
+                nuevo.Martricula = TxtMatricula.Text;
+            }
+            catch (Exception ex)
+            {
+
+                Response.Redirect("Login.aspx");
+            }
+        }
     }
 }
