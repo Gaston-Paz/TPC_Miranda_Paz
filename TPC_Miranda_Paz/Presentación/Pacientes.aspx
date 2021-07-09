@@ -16,7 +16,7 @@
                         <div class="card-header">Formulario: Paciente</div>
                         <div class="card-body">
                             <h5 class="card-title">Registrar Paciente</h5>
-                            <p class="card-text">Los campos * son obligatorios</p>
+                            <p class="card-text text-muted">Los campos * son obligatorios</p>
                             <form action="Pacientes.aspx">
                                 <div class="form-group">
                                     <input type="text" class="form-control" id="nombre" name="nombre" placeholder="*Nombre" runat="server" />
@@ -123,7 +123,7 @@
                                 <asp:Label ID="LblNombre" runat="server" Text="Nombre"></asp:Label>
                             </div>
                             <div class="col">
-                                <asp:TextBox ID="TxtNombre" runat="server" CssClass="form-control"></asp:TextBox>
+                                <asp:TextBox ID="TxtNombre" runat="server" ReadOnly="true" CssClass="form-control"></asp:TextBox>
                             </div>
                         </div>
                         <div class="modal-body row">
@@ -131,7 +131,7 @@
                                 <asp:Label ID="LblApellido" runat="server" Text="Apellido"></asp:Label>
                             </div>
                             <div class="col">
-                                <asp:TextBox ID="TxtApellido" runat="server" CssClass="form-control"></asp:TextBox>
+                                <asp:TextBox ID="TxtApellido" runat="server" ReadOnly="true" CssClass="form-control"></asp:TextBox>
                             </div>
                         </div>
                         <div class="modal-body row">
@@ -139,7 +139,7 @@
                                 <asp:Label ID="LblDni" runat="server" Text="DNI"></asp:Label>
                             </div>
                             <div class="col">
-                                <asp:TextBox ID="TxtDNI" runat="server" CssClass="form-control"></asp:TextBox>
+                                <asp:TextBox ID="TxtDNI" runat="server" ReadOnly="true" CssClass="form-control"></asp:TextBox>
                             </div>
                         </div>
                         <div class="modal-body row">
@@ -147,7 +147,7 @@
                                 <asp:Label ID="LblEmail" runat="server" Text="Email"></asp:Label>
                             </div>
                             <div class="col">
-                                <asp:TextBox ID="TxtEmail" runat="server" CssClass="form-control"></asp:TextBox>
+                                <asp:TextBox ID="TxtEmail" runat="server" ReadOnly="true" CssClass="form-control"></asp:TextBox>
                             </div>
                         </div>
                         <div class="modal-body row">
@@ -155,7 +155,7 @@
                                 <asp:Label ID="LblTelefono" runat="server" Text="Teléfono"></asp:Label>
                             </div>
                             <div class="col">
-                                <asp:TextBox ID="TxtTelefono" runat="server" CssClass="form-control"></asp:TextBox>
+                                <asp:TextBox ID="TxtTelefono" runat="server" ReadOnly="true" CssClass="form-control"></asp:TextBox>
                             </div>
                         </div>
                         <div class="modal-body row">
@@ -174,7 +174,7 @@
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                             <asp:Button ID="BtnEliminar" runat="server" Text="Eliminar" CssClass="btn btn-danger" OnClick="BtnEliminar_Click" />
-                            <%--<asp:Button ID="BtnEditar" runat="server" Text="Editar" CssClass="btn btn-warning" OnClick="BtnEditar_Click" />--%>
+                            <asp:Button ID="BtnEditar" runat="server" Text="Editar" CssClass="btn btn-warning" OnClientClick="return habilitar()"/>
                             <asp:Button ID="BtnModificar" runat="server" Text="Guardar cambios" CssClass="btn btn-primary" OnClick="BtnModificar_Click" />
                         </div>
                     </div>
@@ -184,6 +184,27 @@
     </asp:UpdatePanel>
 
     <script>
+        function habilitar() {
+            var TxtNombre = document.getElementById("<%=TxtNombre.ClientID%>");
+            TxtNombre.removeAttribute("readonly", 0);
+
+            var TxtApellido = document.getElementById("<%=TxtApellido.ClientID%>");
+            TxtApellido.removeAttribute("readonly", 0);
+
+            var TxtDNI = document.getElementById("<%=TxtDNI.ClientID%>");
+            TxtDNI.removeAttribute("readonly", 0);
+
+            var TxtEmail = document.getElementById("<%=TxtEmail.ClientID%>");
+            TxtEmail.removeAttribute("readonly", 0);
+
+
+            var TxtTelefono = document.getElementById("<%=TxtTelefono.ClientID%>");
+            TxtTelefono.removeAttribute("readonly", 0);
+
+
+            console.log("habilitar");
+            return false;
+        }
 
         function validarVacio() {
             var verificado = true;

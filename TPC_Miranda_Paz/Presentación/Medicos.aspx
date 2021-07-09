@@ -13,7 +13,7 @@
                         <div class="card-header">Formulario: Médico</div>
                         <div class="card-body">
                             <h5 class="card-title">Registrar Médico</h5>
-                            <p class="card-text">Los campos * son obligatorios</p>
+                            <p class="card-text text-muted">Los campos * son obligatorios</p>
                             <form>
                                 <div class="form-group">
                                     <input type="text" class="form-control"  id="nombre" placeholder="*Nombre" runat="server"/>
@@ -126,7 +126,7 @@
                         <%--ENCABEZADO DE MODAL--%>
 
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Datos del paciente</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Datos del médico</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>

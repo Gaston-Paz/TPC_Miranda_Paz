@@ -240,6 +240,15 @@ namespace Presentación
         protected global::System.Web.UI.WebControls.Button BtnEliminar;
 
         /// <summary>
+        /// Control BtnEditar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BtnEditar;
+
+        /// <summary>
         /// Control BtnModificar.
         /// </summary>
         /// <remarks>

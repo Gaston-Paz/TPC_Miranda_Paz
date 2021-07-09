@@ -17,32 +17,32 @@
                         <div class="card-header">Formulario: Administrador</div>
                         <div class="card-body">
                             <h5 class="card-title">Registrar Administrador</h5>
-
+                            <p class="card-text text-muted">Los campos * son obligatorios</p>
                             <form>
                                 <div class="form-group">
-                                    <input type="text" class="form-control" id="nombre_admin" name="nombre_admin" placeholder="Nombre" runat="server" />
+                                    <input type="text" class="form-control" id="nombre_admin" name="nombre_admin" placeholder="*Nombre" runat="server" />
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control" id="apellido_admin" name="apellido_admin" placeholder="Apellido" runat="server" />
+                                    <input type="text" class="form-control" id="apellido_admin" name="apellido_admin" placeholder="*Apellido" runat="server" />
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control" id="dni_admin" name="dni_admin" placeholder="DNI" runat="server" />
+                                    <input type="text" class="form-control" id="dni_admin" name="dni_admin" placeholder="*DNI" runat="server" />
                                     <div class="invalid-feedback">
                                         DNI ya registrado
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control" id="telefono_admin" name="telefono_admin" placeholder="Telefono" runat="server" />
+                                    <input type="text" class="form-control" id="telefono_admin" name="telefono_admin" placeholder="*Telefono" runat="server" />
                                 </div>
                                 <div class="form-group">
                                     <input
-                                        type="email" class="form-control" id="email_admin" name="email_admin" aria-describedby="emailHelp" placeholder="Email" runat="server" />
+                                        type="email" class="form-control" id="email_admin" name="email_admin" aria-describedby="emailHelp" placeholder="*Email" runat="server" />
                                     <div class="invalid-feedback">
                                         Email ya registrado
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control" id="pass_admin" name="pass_admin" placeholder="Contraseña" runat="server" />
+                                    <input type="text" class="form-control" id="pass_admin" name="pass_admin" placeholder="*Contraseña" runat="server" />
                                 </div>
                             </form>
                             <asp:Button ID="Btn_Registar_admin" runat="server" Text="Registrar" CssClass="btn btn-primary" OnClientClick="return validarVacioAdmin()" OnClick="Btn_Registar_admin_Click" />

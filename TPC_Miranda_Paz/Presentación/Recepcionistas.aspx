@@ -12,31 +12,31 @@
                         <div class="card-header">Formulario: Recepcionista</div>
                         <div class="card-body">
                             <h5 class="card-title">Registrar Recepcionista</h5>
-
+                            <p class="card-text text-muted">Los campos * son obligatorios</p>
                             <form>
                                 <div class="form-group">
-                                    <input type="text" class="form-control" id="nombre_recep" name="nombre_recep" placeholder="Nombre" runat="server" />
+                                    <input type="text" class="form-control" id="nombre_recep" name="nombre_recep" placeholder="*Nombre" runat="server" />
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control" id="apellido_recep" name="apellido_recep" placeholder="Apellido" runat="server" />
+                                    <input type="text" class="form-control" id="apellido_recep" name="apellido_recep" placeholder="*Apellido" runat="server" />
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control" id="dni_recep" name="dni_recep" placeholder="DNI" runat="server" />
+                                    <input type="text" class="form-control" id="dni_recep" name="dni_recep" placeholder="*DNI" runat="server" />
                                     <div class="invalid-feedback">
                                         DNI ya registrado
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control" id="telefono_recep" name="telefono_recep" placeholder="Telefono" runat="server" />
+                                    <input type="text" class="form-control" id="telefono_recep" name="telefono_recep" placeholder="*Telefono" runat="server" />
                                 </div>
                                 <div class="form-group">
-                                    <input type="email" class="form-control" id="email_recep" name="email_recep" aria-describedby="emailHelp" placeholder="Email" runat="server" />
+                                    <input type="email" class="form-control" id="email_recep" name="email_recep" aria-describedby="emailHelp" placeholder="*Email" runat="server" />
                                     <div class="invalid-feedback">
                                         Email ya registrado
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control" id="pass_recep" name="pass_recep" placeholder="Contraseña" runat="server" />
+                                    <input type="text" class="form-control" id="pass_recep" name="pass_recep" placeholder="*Contraseña" runat="server" />
                                 </div>
                                 <asp:Button ID="BtnRegistrar_Recepcionista" runat="server" Text="Registrar" CssClass="btn btn-primary" OnClientClick="return validarVacioRecep()" OnClick="BtnRegistrar_Recepcionista_Click" />
                             </form>
