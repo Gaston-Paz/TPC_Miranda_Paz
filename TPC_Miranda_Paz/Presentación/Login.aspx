@@ -90,6 +90,22 @@
             console.log("validar out"); // termina la funcion
             return true;
         }
+
+        window.addEventListener("load", function (e) {
+            var email = document.getElementById("email");
+            var pass = document.getElementById("password");
+
+            email.addEventListener("keypress", function (e) {
+                email.classList.remove("is-invalid");
+            })
+
+            pass.addEventListener("keypress", function (e) {
+                pass.classList.remove("is-invalid");
+            })
+
+            console.log("load");
+        })
+
     </script>
 </body>
 </html>
