@@ -13,27 +13,37 @@
                         <div class="card-header">Formulario: Médico</div>
                         <div class="card-body">
                             <h5 class="card-title">Registrar Médico</h5>
+                            <p class="card-text">Los campos * son obligatorios</p>
                             <form>
                                 <div class="form-group">
-                                    <input type="text" class="form-control"  id="nombre" placeholder="Nombre" runat="server" />
+                                    <input type="text" class="form-control"  id="nombre" placeholder="*Nombre" runat="server"/>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control" id="apellido" placeholder="Apellido" runat="server" />
+                                    <input type="text" class="form-control" id="apellido" placeholder="*Apellido" runat="server" />
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control" id="dni" placeholder="DNI" runat="server"/>
+                                    <input type="text" class="form-control" id="dni" placeholder="*DNI" runat="server"/>
+                                    <div class="invalid-feedback">
+                                        DNI ya registrado
+                                    </div>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control" id="telefono" placeholder="Telefono" runat="server"/>
+                                    <input type="text" class="form-control" id="telefono" placeholder="*Telefono" runat="server"/>
                                 </div>
                                 <div class="form-group">
-                                    <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Email" runat="server"/>
+                                    <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="*Email" runat="server"/>
+                                    <div class="invalid-feedback">
+                                        Email ya registrado
+                                    </div>
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" class="form-control" id="password" placeholder="Contraseña" runat="server"/>
+                                    <input type="password" class="form-control" id="password" placeholder="*Contraseña" runat="server"/>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control" id="matricula" placeholder="Matrícula" runat="server"/>
+                                    <input type="text" class="form-control" id="matricula" placeholder="*Matrícula" runat="server"/>
+                                    <div class="invalid-feedback">
+                                        Matricula ya registrado
+                                    </div>
                                 </div>
                                 <div class="form-group">
                                     <asp:DropDownList ID="ListEspecialidades" runat="server" CssClass="form-control">
@@ -54,7 +64,7 @@
 
 
                                 <asp:Button ID="BtnAgregarEspecialidad" runat="server" Text="Agregar Especialidad" OnClick="BtnAgregarEspecialidad_Click" CssClass="btn btn-success" />
-                                <asp:Button ID="BtnRegistrar" runat="server" Text="Registar" OnClick="BtnRegistrar_Click" CssClass="btn btn-primary" />
+                                <asp:Button ID="BtnRegistrar" runat="server" Text="Registar" OnClientClick="return validarVacio()" OnClick="BtnRegistrar_Click" CssClass="btn btn-primary" />
                             </form>
                         </div>
                     </div>
@@ -268,6 +278,65 @@
             return false;
         }
 
+        function validarVacio() {
+            var verificado = true;
+            let nombre = document.getElementById("<%=nombre.ClientID%>");
+            let apellido = document.getElementById("<%=apellido.ClientID%>");
+            let dni = document.getElementById("<%=dni.ClientID%>");
+            let matricula = document.getElementById("<%=matricula.ClientID%>");
+            let email = document.getElementById("<%=email.ClientID%>");
+            let pass = document.getElementById("<%=password.ClientID%>");
+            let tel = document.getElementById("<%=telefono.ClientID%>");
+            let especialidad = document.getElementById("<%=ListEspecialidades.ClientID%>");
+
+            if (nombre.value == "") {
+                nombre.classList.add("is-invalid");
+                verificado = false;
+            }
+
+            if (apellido.value == "") {
+                apellido.classList.add("is-invalid");
+                verificado = false;
+            }
+
+            if (dni.value == "") {
+                dni.classList.add("is-invalid");
+                verificado = false;
+            }
+
+            if (matricula.value == "") {
+                matricula.classList.add("is-invalid");
+                verificado = false;
+            }
+
+            if (email.value == "") {
+                email.classList.add("is-invalid");
+                verificado = false;
+            }
+
+            if (pass.value == "") {
+                pass.classList.add("is-invalid");
+                verificado = false;
+            }
+
+            if (tel.value == "") {
+                tel.classList.add("is-invalid");
+                verificado = false;
+            }
+
+            if (especialidad.value == 0) {
+                especialidad.classList.add("is-invalid");
+                verificado = false;
+            }
+
+            let invalid = document.getElementsByClassName("invalid-feedback");
+            for (let i = 0; i < invalid.length; i++) {
+                invalid[i].textContent = "";
+            }
+            console.log(invalid);
+
+            return verificado;
+        }
     </script>
 
 

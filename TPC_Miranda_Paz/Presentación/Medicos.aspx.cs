@@ -26,7 +26,7 @@ namespace Presentación
                 List<Especialidad> listaEspecialidadesAux = new List<Especialidad>();
 
                 listaEspecialidadesAux = especialidadNegocio.listar();
-                listaEspecialidades.Add(new Especialidad("Seleccionar", 0));
+                listaEspecialidades.Add(new Especialidad("*Seleccionar", 0));
 
                 foreach (Especialidad item in listaEspecialidadesAux)
                 {
@@ -116,6 +116,7 @@ namespace Presentación
             Medico nuevo = new Medico();
             MedicoNegocio medicoNegocio = new MedicoNegocio();
             EspecialidadesMedicoNegocio especialidadesMedicoNegocio = new EspecialidadesMedicoNegocio();
+            bool agregar = true;
             
 
             ///ASIGNO TODAS LAS PROP
@@ -144,16 +145,39 @@ namespace Presentación
                     nuevo.Especialidades.Add(item);
                 }
 
-
-
             }
 
-            ///GUARDO EN LA DB
-            medicoNegocio.agregar(nuevo);
-            nuevo.Id = medicoNegocio.buscarMedico(nuevo);
-            especialidadesMedicoNegocio.agregar(nuevo.Especialidades, nuevo.Id);
+            if (medicoNegocio.chequear_dni(nuevo.Dni) > 0)
+            {
+                /// DNI REPETIDO
+                dni.Attributes.Add("class", "form-control is-invalid");
+                agregar = false;
+            }
 
-            formClear();
+            if (medicoNegocio.chequear_email(nuevo.Email) > 0)
+            {
+                /// EMAIL REPETIDO
+                email.Attributes.Add("class", "form-control is-invalid");
+                agregar = false;
+            }
+
+            if (medicoNegocio.chequear_matricula(nuevo.Martricula) > 0)
+            {
+                /// MATRICULA REPETIDO
+                matricula.Attributes.Add("class", "form-control is-invalid");
+                agregar = false;
+            }
+
+            if(agregar == true)
+            {
+                ///GUARDO EN LA DB
+                medicoNegocio.agregar(nuevo);
+                nuevo.Id = medicoNegocio.buscarMedico(nuevo);
+                especialidadesMedicoNegocio.agregar(nuevo.Especialidades, nuevo.Id);
+
+                formClear();
+            }
+            
         }
 
         protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
