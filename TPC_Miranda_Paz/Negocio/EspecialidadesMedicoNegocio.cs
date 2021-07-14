@@ -72,47 +72,6 @@ namespace Negocio
             }
         }
 
-        public List<Especialidad> chequearEspecialidad(List<Especialidad> aChequear, int id)
-        {
-            AccesoDatos datos = new AccesoDatos();
-            int x = 0;
-            List<Especialidad> chequeo = new List<Especialidad>();
-            try
-            {
- 
-                string consulta = "SELECT * FROM EspecialidadesxMedico WHERE IdMedico = @id";
-
-                datos.setearParametro("@id", id);
-                datos.setearConsulta(consulta);
-                datos.ejecutarLectura();
-
-                while (datos.Lector.Read())
-                {
-                    int idEspe = (int)datos.Lector["IdEspecialidad"];
-                    foreach (Especialidad item in aChequear)
-                    {
-                        if(item.Id != idEspe)
-                        {
-                            chequeo.Add(item);
-                        }
-
-                    }
-                    
-                }
-                return chequeo;
-
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-            finally
-            {
-                datos.cerrarConexion();
-            }
-
-        }
         public void modificar(Especialidad nuevo, int id)
         {
             AccesoDatos datos = new AccesoDatos();
@@ -153,6 +112,40 @@ namespace Negocio
             finally
             {
                 datos.cerrarConexion();
+            }
+        }
+
+        public List<Especialidad> chequear_existencia(Medico achequear)
+        {
+            List<Especialidad> agregar = new List<Especialidad>();
+            try
+            {
+
+                foreach (Especialidad item in achequear.Especialidades)
+                {
+                    AccesoDatos datos = new AccesoDatos();
+                    datos.setearConsulta("select IdEspecialidad from EspecialidadesxMedico where IdMedico = @id and IdEspecialidad = @idespeciadlida");
+                    datos.setearParametro("@id", achequear.Id);
+                    datos.setearParametro("@idespeciadlida", item.Id);
+                    datos.ejecutarLectura();
+
+                    if (!datos.Lector.Read())
+                    {
+                        agregar.Add(item);
+                    }
+                    datos.cerrarConexion();
+                }
+                return agregar;
+                
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+            finally
+            {
+                
             }
         }
     }
