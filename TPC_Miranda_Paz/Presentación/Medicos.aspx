@@ -120,7 +120,7 @@
 
      <!-- MODAL -->
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
+                <div class="modal-dialog modal-xl">
                     <div class="modal-content">
                         
                         <%--ENCABEZADO DE MODAL--%>
@@ -133,96 +133,94 @@
                         </div>
 
                         <%--CONTENIDO DE MODAL--%>
+                        <div class="modal-body">
+                            <div class="container">
+                            <div class="row">
+                                <div class="col-md-6">
 
-                        <div class="modal-body row">
-                            <div class="col-3">
-                                <asp:Label ID="LblId" runat="server" Text="Id"></asp:Label>
-                            </div>
-                            <div class="col">
-                                <asp:TextBox ID="TxtId" AutoPostBack="true" runat="server" ReadOnly="True" CssClass="form-control"></asp:TextBox>
-                            </div>
-                        </div>
-                        <div class="modal-body row">
-                            <div class="col-3">
-                                <asp:Label ID="LblNombre" runat="server" Text="Nombre"></asp:Label>
-                            </div>
-                            <div class="col">
-                                <asp:TextBox ID="TxtNombre" runat="server" ReadOnly="True" CssClass="form-control"></asp:TextBox>
-                            </div>
-                        </div>
-                        <div class="modal-body row">
-                            <div class="col-3">
-                                <asp:Label ID="LblApellido" runat="server" Text="Apellido"></asp:Label>
-                            </div>
-                            <div class="col">
-                                <asp:TextBox ID="TxtApellido" runat="server" ReadOnly="True" CssClass="form-control"></asp:TextBox>
-                            </div>
-                        </div>
-                        <div class="modal-body row">
-                            <div class="col-3">
-                                <asp:Label ID="LblDni" runat="server" Text="DNI"></asp:Label>
-                            </div>
-                            <div class="col">
-                                <asp:TextBox ID="TxtDNI" runat="server" ReadOnly="True" CssClass="form-control"></asp:TextBox>
-                            </div>
-                        </div>
-                        <div class="modal-body row">
-                            <div class="col-3">
-                                <asp:Label ID="LblEmail" runat="server" Text="Email"></asp:Label>
-                            </div>
-                            <div class="col">
-                                <asp:TextBox ID="TxtEmail" runat="server" ReadOnly="false" CssClass="form-control"></asp:TextBox>
-                            </div>
-                        </div>
-                        <div class="modal-body row">
-                            <div class="col-3">
-                                <asp:Label ID="LblPass" runat="server" Text="Contraseña"></asp:Label>
-                            </div>
-                            <div class="col">
-                                <asp:TextBox ID="TxtPass" runat="server" ReadOnly="false" CssClass="form-control"></asp:TextBox>
-                            </div>
-                        </div>
-                        <div class="modal-body row">
-                            <div class="col-3">
-                                <asp:Label ID="LblTelefono" runat="server" Text="Teléfono"></asp:Label>
-                            </div>
-                            <div class="col">
-                                <asp:TextBox ID="TxtTelefono" runat="server" ReadOnly="false" CssClass="form-control"></asp:TextBox>
-                            </div>
-                        </div>
-                        <div class="modal-body row">
-                            <div class="col-3">
-                                <asp:Label ID="LblMatricula" runat="server" Text="Matrícula"></asp:Label>
-                            </div>
-                            <div class="col">
-                                <asp:TextBox ID="TxtMatricula" runat="server" CssClass="form-control disable" ReadOnly="true"></asp:TextBox>
-                            </div>
-                        </div>
-                        <div class="modal-body row">
-                            <div class="col-3">
-                                <asp:Label ID="LblEspecialidad" runat="server" Text="Especialidad"></asp:Label>
-                            </div>
-                            <div class="col">
-                                <asp:DropDownList ID="DDModalEspecialidades" runat="server" CssClass="form-control"></asp:DropDownList>
-                            </div>
-                        </div>
-                        <div class="modal-body row">
-                            <div class="col-3">
-                                <asp:Label ID="Label1" runat="server" Text="Especialidad" Visible="False"></asp:Label>
-                            </div>
-                            <div class="col">
-                                <asp:DropDownList ID="DDModalEspecialidades2" runat="server" Visible="False" CssClass="form-control"></asp:DropDownList>
-                            </div>
-                        </div>
-                        <div class="modal-body row">
-                            <div class="col-3">
-                                <asp:Label ID="Label2" runat="server" Text="Especialidad" Visible="False"></asp:Label>
-                            </div>
-                            <div class="col">
-                                <asp:DropDownList ID="DDModalEspecialidades3" runat="server" Visible="False" CssClass="form-control"></asp:DropDownList>
-                            </div>
-                        </div>
+                                    <div class="modal-body row">
+                                        <div class="col-3">
+                                            <asp:Label ID="LblId" runat="server" Text="Id"></asp:Label>
+                                        </div>
+                                        <div class="col">
+                                            <asp:TextBox ID="TxtId" AutoPostBack="true" runat="server" ReadOnly="True" CssClass="form-control"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <div class="modal-body row">
+                                        <div class="col-3">
+                                            <asp:Label ID="LblNombre" runat="server" Text="Nombre"></asp:Label>
+                                        </div>
+                                        <div class="col">
+                                            <asp:TextBox ID="TxtNombre" runat="server" ReadOnly="True" CssClass="form-control"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <div class="modal-body row">
+                                        <div class="col-3">
+                                            <asp:Label ID="LblApellido" runat="server" Text="Apellido"></asp:Label>
+                                        </div>
+                                        <div class="col">
+                                            <asp:TextBox ID="TxtApellido" runat="server" ReadOnly="True" CssClass="form-control"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <div class="modal-body row">
+                                        <div class="col-3">
+                                            <asp:Label ID="LblDni" runat="server" Text="DNI"></asp:Label>
+                                        </div>
+                                        <div class="col">
+                                            <asp:TextBox ID="TxtDNI" runat="server" ReadOnly="True" CssClass="form-control"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <div class="modal-body row">
+                                        <div class="col-3">
+                                            <asp:Label ID="LblEmail" runat="server" Text="Email"></asp:Label>
+                                        </div>
+                                        <div class="col">
+                                            <asp:TextBox ID="TxtEmail" runat="server" ReadOnly="false" CssClass="form-control"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <div class="modal-body row">
+                                        <div class="col-3">
+                                            <asp:Label ID="LblPass" runat="server" Text="Contraseña"></asp:Label>
+                                        </div>
+                                        <div class="col">
+                                            <asp:TextBox ID="TxtPass" runat="server" ReadOnly="false" CssClass="form-control"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <div class="modal-body row">
+                                        <div class="col-3">
+                                            <asp:Label ID="LblTelefono" runat="server" Text="Teléfono"></asp:Label>
+                                        </div>
+                                        <div class="col">
+                                            <asp:TextBox ID="TxtTelefono" runat="server" ReadOnly="false" CssClass="form-control"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <div class="modal-body row">
+                                        <div class="col-3">
+                                            <asp:Label ID="LblMatricula" runat="server" Text="Matrícula"></asp:Label>
+                                        </div>
+                                        <div class="col">
+                                            <asp:TextBox ID="TxtMatricula" runat="server" CssClass="form-control disable" ReadOnly="true"></asp:TextBox>
+                                        </div>
+                                    </div>
 
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="modal-body row">
+                                        <div class="col">
+                                            <div class="form-check">
+                                                <asp:CheckBoxList ID="ChecEspecialidades" CssClass="form-check-label" runat="server" RepeatDirection="Horizontal" RepeatColumns="2" RepeatLayout="Flow" TextAlign="Right"></asp:CheckBoxList>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+
+                            </div>
+                                </div>
+                        </div>
 
                         <%--PIE DE MODAL--%>
 
@@ -240,6 +238,8 @@
     </asp:UpdatePanel>
 
     <script>
+        console.log(<%=ChecEspecialidades.ClientID%>);
+
         function habilitar() {
             var TxtNombre = document.getElementById("<%=TxtNombre.ClientID%>");
             TxtNombre.removeAttribute("readonly", 0);

@@ -123,6 +123,9 @@ CREATE TABLE Dias(
 	Nombre VARCHAR (15) NOT NULL UNIQUE
 )
 GO
+INSERT INTO Dias
+VALUES('Lunes'),('Martes'),('Miércoles'),('Jueves'),('Viernes'),('Sábado')
+GO
 CREATE TABLE MedicosDisponiblesxDia(
 	IdMedico INT FOREIGN KEY REFERENCES Medicos (Id),
 	IdDia SMALLINT FOREIGN KEY REFERENCES DIAS(Id),

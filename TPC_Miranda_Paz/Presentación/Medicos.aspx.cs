@@ -34,50 +34,39 @@ namespace Presentación
                 }
 
                 if (!IsPostBack) { 
-                ///CARGO LA GRILLA
-                GridMedicos.DataSource = listaMedicos;
-                GridMedicos.DataBind();
+                    ///CARGO LA GRILLA
+                    GridMedicos.DataSource = listaMedicos;
+                    GridMedicos.DataBind();
                 
-                ///CARGO LOS DROPS DEL MODAL
-                DDModalEspecialidades.DataSource = listaEspecialidades;
-                DDModalEspecialidades.DataTextField = "Nombre";
-                DDModalEspecialidades.DataValueField = "Id";
-                DDModalEspecialidades.DataBind();
+                    ///CARGO LOS DROPS DEL FORM DE REGISTRO
+                    ListEspecialidades.DataSource = listaEspecialidades;
+                    ListEspecialidades.DataTextField = "Nombre";
+                    ListEspecialidades.DataValueField = "Id";
+                    ListEspecialidades.DataBind();
 
-                DDModalEspecialidades2.DataSource = listaEspecialidades;
-                DDModalEspecialidades2.DataTextField = "Nombre";
-                DDModalEspecialidades2.DataValueField = "Id";
-                DDModalEspecialidades2.DataBind();
+                    ListEspecialidades2.DataSource = listaEspecialidades;
+                    ListEspecialidades2.DataTextField = "Nombre";
+                    ListEspecialidades2.DataValueField = "Id";
+                    ListEspecialidades2.DataBind();
 
-                DDModalEspecialidades3.DataSource = listaEspecialidades;
-                DDModalEspecialidades3.DataTextField = "Nombre";
-                DDModalEspecialidades3.DataValueField = "Id";
-                DDModalEspecialidades3.DataBind();
+                    ListEspecialidades3.DataSource = listaEspecialidades;
+                    ListEspecialidades3.DataTextField = "Nombre";
+                    ListEspecialidades3.DataValueField = "Id";
+                    ListEspecialidades3.DataBind();
 
-                ///CARGO LOS DROPS DEL FORM DE REGISTRO
-                ListEspecialidades.DataSource = listaEspecialidades;
-                ListEspecialidades.DataTextField = "Nombre";
-                ListEspecialidades.DataValueField = "Id";
-                ListEspecialidades.DataBind();
+                    ListEspecialidadesGrid.DataSource = listaEspecialidades;
+                    ListEspecialidadesGrid.DataTextField = "Nombre";
+                    ListEspecialidadesGrid.DataValueField = "Id";
+                    ListEspecialidadesGrid.DataBind();
 
-                ListEspecialidades2.DataSource = listaEspecialidades;
-                ListEspecialidades2.DataTextField = "Nombre";
-                ListEspecialidades2.DataValueField = "Id";
-                ListEspecialidades2.DataBind();
+                    ChecEspecialidades.DataSource = listaEspecialidades;
+                    ChecEspecialidades.DataTextField = "Nombre";
+                    ChecEspecialidades.DataValueField = "Id";
+                    ChecEspecialidades.DataBind();
 
-                ListEspecialidades3.DataSource = listaEspecialidades;
-                ListEspecialidades3.DataTextField = "Nombre";
-                ListEspecialidades3.DataValueField = "Id";
-                ListEspecialidades3.DataBind();
-
-                ListEspecialidadesGrid.DataSource = listaEspecialidades;
-                ListEspecialidadesGrid.DataTextField = "Nombre";
-                ListEspecialidadesGrid.DataValueField = "Id";
-                ListEspecialidadesGrid.DataBind();
-
-                ///GUARDO EN SESION MEDICOS Y ESPECIALIDADES
-                Session.Add("Especialidades", listaEspecialidades);
-                Session.Add("Medicos", listaMedicos);
+                    ///GUARDO EN SESION MEDICOS Y ESPECIALIDADES
+                    Session.Add("Especialidades", listaEspecialidades);
+                    Session.Add("Medicos", listaMedicos);
                 }
 
             }
@@ -215,16 +204,9 @@ namespace Presentación
             ///SE TRAE EL MEDICO SELECCIONADO PARA CARGAR EN EL MODAL
             int index = GridMedicos.SelectedIndex;
 
-            int aux = 0;
-
             GridViewRow devuelto = GridMedicos.SelectedRow;
 
             string dni = devuelto.Cells[2].Text;
-
-            DDModalEspecialidades2.Visible = false;
-            DDModalEspecialidades3.Visible = false;
-            Label1.Visible = false;
-            Label2.Visible = false;
 
             foreach (Medico item in listaMedicos)
             {
@@ -240,33 +222,17 @@ namespace Presentación
                     TxtMatricula.Text = item.Martricula;
                     TxtPass.Text = item.Password;
 
-                    foreach (Especialidad items in item.Especialidades)
+                    foreach (Especialidad especialidads in item.Especialidades)
                     {
-                        if(aux == 0) { 
-                        DDModalEspecialidades.SelectedValue = items.Id.ToString();
-                            aux++;
-                        }
-                        else
+                        foreach (ListItem items in ChecEspecialidades.Items)
                         {
-                            if(aux == 1)
+                            if(especialidads.Id.ToString() == items.Value)
                             {
-                                DDModalEspecialidades2.SelectedValue = items.Id.ToString();
-                                aux++;
-                                DDModalEspecialidades2.Visible = true;
-                                Label1.Visible = true;
-                            }
-                            else
-                            {
-                                if (aux == 1)
-                                {
-                                    DDModalEspecialidades3.SelectedValue = items.Id.ToString();
-                                    aux++;
-                                    DDModalEspecialidades3.Visible = true;
-                                    Label2.Visible = true;
-                                }
+                                items.Selected = true;
                             }
                         }
                     }
+
                 }
             }
         }
@@ -342,8 +308,9 @@ namespace Presentación
             try
             {
                 ///SE GUARDA UN MEDICO NUEVO AUX
-                bool agregar = true;
+     
                 Medico nuevo = new Medico();
+
                 EspecialidadesMedicoNegocio especialidadesMedicoNegocio = new EspecialidadesMedicoNegocio();
                 MedicoNegocio medicoNegocio = new MedicoNegocio();
                 List<Especialidad> nueva = new List<Especialidad>();
@@ -360,39 +327,31 @@ namespace Presentación
                 nuevo.Estado = true;
                 nuevo.Especialidades = new List<Especialidad>();
 
-                foreach (Especialidad item in listaEspecialidades)
+                foreach (ListItem items in ChecEspecialidades.Items)
                 {
-                    if (item.Nombre == ListEspecialidades.SelectedItem.Text)
+                    foreach (Especialidad item in listaEspecialidades)
                     {
-                        nuevo.Especialidades.Add(item);
+                        if (items.Selected){
+                            if(items.Value == item.Id.ToString()) {
+                            nuevo.Especialidades.Add(item);
+                            }
+                        }
                     }
-                    if (ListEspecialidades2.Visible == true && item.Nombre == ListEspecialidades2.SelectedItem.Text)
-                    {
-                        nuevo.Especialidades.Add(item);
-                    }
-                    if (ListEspecialidades3.Visible == true && item.Nombre == ListEspecialidades3.SelectedItem.Text)
-                    {
-                        nuevo.Especialidades.Add(item);
-                    }
-
                 }
-
 
                 if (medicoNegocio.chequear_email(nuevo.Email) > 0)
                 {
                     /// EMAIL REPETIDO
                     TxtEmail.CssClass = "form-control is-invalid";
-                    agregar = false;
+
                 }
 
-                if (agregar == true)
-                {
                     ///GUARDO EN LA DB
                     medicoNegocio.modificar(nuevo);
-                    //nuevo.Especialidades = especialidadesMedicoNegocio.chequearEspecialidad(nuevo.Especialidades, nuevo.Id);
-                    //especialidadesMedicoNegocio.agregar(nuevo.Especialidades, nuevo.Id);
+                    
+                    especialidadesMedicoNegocio.agregar(especialidadesMedicoNegocio.chequear_existencia(nuevo), nuevo.Id);
 
-                }
+
 
             }
             catch (Exception ex)
@@ -422,6 +381,6 @@ namespace Presentación
             Response.Redirect("Medicos.aspx");
         }
 
-
+      
     }
 }
