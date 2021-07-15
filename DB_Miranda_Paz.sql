@@ -128,9 +128,9 @@ VALUES('Lunes'),('Martes'),('Miércoles'),('Jueves'),('Viernes'),('Sábado')
 GO
 CREATE TABLE MedicosDisponiblesxDia(
 	IdMedico INT FOREIGN KEY REFERENCES Medicos (Id),
-	IdDia SMALLINT FOREIGN KEY REFERENCES DIAS(Id),
-	HoraEntrada SMALLINT NOT NULL,
-	HoraSalida SMALLINT NOT NULL,
+	IdDia INT FOREIGN KEY REFERENCES DIAS(Id),
+	HoraEntrada INT NOT NULL,
+	HoraSalida INT NOT NULL,
 	PRIMARY KEY (IdMedico, IdDia)
 )
 GO

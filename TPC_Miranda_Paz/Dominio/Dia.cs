@@ -18,5 +18,6 @@ namespace Dominio
 
             Nombre = nombre;
         }
+        public Dia() { }
     }
 }
