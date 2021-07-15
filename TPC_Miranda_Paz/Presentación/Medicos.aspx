@@ -210,7 +210,7 @@
                                         <div class="col">
                                             <h4 class="text-center pb-1">Especialidades</h4>
                                             <div class="form-check">
-                                                <asp:CheckBoxList ID="ChecEspecialidades" CssClass="form-check-label check" runat="server" RepeatDirection="Vertical" RepeatColumns="2" RepeatLayout="Flow" TextAlign="Right"></asp:CheckBoxList>
+                                                <asp:CheckBoxList ID="ChecEspecialidades" CssClass="form-check-label check" runat="server" RepeatDirection="Horizontal" RepeatColumns="2" RepeatLayout="Flow" TextAlign="Right"></asp:CheckBoxList>
                                             </div>
                                         </div>
                                     </div>

@@ -95,14 +95,20 @@ namespace Negocio
             }
         }
 
-        public void eliminar(int id)
+        public void eliminar(List<Especialidad> eliminar, int id)
         {
-            AccesoDatos datos = new AccesoDatos();
 
             try
             {
-                datos.setearConsulta("DELETE FROM Especialidades WHERE Id = " + id);
-                datos.ejecutarAccion();
+                foreach (Especialidad item in eliminar)
+                {
+                    AccesoDatos datos = new AccesoDatos();
+                    datos.setearConsulta("DELETE FROM EspecialidadesxMedico WHERE IdEspecialidad = @idespecialidad AND IdMedico = @idmedico");
+                    datos.setearParametro("@idespecialidad", item.Id);
+                    datos.setearParametro("@idmedico", id);
+                    datos.ejecutarAccion();
+                    datos.cerrarConexion();
+                }
             }
             catch (Exception ex)
             {
@@ -111,7 +117,7 @@ namespace Negocio
             }
             finally
             {
-                datos.cerrarConexion();
+                
             }
         }
 

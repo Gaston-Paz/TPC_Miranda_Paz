@@ -28,11 +28,11 @@ body{
     overflow: auto;
 }
 
-.check{
+.check {
     display: grid;
     grid-template-columns: 10% auto 10% auto;
 }
 
-.check br{
-    display:none;
-}
+.check br {
+        display: none;
+ }

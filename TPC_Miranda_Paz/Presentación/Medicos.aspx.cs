@@ -14,6 +14,7 @@ namespace Presentación
         public List<Medico> listaMedicos;
         public List<Medico> listaFiltrada;
         public List<Especialidad> listaEspecialidades;
+        public List<Especialidad> listaEspecialidades2;
         protected void Page_Load(object sender, EventArgs e)
         {
             try
@@ -22,11 +23,13 @@ namespace Presentación
                 listaMedicos = medicoNegocio.listar();
                 EspecialidadNegocio especialidadNegocio = new EspecialidadNegocio();
                 listaEspecialidades = new List<Especialidad>();
+                listaEspecialidades2 = new List<Especialidad>();
 
                 List<Especialidad> listaEspecialidadesAux = new List<Especialidad>();
 
                 listaEspecialidadesAux = especialidadNegocio.listar();
                 listaEspecialidades.Add(new Especialidad("*Seleccionar", 0));
+                listaEspecialidades2 = especialidadNegocio.listar();
 
                 foreach (Especialidad item in listaEspecialidadesAux)
                 {
@@ -59,7 +62,7 @@ namespace Presentación
                     ListEspecialidadesGrid.DataValueField = "Id";
                     ListEspecialidadesGrid.DataBind();
 
-                    ChecEspecialidades.DataSource = listaEspecialidades;
+                    ChecEspecialidades.DataSource = listaEspecialidades2;
                     ChecEspecialidades.DataTextField = "Nombre";
                     ChecEspecialidades.DataValueField = "Id";
                     ChecEspecialidades.DataBind();
@@ -315,6 +318,10 @@ namespace Presentación
                 MedicoNegocio medicoNegocio = new MedicoNegocio();
                 List<Especialidad> nueva = new List<Especialidad>();
 
+                List<Especialidad> borrar = new List<Especialidad>();
+                List<Especialidad> aux = new List<Especialidad>();
+
+
                 ///ASIGNO TODAS LAS PROP
                 nuevo.Id = int.Parse(TxtId.Text);
                 nuevo.Nombre = TxtNombre.Text;
@@ -347,9 +354,25 @@ namespace Presentación
                 }
 
                     ///GUARDO EN LA DB
-                    medicoNegocio.modificar(nuevo);
-                    
-                    especialidadesMedicoNegocio.agregar(especialidadesMedicoNegocio.chequear_existencia(nuevo), nuevo.Id);
+                medicoNegocio.modificar(nuevo);
+
+                foreach (Medico item in listaMedicos)
+                {
+                    if (item.Id == nuevo.Id)
+                    {
+                        borrar = item.Especialidades;
+                    }
+                }
+
+                foreach (Especialidad item in nuevo.Especialidades)
+                {
+                    borrar.Remove(borrar.Find(x => x.Id == item.Id));
+                }
+
+
+                especialidadesMedicoNegocio.eliminar(borrar, nuevo.Id);
+
+                especialidadesMedicoNegocio.agregar(especialidadesMedicoNegocio.chequear_existencia(nuevo), nuevo.Id);
 
 
 
