@@ -27,3 +27,12 @@ body{
     max-height: 492px !important;
     overflow: auto;
 }
+
+.check {
+    display: grid;
+    grid-template-columns: 10% auto 10% auto;
+}
+
+.check br {
+        display: none;
+ }
