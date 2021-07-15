@@ -99,9 +99,15 @@
                                         <asp:BoundField DataField="Apellido" HeaderText="Apellido" SortExpression="Apellido" />
                                         <asp:BoundField DataField="Email" HeaderText="Email" SortExpression="Email" />
                                         <asp:CommandField ShowSelectButton="True" />
-                                        <asp:TemplateField HeaderText="" ItemStyle-Width="50">
+                                        <asp:TemplateField HeaderText="Editar/Eliminar" ItemStyle-Width="50">
                                             <ItemTemplate>
                                                 <a id="modal" href="#" class="" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-edit"></i></a>
+                                            </ItemTemplate>
+                                            <ItemStyle Width="50px"></ItemStyle>
+                                        </asp:TemplateField>
+                                        <asp:TemplateField HeaderText="Disponibilidad horaria" ItemStyle-Width="50">
+                                            <ItemTemplate>
+                                                <a id="modal" href="#" class="" data-toggle="modal" data-target="#ModalHorario"><i class="fas fa-calendar-alt"></i></a>
                                             </ItemTemplate>
                                             <ItemStyle Width="50px"></ItemStyle>
                                         </asp:TemplateField>
@@ -235,6 +241,132 @@
                     </div>
                 </div>
             </div>
+
+
+
+             <!-- MODAL -->
+            <div class="modal fade" id="ModalHorario" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-md">
+                    <div class="modal-content">
+                        
+                        <%--ENCABEZADO DE MODAL--%>
+
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="ModalHorarioLabel">Horarios del médico</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+
+                        <%--CONTENIDO DE MODAL--%>
+                        <div class="modal-body">
+                            <div class="container">
+                                <div class="row mb-3">
+                                    <div class="col-3">
+                                    <asp:CheckBox ID="CheckLunes" runat="server"/>
+                                    <asp:Label ID="Label1" runat="server" Text="Lunes"></asp:Label>
+                                    </div>
+                                    <div class="col">
+                                    <asp:Label ID="Label2" runat="server" Text="Hs. Entrada"></asp:Label>
+                                    <asp:DropDownList ID="DropDownList1" runat="server"></asp:DropDownList>
+                                    </div>
+                                    <div class="col">
+                                    <asp:Label ID="Label3" runat="server" Text="Hs. Salida"></asp:Label>
+                                    <asp:DropDownList ID="DropDownList2" runat="server"></asp:DropDownList>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <div class="col-3">
+                                    <asp:CheckBox ID="CheckMartes" runat="server" />
+                                    <asp:Label ID="Label4" runat="server" Text="Martes"></asp:Label>
+                                    </div>
+                                    <div class="col">
+                                    <asp:Label ID="Label5" runat="server" Text="Hs. Entrada"></asp:Label>
+                                    <asp:DropDownList ID="DropDownList3" runat="server"></asp:DropDownList>
+                                    </div>
+                                    <div class="col">
+                                    <asp:Label ID="Label6" runat="server" Text="Hs. Salida"></asp:Label>
+                                    <asp:DropDownList ID="DropDownList4" runat="server"></asp:DropDownList>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <div class="col-3">
+                                    <asp:CheckBox ID="CheckMiercoles" runat="server" />
+                                    <asp:Label ID="Label7" runat="server" Text="Miércoles"></asp:Label>
+                                    </div>
+                                    <div class="col">
+                                    <asp:Label ID="Label8" runat="server" Text="Hs. Entrada"></asp:Label>
+                                    <asp:DropDownList ID="DropDownList5" runat="server"></asp:DropDownList>
+                                    </div>
+                                    <div class="col">
+                                    <asp:Label ID="Label9" runat="server" Text="Hs. Salida"></asp:Label>
+                                    <asp:DropDownList ID="DropDownList6" runat="server"></asp:DropDownList>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <div class="col-3">
+                                    <asp:CheckBox ID="CheckJueves" runat="server" />
+                                    <asp:Label ID="Label10" runat="server" Text="Jueves"></asp:Label>
+                                    </div>
+                                    <div class="col">
+                                    <asp:Label ID="Label11" runat="server" Text="Hs. Entrada"></asp:Label>
+                                    <asp:DropDownList ID="DropDownList7" runat="server"></asp:DropDownList>
+                                    </div>
+                                    <div class="col">
+                                    <asp:Label ID="Label12" runat="server" Text="Hs. Salida"></asp:Label>
+                                    <asp:DropDownList ID="DropDownList8" runat="server"></asp:DropDownList>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <div class="col-3">
+                                    <asp:CheckBox ID="CheckViernes" runat="server" />
+                                    <asp:Label ID="Label13" runat="server" Text="Viernes"></asp:Label>
+                                    </div>
+                                    <div class="col">
+                                    <asp:Label ID="Label14" runat="server" Text="Hs. Entrada"></asp:Label>
+                                    <asp:DropDownList ID="DropDownList9" runat="server"></asp:DropDownList>
+                                    </div>
+                                    <div class="col">
+                                    <asp:Label ID="Label15" runat="server" Text="Hs. Salida"></asp:Label>
+                                    <asp:DropDownList ID="DropDownList10" runat="server"></asp:DropDownList>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <div class="col-3">
+                                    <asp:CheckBox ID="CheckSabado" runat="server" />
+                                    <asp:Label ID="Label16" runat="server" Text="Sábado"></asp:Label>
+                                    </div>
+                                    <div class="col">
+                                    <asp:Label ID="Label17" runat="server" Text="Hs. Entrada"></asp:Label>
+                                    <asp:DropDownList ID="DropDownList11" runat="server"></asp:DropDownList>
+                                    </div>
+                                    <div class="col">
+                                    <asp:Label ID="Label18" runat="server" Text="Hs. Salida"></asp:Label>
+                                    <asp:DropDownList ID="DropDownList12" runat="server"></asp:DropDownList>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <%--PIE DE MODAL--%>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                            <asp:Button ID="BtnGuardarHorario" runat="server" Text="Guardar cambios" CssClass="btn btn-primary" OnClick="BtnGuardarHorario_Click"/>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+
+
 </ContentTemplate>
     </asp:UpdatePanel>
 
