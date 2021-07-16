@@ -9,7 +9,7 @@
                     <div class="card bg-warning text-light">
                         <div class="card-body">
                             <i class="far fa-calendar-alt"></i>
-                            <span><%=DateTime.UtcNow.Date.ToString("dd/MM/yyyy") %></span>
+                            <span><%=DateTime.Now.Date.ToString("dd/MM/yyyy") %></span>
                           <h5 class="card-title text-center">Turnos Ocupados</h5>
                           <p class="card-text text-center">50</p>
                         </div>
@@ -19,7 +19,7 @@
                     <div class="card bg-success text-light">
                         <div class="card-body">
                             <i class="far fa-calendar-alt"></i>
-                            <span><%=DateTime.UtcNow.Date.ToString("dd/MM/yyyy") %></span>
+                            <span><%=DateTime.Now.Date.ToString("dd/MM/yyyy") %></span>
                           <h5 class="card-title text-center">Turnos Disponibles</h5>
                           <p class="card-text text-center">10</p>
                         </div>

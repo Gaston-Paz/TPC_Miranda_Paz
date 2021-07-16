@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Turnos.aspx.cs" Inherits="Presentación.Turnos" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
-<div class="row">
+    <div class="row">
         <div class="col-3">
             <div class="card">
                 <div class="card-header">Formulario: Turnos</div>
@@ -9,23 +9,56 @@
                     <h5 class="card-title">Registrar Turno</h5>
                     <form>
                         <div class="form-group">
+                            <div class="form-inline">
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    id="dni"
+                                    placeholder="dni" />
+                                <button type="submit" class="btn btn-primary" id="search">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <input
                                 type="text"
                                 class="form-control"
-                                id="Dni"
-                                placeholder="Dni" />
+                                name=""
+                                id="nombre"
+                                placeholder="pepe" />
                         </div>
                         <div class="form-group">
-                            <select class="form-control" id="exampleFormControlSelect1">
-                                <option>Clinico Medico</option>
-                                <option>Alergia</option>
-                                <option>Otorrinolaringologo</option>
-                                <option>Oftalmologo</option>
-                                <option>Neumonologo</option>
+                            <input
+                                type="text"
+                                class="form-control"
+                                name=""
+                                id="apellido"
+                                placeholder="mujica" />
+                        </div>
+                        <div class="form-group">
+                            <select class="form-control">
+                                <option>Especialidades</option>
                             </select>
                         </div>
-                        
-                        <button type="submit" class="btn btn-primary">Registrar
+                        <div class="form-group">
+                            <select class="form-control">
+                                <option>Medicos - Apellidos</option>
+                                <option>Miranda</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" type="date" name="" id="fecha" />
+                        </div>
+                        <div class="form-group">
+                            <select class="form-control">
+                                <option>Horarios</option>
+                                <option>1er turno 7am</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary mt-2">
+                            Agendar
                         </button>
                     </form>
                 </div>
@@ -63,7 +96,7 @@
                             </thead>
                             <tbody>
 
-                               <%-- <% foreach (Dominio.Paciente item in listaPacientes)
+                                <%-- <% foreach (Dominio.Paciente item in listaPacientes)
                                     { %>
                                 <tr>
 
