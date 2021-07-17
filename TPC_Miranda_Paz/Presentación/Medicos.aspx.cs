@@ -98,10 +98,7 @@ namespace Presentación
                     DropDownList11.DataBind();
                     DropDownList12.DataSource = horarios;
                     DropDownList12.DataBind();
-
-                    ///GUARDO EN SESION MEDICOS Y ESPECIALIDADES
-                    Session.Add("Especialidades", listaEspecialidades);
-                    Session.Add("Medicos", listaMedicos);
+                    
                 }
 
             }

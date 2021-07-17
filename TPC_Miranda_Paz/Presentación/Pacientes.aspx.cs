@@ -27,7 +27,7 @@ namespace Presentación
                     GridPacientes.DataSource = listaPacientes;
                     GridPacientes.DataBind();
 
-                    Session.Add("Pacientes", listaPacientes);
+                    
                 }
 
             }
