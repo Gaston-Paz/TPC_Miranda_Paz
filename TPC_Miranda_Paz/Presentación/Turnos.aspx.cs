@@ -54,7 +54,7 @@ namespace Presentación
 
                 foreach (Paciente item in listapacientes)
                 {
-                    if (item.Dni == dni.Value)
+                    if (item.Dni == dni.Value.Trim())
                     {
                         nombre.Value = item.Nombre;
                         apellido.Value = item.Apellido;
