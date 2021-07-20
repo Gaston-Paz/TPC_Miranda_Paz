@@ -54,7 +54,17 @@
                 <div class="card-body ">
                     <div class="test-overflow">
                         <table class="table table-bordered table-hover">
-                            <asp:GridView ID="GridTurnosPredictivo" runat="server">
+                            <asp:GridView ID="GridTurnosPredictivo" AutoGenerateColumns="false" OnLoad="GridTurnosPredictivo_Load" OnSelectedIndexChanged="GridTurnosPredictivo_SelectedIndexChanged" runat="server">
+                                <Columns>
+                                    <asp:BoundField DataField="Medico.Id" Visible="true" HeaderText="Medico" SortExpression="Nombre" />
+                                    <asp:BoundField DataField="Medico.Apellido" HeaderText="Medico" SortExpression="Nombre" />
+                                    <asp:BoundField DataField="Especialidad.Nombre" HeaderText="Especialidad" SortExpression="Apellido" />
+                                    <asp:BoundField DataField="Fecha" HeaderText="Fecha" SortExpression="DNI" />
+                                    <asp:BoundField DataField="Horario" HeaderText="Hora" SortExpression="DNI" />
+                                    <asp:CommandField ShowSelectButton="True" />
+                                    
+                                </Columns>
+                                <SelectedRowStyle CssClass="bg-success" />
                             </asp:GridView>
                         </table>
                     </div>

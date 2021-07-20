@@ -127,6 +127,49 @@ namespace Negocio
                 datos.cerrarConexion();
             }
         }
+
+        public List<Turno> turnos_ocupado_especialidad_fecha(int IdEspecilidad, int idMedico, DateTime Fecha)
+        {
+            List<Turno> lista = new List<Turno>();
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                string consulta = "select * from Turnos where IdEspecialidad = @idEspecialidad and IdMedico = @idMedico AND FechaHora = @fecha";
+                datos.setearConsulta(consulta);
+                datos.setearParametro("@idEspecialidad", IdEspecilidad);
+                datos.setearParametro("@idMedico", idMedico);
+                datos.setearParametro("@fecha", Fecha);
+                datos.ejecutarLectura();
+
+                while (datos.Lector.Read())
+                {
+                    Turno aux = new Turno();
+                    aux.Id = (int)datos.Lector["Id"];
+                    aux.Paciente = new Paciente();
+                    aux.Paciente.Id = (int)datos.Lector["IdPaciente"];
+                    aux.Medico = new Medico();
+                    aux.Medico.Id = (int)datos.Lector["IdMedico"];
+                    aux.Fecha = (DateTime)datos.Lector["FechaHora"];
+                    aux.Horario = (int)datos.Lector["Horario"];
+                    aux.Estado = new EstadoTurno();
+                    aux.Estado.Id = (int)datos.Lector["IdEstado"];
+                    aux.Especialidad = new Especialidad();
+                    aux.Especialidad.Id = (int)datos.Lector["IdEspecialidad"];
+
+                    lista.Add(aux);
+                }
+
+
+                return lista;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
     }
 }
 
