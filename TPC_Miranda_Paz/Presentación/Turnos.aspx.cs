@@ -331,6 +331,41 @@ namespace Presentación
             }
         }
 
+        protected void BtnAgendar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ///AGREGO UN TURNO
+                Turno turno = new Turno();
+                TurnoNegocio turnoNegocio = new TurnoNegocio();
+                List<Paciente> pacientes = new List<Paciente>();
+                pacientes = (List<Paciente>)Session["Pacientes"];
 
+                turno.Medico = new Medico();
+                turno.Medico.Id = int.Parse(DropMedicos.SelectedValue);
+                foreach (Paciente item in pacientes)
+                {
+                    if(item.Dni == dni.Value)
+                    {
+                        turno.Paciente = new Paciente();
+                        turno.Paciente.Id = item.Id;
+                    }
+                }
+                turno.Estado = new EstadoTurno();
+                turno.Estado.Id = 1;
+                turno.Especialidad = new Especialidad();
+                turno.Especialidad.Id = int.Parse(DropEspecialidades.SelectedValue);
+                turno.Horario = int.Parse(DropHorarios.SelectedValue);
+                turno.Fecha = DateTime.Parse(DropFechas.SelectedValue);
+
+                turnoNegocio.agregar(turno);
+                
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+        }
     }
 }

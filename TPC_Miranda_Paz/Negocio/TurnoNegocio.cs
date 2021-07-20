@@ -56,11 +56,13 @@ namespace Negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("INSERT INTO Turnos (IdPaciente,IdMedico,FechaHora,IdEstado,IdEspecialidad) VALUES (@idpaciente, @idmedico, @fecha, @dni, @estado, @especialidad)");
+                datos.setearConsulta("INSERT INTO Turnos (IdPaciente,IdMedico,FechaHora,Horario,IdEstado,IdEspecialidad) " +
+                                            "VALUES (@idpaciente, @idmedico, @fecha, @hora, @estado, @especialidad)");
 
                 datos.setearParametro("@idpaciente", nuevo.Paciente.Id);
                 datos.setearParametro("@idmedico", nuevo.Medico.Id);
                 datos.setearParametro("@fecha", nuevo.Fecha);
+                datos.setearParametro("@hora", nuevo.Horario);
                 datos.setearParametro("@estado", nuevo.Estado.Id);
                 datos.setearParametro("@especialidad", nuevo.Especialidad.Id);
 

@@ -9,7 +9,7 @@
                 <div class="card-header">Formulario: Turnos</div>
                 <div class="card-body">
                     <h5 class="card-title">Registrar Turno</h5>
-                    <form>
+                    <div>
                         <div class="form-group">
                             <div class="form-inline">
                                 <input type="text" class="form-control" id="dni" placeholder="DNI Paciente" runat="server"/>
@@ -27,9 +27,8 @@
                         <div class="form-group">
                             <asp:DropDownList ID="DropEspecialidades" Visible="false" CssClass="form-control" AutoPostBack="true" OnSelectedIndexChanged="DropEspecialidades_SelectedIndexChanged" runat="server"></asp:DropDownList> 
                         </div>
-                        <div class="form-group" visible="false">
+                        <div class="form-group">
                             <asp:DropDownList ID="DropMedicos" Visible="false" CssClass="form-control" OnSelectedIndexChanged="DropMedicos_SelectedIndexChanged" AutoPostBack="true" runat="server"></asp:DropDownList>
-                            </select>
                         </div>
                         <div class="form-group" >
 
@@ -37,11 +36,9 @@
                         </div>
                         <asp:DropDownList ID="DropHorarios" Visible="false" CssClass="form-control" runat="server"></asp:DropDownList>
 
-
-                        <button type="submit" class="btn btn-primary mt-2">
-                            Agendar
-                        </button>
-                    </form>
+                        <asp:Button ID="BtnAgendar" runat="server" Text="Agendar turno" CssClass="btn btn-primary mt-2" OnClick="BtnAgendar_Click" />
+                        
+                    </div>
                 </div>
             </div>
         </div>
