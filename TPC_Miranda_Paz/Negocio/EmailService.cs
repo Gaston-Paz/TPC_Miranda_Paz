@@ -35,7 +35,7 @@ namespace Negocio
                          "<p>Atención Sr/a " + turno.Paciente.Apellido + ", " + turno.Paciente.Nombre + ": <br>" +
                          "Le informamos que su turno #" + turnoNumero + " ha sido agendado con éxito. <br>" +
                          "Fecha: " + turno.Fecha.ToShortDateString() + ". <br>" +
-                         "Hora: " + turno.Horario + ". <br>" +
+                         "Hora: " + turno.Horario + ":00. <br>" +
                          "Especialidad: " + turno.Especialidad.Nombre + ". <br>" +
                          "Profesional: " + turno.Medico.Apellido + ", " + turno.Medico.Nombre + ". <br>" +
                          "Recuerde concurrir al mismo con documento de identidad y credencial de prepaga.</p>";

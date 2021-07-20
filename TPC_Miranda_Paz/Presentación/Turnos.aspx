@@ -54,11 +54,32 @@
                 <div class="card-body ">
                     <div class="test-overflow">
                         <table class="table table-bordered table-hover">
+                            <asp:GridView ID="GridTurnosPredictivo" runat="server">
+                            </asp:GridView>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+         <div class="col">
+            <div class="card">
+                <div
+                    class="card-header d-flex justify-content-between align-items-center ">
+                    <div>Turnos registrados</div>
+                    <form class="form-inline my-2 my-lg-0">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search" />
+                    </form>
+                </div>
+                <div class="card-body ">
+                    <div class="test-overflow">
+                        <table class="table table-bordered table-hover">
                             <asp:GridView ID="GridTurnos" runat="server">
                             </asp:GridView>
                         </table>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>

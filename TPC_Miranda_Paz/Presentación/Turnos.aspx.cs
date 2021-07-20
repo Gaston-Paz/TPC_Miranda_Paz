@@ -253,7 +253,9 @@ namespace Presentación
 
                  ///ORDENAR LA LISTA DE FECHAS
                 fechas = fechas.OrderBy(x => x.Date).ToList();
+
                 bool bandera = true;
+
                 foreach (DateTime item in fechas)
                 {
                     if (bandera)
@@ -261,6 +263,7 @@ namespace Presentación
                         DropFechas.Items.Add("*Seleccionar");
                         bandera = false;
                     }
+
                     DropFechas.Items.Add(item.ToShortDateString());
                     
                 }
@@ -347,7 +350,6 @@ namespace Presentación
                 List<Medico> medicos = new List<Medico>();
                 medicos = (List<Medico>)Session["Medicos"];
 
-                int cantidadTurnos = turnoNegocio.listar_turnos_ocupados().Count;
 
                 turno.Medico = new Medico();
                 
@@ -381,6 +383,7 @@ namespace Presentación
                 turno.Fecha = DateTime.Parse(DropFechas.SelectedValue);
 
                 turnoNegocio.agregar(turno);
+                int cantidadTurnos = turnoNegocio.listar_turnos_ocupados().Count;
                 emailService.armarCorreo(turno, cantidadTurnos);
                 emailService.enviarEmail();
                                 
