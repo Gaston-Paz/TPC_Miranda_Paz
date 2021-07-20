@@ -12,17 +12,17 @@
                     <form>
                         <div class="form-group">
                             <div class="form-inline">
-                                <input type="text" class="form-control" id="dni" placeholder="dni" runat="server"/>
-                                <asp:Button ID="BtnBuscar" runat="server" CssClass="btn btn-primary fas fa-search" Text="Buscar" OnClick="BtnBuscar_Click" />
-
+                                <input type="text" class="form-control" id="dni" placeholder="DNI Paciente" runat="server"/>
+                                <%--<asp:Button ID="BtnBuscar" runat="server" CssClass="btn btn-primary fas fa-search" Text="Buscar" OnClick="BtnBuscar_Click" />--%>                        
+                               <button ID="BtnBuscar" runat="server" class="btn btn-primary ml-2" Text="Buscar" onserverclick="BtnBuscar_Click"><i class=" fas fa-search"></i></button> 
 
                             </div>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" name="" id="nombre" placeholder="pepe" visible="false" runat="server"/>
+                            <input type="text" class="form-control" name="" id="nombre" readonly visible="false" runat="server"/>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" name="" id="apellido" visible="false" placeholder="mujica" runat="server"/>
+                            <input type="text" class="form-control" name="" id="apellido" visible="false" readonly runat="server"/>
                         </div>
                         <div class="form-group">
                             <asp:DropDownList ID="DropEspecialidades" Visible="false" CssClass="form-control" AutoPostBack="true" OnSelectedIndexChanged="DropEspecialidades_SelectedIndexChanged" runat="server"></asp:DropDownList> 
@@ -33,14 +33,10 @@
                         </div>
                         <div class="form-group" >
 
-                            <asp:DropDownList ID="DropFechas" CssClass="form-control" Visible="false" runat="server"></asp:DropDownList>
+                            <asp:DropDownList ID="DropFechas" CssClass="form-control" Visible="false" AutoPostBack="true" OnSelectedIndexChanged="DropFechas_SelectedIndexChanged" runat="server"></asp:DropDownList>
                         </div>
-                        <div class="form-group" visible="false">
-                            <select class="form-control">
-                                <option>Horarios</option>
-                                <option>1er turno 7am</option>
-                            </select>
-                        </div>
+                        <asp:DropDownList ID="DropHorarios" Visible="false" CssClass="form-control" runat="server"></asp:DropDownList>
+
 
                         <button type="submit" class="btn btn-primary mt-2">
                             Agendar

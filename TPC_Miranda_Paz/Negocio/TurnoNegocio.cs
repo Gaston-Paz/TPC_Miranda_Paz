@@ -7,31 +7,34 @@ using Dominio;
 
 namespace Negocio
 {
-    class TurnoNegocio
+    public class TurnoNegocio
     {
-        public List<Turno> listar()
+        public List<Turno> listar_turnos_ocupados()
         {
             List<Turno> lista = new List<Turno>();
             AccesoDatos datos = new AccesoDatos();
 
             try
             {
-                string SelectColum = "SELECT T.Id, T.IdEspecialidad, E.Nombre, T.IdMedico, M.Apellido, M.Nombre, M.Matricula, T.IdPaciente, P.Nombre, P.Apellido, P.Dni, P.Email, P.FechaNac, T.FechaHora, ET.Nombre, ET.Id ";
-                string From = "FROM Turnos T INNER JOIN EstadosTurnos ET ON T.IdEstado = ET.Id ";
-                string Join = "INNER JOIN Especialidades E ON T.IdEspecialidad = E.Id INNER JOIN Medicos M ON T.IdMedico = M.Id INNER JOIN Pacientes P ON T.IdPaciente = P.Id";
-
-                datos.setearConsulta(SelectColum + From + Join);
+                string SelectColum = "select * from Turnos";
+                
+                datos.setearConsulta(SelectColum);
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
                 {
                     Turno aux = new Turno();
                     aux.Id = (int)datos.Lector["Id"];
-                    aux.Especialidad = new Especialidad((string)datos.Lector.GetString(2), (int)datos.Lector.GetInt32(1));
-                    aux.Medico = new Medico((int)datos.Lector.GetInt32(3), (string)datos.Lector.GetString(4), (string)datos.Lector.GetString(5), (string)datos.Lector.GetString(6));
-                    aux.Paciente = new Paciente((int)datos.Lector.GetInt32(7), (string)datos.Lector.GetString(8), (string)datos.Lector.GetString(9), (string)datos.Lector.GetString(10), (string)datos.Lector.GetString(11), (DateTime)datos.Lector.GetDateTime(12));
+                    aux.Paciente = new Paciente();
+                    aux.Paciente.Id = (int)datos.Lector["IdPaciente"];
+                    aux.Medico = new Medico();
+                    aux.Medico.Id = (int)datos.Lector["IdMedico"];
                     aux.Fecha = (DateTime)datos.Lector["FechaHora"];
-                    aux.Estado = new EstadoTurno((int)datos.Lector.GetInt32(14), (string)datos.Lector.GetString(15));
+                    aux.Horario = (int)datos.Lector["Horario"];
+                    aux.Estado = new EstadoTurno();
+                    aux.Estado.Id = (int)datos.Lector["IdEstado"];
+                    aux.Especialidad = new Especialidad();
+                    aux.Especialidad.Id = (int)datos.Lector["IdEspecialidad"];
 
                     lista.Add(aux);
                 }

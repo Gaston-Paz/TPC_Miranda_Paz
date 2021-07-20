@@ -18,5 +18,7 @@ namespace Dominio
         public Especialidad Especialidad { get; set; }
 
         public DateTime Fecha { get; set; }
+
+        public int Horario { get; set; }
     }
 }

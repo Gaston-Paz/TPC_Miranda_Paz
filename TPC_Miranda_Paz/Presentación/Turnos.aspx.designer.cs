@@ -39,7 +39,7 @@ namespace Presentación
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnBuscar;
+        protected global::System.Web.UI.HtmlControls.HtmlButton BtnBuscar;
 
         /// <summary>
         /// Control nombre.
@@ -85,6 +85,15 @@ namespace Presentación
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList DropFechas;
+
+        /// <summary>
+        /// Control DropHorarios.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DropHorarios;
 
         /// <summary>
         /// Control GridTurnos.
