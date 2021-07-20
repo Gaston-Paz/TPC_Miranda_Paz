@@ -45,6 +45,7 @@
     <Compile Include="AdministradoNegocio.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="DisponibilidadMedicoNegocio.cs" />
+    <Compile Include="EmailService.cs" />
     <Compile Include="EspecialidadesMedicoNegocio.cs" />
     <Compile Include="EspecialidadNegocio.cs" />
     <Compile Include="MedicoNegocio.cs" />

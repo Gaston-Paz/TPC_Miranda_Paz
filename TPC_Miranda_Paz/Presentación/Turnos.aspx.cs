@@ -335,36 +335,64 @@ namespace Presentación
         {
             try
             {
+                EmailService emailService = new EmailService();
+
                 ///AGREGO UN TURNO
                 Turno turno = new Turno();
                 TurnoNegocio turnoNegocio = new TurnoNegocio();
+
                 List<Paciente> pacientes = new List<Paciente>();
                 pacientes = (List<Paciente>)Session["Pacientes"];
 
+                List<Medico> medicos = new List<Medico>();
+                medicos = (List<Medico>)Session["Medicos"];
+
+                int cantidadTurnos = turnoNegocio.listar_turnos_ocupados().Count;
+
                 turno.Medico = new Medico();
-                turno.Medico.Id = int.Parse(DropMedicos.SelectedValue);
+                
+                foreach (Medico items in medicos)
+                {
+                    if (items.Id == int.Parse(DropMedicos.SelectedValue))
+                    {
+                        turno.Medico.Id = items.Id;
+                        turno.Medico.Nombre = items.Nombre;
+                        turno.Medico.Apellido = items.Apellido;
+                    }
+                }
+
                 foreach (Paciente item in pacientes)
                 {
                     if(item.Dni == dni.Value)
                     {
                         turno.Paciente = new Paciente();
                         turno.Paciente.Id = item.Id;
+                        turno.Paciente.Apellido = item.Apellido;
+                        turno.Paciente.Nombre = item.Nombre;
+                        turno.Paciente.Email = item.Email;
                     }
                 }
                 turno.Estado = new EstadoTurno();
                 turno.Estado.Id = 1;
                 turno.Especialidad = new Especialidad();
                 turno.Especialidad.Id = int.Parse(DropEspecialidades.SelectedValue);
+                turno.Especialidad.Nombre = DropEspecialidades.SelectedItem.ToString();
                 turno.Horario = int.Parse(DropHorarios.SelectedValue);
                 turno.Fecha = DateTime.Parse(DropFechas.SelectedValue);
 
                 turnoNegocio.agregar(turno);
-                
+                emailService.armarCorreo(turno, cantidadTurnos);
+                emailService.enviarEmail();
+                                
             }
             catch (Exception ex)
             {
 
                 throw;
+            }
+            finally
+            {
+                Response.Redirect("Turnos.aspx");
             }
         }
     }

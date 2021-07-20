@@ -565,6 +565,11 @@ namespace Presentación
 
                 throw;
             }
+            finally
+            {
+                Response.Redirect("Medicos.aspx");
+
+            }
         }
     }
 }
