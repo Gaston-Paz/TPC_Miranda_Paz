@@ -14,30 +14,44 @@ namespace Presentación
         List<Paciente> listapacientes;
         List<Especialidad> listaEspecialidades;
         public string especialidad;
+        List<Turno> listaTurnos;
 
         protected void Page_Load(object sender, EventArgs e)
         {
             try
             {
-                if (!IsPostBack) { 
-                List<Especialidad> aux = new List<Especialidad>();
-                EspecialidadNegocio especialidadNegocio = new EspecialidadNegocio();
-                aux = especialidadNegocio.listar();
-                listaEspecialidades = new List<Especialidad>();
-                listaEspecialidades.Add(new Especialidad("*Seleccionar", 0));
-                foreach (Especialidad item in aux)
-                {
-                    listaEspecialidades.Add(item);
-                }
-                DropEspecialidades.DataSource = listaEspecialidades;
-                DropEspecialidades.DataTextField = "Nombre";
-                DropEspecialidades.DataValueField = "Id";
-                DropEspecialidades.DataBind();
-                }
-                else
-                {
+                if (!IsPostBack) {
                     
+                    List<Especialidad> aux = new List<Especialidad>();
+                    EspecialidadNegocio especialidadNegocio = new EspecialidadNegocio();
+                    TurnoNegocio turnoNegocio = new TurnoNegocio();
+                    listaTurnos = new List<Turno>();
+
+                    listaTurnos = turnoNegocio.listar_turnos_ocupados();
+
+                    listaTurnos = listaTurnos.OrderBy(x => x.Horario).OrderBy(i => i.Fecha).ToList();
+
+                    foreach (Turno item in listaTurnos)
+                    {
+                        item.Fechas = item.Fecha.ToShortDateString();
+                    }
+                    
+                    GridTurnos.DataSource = listaTurnos;
+                    GridTurnos.DataBind();
+
+                    aux = especialidadNegocio.listar();
+                    listaEspecialidades = new List<Especialidad>();
+                    listaEspecialidades.Add(new Especialidad("*Seleccionar", 0));
+                    foreach (Especialidad item in aux)
+                    {
+                        listaEspecialidades.Add(item);
+                    }
+                    DropEspecialidades.DataSource = listaEspecialidades;
+                    DropEspecialidades.DataTextField = "Nombre";
+                    DropEspecialidades.DataValueField = "Id";
+                    DropEspecialidades.DataBind();
                 }
+
             }
             catch (Exception ex)
             {
@@ -76,6 +90,7 @@ namespace Presentación
         {
             try
             {
+                                
                 ///CARGO PROFESIONALES AL DROP
                 especialidad = DropEspecialidades.SelectedValue;
                 DropMedicos.Visible = true;
@@ -134,6 +149,7 @@ namespace Presentación
                                 foreach (DisponibilidadMedico disponibilidad in disponibilidadMedico)
                                 {
                                     List<int> horarios = new List<int>();
+                                    List<int> borrar = new List<int>();
                                     if ((DayOfWeek)disponibilidad.Dia.Id == mes.Date.DayOfWeek)
                                     {
                                         for (int x = disponibilidad.Entrada; x <= disponibilidad.Salida; x++)
@@ -143,16 +159,25 @@ namespace Presentación
 
                                         if (horarios.Count > 0)
                                         {
-                                            foreach (Turno turn in turnoNegocio.turnos_ocupado_especialidad_fecha(especialidad.Id,medico.Id,mes))
+                                            foreach (Turno turn in turnoNegocio.turnos_ocupado_especialidad_fecha(especialidad.Id,medico.Id,mes.Date))
                                             {
                                                 foreach (int hora in horarios)
                                                 {
                                                     if (turn.Horario == hora)
                                                     {
-                                                        horarios.Remove(hora);
+                                                        if(turn.Estado.Id != 2 && turn.Estado.Id != 3)
+                                                        {
+                                                            borrar.Add(hora);
+
+                                                        }
                                                     }
                                                 }
                                             }
+                                        }
+
+                                        foreach (int hs in borrar)
+                                        {
+                                            horarios.Remove(hs);
                                         }
 
                                         foreach (int horas in horarios)
@@ -392,7 +417,10 @@ namespace Presentación
                         items.Especialidad.Id == int.Parse(DropEspecialidades.SelectedValue) &&
                         items.Fecha == DateTime.Parse(DropFechas.SelectedValue))
                     {
-                        horas.Remove(items.Horario.ToString());
+                        if(items.Estado.Id != 2 && items.Estado.Id != 3)
+                        {
+                            horas.Remove(items.Horario.ToString());
+                        }
                     }
                 }
 
@@ -703,6 +731,52 @@ namespace Presentación
                 }
 
                 
+
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+        }
+
+        protected void GridTurnos_Load(object sender, EventArgs e)
+        {
+            GridTurnos.CssClass = "table table-bordered table-hover";
+            GridTurnos.HeaderStyle.CssClass = "thead-dark";
+            
+        }
+
+        protected void GridTurnos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                GridViewRow devuelto = GridTurnos.SelectedRow;
+
+                string id = devuelto.Cells[0].Text;
+
+                LblTurno.Text = LblTurno.Text + id;
+
+
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+        }
+
+        protected void BtnEditar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                GridViewRow devuelto = GridTurnos.SelectedRow;
+
+                int id = int.Parse(devuelto.Cells[0].Text);
+
+                int estadoSeleccionado = int.Parse(DropEstados.SelectedValue);
+                TurnoNegocio turnoNegocio = new TurnoNegocio();
+                turnoNegocio.modificar(id, estadoSeleccionado);
 
             }
             catch (Exception ex)

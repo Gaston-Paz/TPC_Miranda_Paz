@@ -16,7 +16,9 @@ namespace Negocio
 
             try
             {
-                string SelectColum = "select * from Turnos";
+                string SelectColum = "SELECT * FROM Turnos T INNER JOIN EstadosTurnos ET ON T.IdEstado = ET.Id " + 
+                                      "INNER JOIN Pacientes P ON T.IdPaciente = P.Id " + "INNER JOIN Medicos M ON T.IdMedico = M.Id " +
+                                        "INNER JOIN Especialidades E ON T.IdEspecialidad = E.ID";
                 
                 datos.setearConsulta(SelectColum);
                 datos.ejecutarLectura();
@@ -26,15 +28,21 @@ namespace Negocio
                     Turno aux = new Turno();
                     aux.Id = (int)datos.Lector["Id"];
                     aux.Paciente = new Paciente();
-                    aux.Paciente.Id = (int)datos.Lector["IdPaciente"];
+                    aux.Paciente.Id = (int)datos.Lector.GetInt32(9);
+                    aux.Paciente.Nombre = (string)datos.Lector.GetString(10);
+                    aux.Paciente.Apellido = (string)datos.Lector.GetString(11);
                     aux.Medico = new Medico();
-                    aux.Medico.Id = (int)datos.Lector["IdMedico"];
+                    aux.Medico.Id = (int)datos.Lector.GetInt32(17);
+                    aux.Medico.Nombre = (string)datos.Lector.GetString(18);
+                    aux.Medico.Apellido = (string)datos.Lector.GetString(19);
                     aux.Fecha = (DateTime)datos.Lector["FechaHora"];
                     aux.Horario = (int)datos.Lector["Horario"];
                     aux.Estado = new EstadoTurno();
                     aux.Estado.Id = (int)datos.Lector["IdEstado"];
+                    aux.Estado.Nombre = (string)datos.Lector["Nombre"];
                     aux.Especialidad = new Especialidad();
                     aux.Especialidad.Id = (int)datos.Lector["IdEspecialidad"];
+                    aux.Especialidad.Nombre = (string)datos.Lector.GetString(27);
 
                     lista.Add(aux);
                 }
@@ -80,20 +88,15 @@ namespace Negocio
             }
         }
 
-        public void modificar(Turno nuevo)
+        public void modificar(int id, int estado)
         {
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("UPDATE Turnos SET IdPaciente = @idpaciente, IdMedico = @idmedico, FechaHora = @fecha, IdEstado = @estado, IdEspecialidad = @especialidad WHERE Id = @id");
+                datos.setearConsulta("UPDATE Turnos SET IdEstado = @estado WHERE Id = @id");
                 
-                datos.setearParametro("@idpaciente", nuevo.Paciente.Id);
-                datos.setearParametro("@idmedico", nuevo.Medico.Id);
-                datos.setearParametro("@fecha", nuevo.Fecha);
-                datos.setearParametro("@estado", nuevo.Estado.Id);
-                datos.setearParametro("@especialidad", nuevo.Especialidad.Id);
-
-                datos.setearParametro("@id", nuevo.Id);
+                datos.setearParametro("@estado", estado);
+                datos.setearParametro("@id", id);
 
                 datos.ejecutarAccion();
 

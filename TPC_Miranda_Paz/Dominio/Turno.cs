@@ -20,5 +20,7 @@ namespace Dominio
         public DateTime Fecha { get; set; }
 
         public int Horario { get; set; }
+
+        public string Fechas { get; set; }
     }
 }
