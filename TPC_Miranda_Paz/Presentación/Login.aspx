@@ -23,38 +23,23 @@
                             alt=""
                             width="80%" />
                     </div>
+
                     <div class="text-center">
                         <h1 class="h3">Iniciar Sesion</h1>
                     </div>
                     <div class="form-group">
                         <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control"></asp:TextBox>
-                        <%--<input
-                            type="email"
-                            class="form-control"
-                            id="email"
-                            aria-describedby="emailHelp"
-                            placeholder="Email"
-                            required />--%>
                         <div class="invalid-feedback">
                             El campo no puede estar vacio.
                         </div>
                     </div>
                     <div class="form-group">
-                        <asp:TextBox ID="txtPass" runat="server" CssClass="form-control"></asp:TextBox>
-                        <%--<input
-                            type="password"
-                            class="form-control"
-                            id="password"
-                            placeholder="Password"
-                            required />--%>
+                        <asp:TextBox ID="txtPass" runat="server" CssClass="form-control" TextMode="Password"></asp:TextBox>
                         <div class="invalid-feedback">
                             El campo no puede estar vacio.
                         </div>
                     </div>
                     <asp:Button ID="btnLogin" runat="server" Text="Iniciar" autopostback="false" OnClientClick="return validar()" CssClass="btn btn-outline-primary btn-block" OnClick="btnLogin_Click" />
-                    <%--<button type="submit" class="btn btn-outline-primary btn-block">
-							Iniciar
-						</button>--%>
                 </form>
             </div>
         </div>

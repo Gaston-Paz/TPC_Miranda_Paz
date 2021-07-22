@@ -15,9 +15,10 @@ namespace Presentación
      
         protected void Page_Load(object sender, EventArgs e)
         {
+
             try
             {
-                Session.Clear();
+                //Session.Clear();
                 PacienteNegocio pacienteNegocio = new PacienteNegocio();
                 Session.Add("Pacientes", pacienteNegocio.listar());
                 EspecialidadNegocio especialidadNegocio = new EspecialidadNegocio();

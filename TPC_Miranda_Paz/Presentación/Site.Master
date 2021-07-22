@@ -57,16 +57,44 @@
 						alt=""
 					/>
 				</a>
-				<span>Usuario</span>
+                <ul class="nav justify-content-end">
+                    <li class="nav-item mr-1">
+                        <span><%= ((Dominio.Usuario)Session["user"]).Email %></span>
+                    </li>
+                    <li class="nav-item">
+                        <a href="Login.aspx"><i class="fas fa-sign-out-alt"></i></a>
+                    </li>
+                </ul>
 			</nav>
-			<nav class="nav nav-border">
-				<a class="nav-link active text-body" href="Default.aspx">Inicio</a>
-				<a class="nav-link text-body" href="Turnos.aspx">Turnos</a>
-				<a class="nav-link text-body" href="Medicos.aspx">Medicos</a>
+            <nav class="nav nav-border">
+                <% if (((Dominio.Usuario)Session["user"]).TipoUsuario == 1)
+                    { %>
+                <a class="nav-link active text-body" href="Default.aspx">Inicio</a>
+                <a class="nav-link text-body" href="Turnos.aspx">Turnos</a>
+                <a class="nav-link text-body" href="Medicos.aspx">Medicos</a>
                 <a class="nav-link text-body" href="Pacientes.aspx">Pacientes</a>
                 <a class="nav-link text-body" href="Administrativos.aspx">Administradores</a>
                 <a class="nav-link text-body" href="Recepcionistas.aspx">Recepcionistas</a>
-			</nav>
+                <% }
+                    else
+                    {
+                        if (((Dominio.Usuario)Session["user"]).TipoUsuario == 2)
+                        { %>
+                <a class="nav-link active text-body" href="Default.aspx">Inicio</a>
+                <a class="nav-link text-body" href="Turnos.aspx">Turnos</a>
+                <a class="nav-link text-body" href="Medicos.aspx">Medicos</a>
+                <a class="nav-link text-body" href="Pacientes.aspx">Pacientes</a>
+                <a class="nav-link text-body" href="Recepcionistas.aspx">Recepcionistas</a>
+                <%  }
+                    else
+                    { %>
+                <a class="nav-link active text-body" href="Default.aspx">Inicio</a>
+                <a class="nav-link active text-body" href="">Mis Turnos</a>
+                <%  }
+
+
+                    } %>
+            </nav>
 		</header>
 
 

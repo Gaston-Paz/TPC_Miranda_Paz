@@ -16,6 +16,11 @@ namespace Presentación
         public List<Recepcionista> listaRecepcionista;
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (((Dominio.Usuario)Session["user"]).TipoUsuario == 3)
+            {
+                Response.Redirect("Error.aspx");
+            }
+
             listaRecepcionista = new List<Recepcionista>();
             RecepcionistaNegocio recepcionistaNegocio = new RecepcionistaNegocio();
             try
