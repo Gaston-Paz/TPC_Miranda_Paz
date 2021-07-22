@@ -9,14 +9,14 @@ namespace Negocio
 {
     public class UsuarioNegocio
     {
-        public bool Loguear(Usuario usuario)
+        public Usuario Loguear(Usuario usuario, string tabla)
         {
             AccesoDatos datos = new AccesoDatos();
-
+            Usuario user = new Usuario();
             try
             {
                 //Se debe crear la db de usuario vinculado a los tipos de user
-                string SelectColum = "SELECT Email, Pass, Estado from Administradores WHERE Email = @email, Pass = @pass";
+                string SelectColum = "SELECT Email, Pass, Estado, Tipo FROM " + tabla + " WHERE Email = @email and Pass = @pass";
                 datos.setearParametro("@email", usuario.Email);
                 datos.setearParametro("@pass", usuario.Password);
                 datos.setearConsulta(SelectColum);
@@ -24,15 +24,16 @@ namespace Negocio
 
                 while (datos.Lector.Read())
                 {
-                    Usuario user = new Usuario();
+                    
                     user.Email = (string)datos.Lector["Email"];
                     user.Password = (string)datos.Lector["Pass"];
                     user.Estado = (bool)datos.Lector["Estado"];
+                    user.TipoUsuario = (int)datos.Lector["Tipo"];
                     //falta agregar tipo en la tabla nueva para traer datos
-                    return true;
+                    return user;
                 }
 
-                return false;
+                return user;
             }
             catch (Exception ex)
             {

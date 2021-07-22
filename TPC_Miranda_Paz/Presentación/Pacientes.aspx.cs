@@ -16,7 +16,12 @@ namespace Presentación
         public string prueba;
         protected void Page_Load(object sender, EventArgs e)
         {
-                PacienteNegocio pacienteNegocio = new PacienteNegocio();
+            if (((Dominio.Usuario)Session["user"]).TipoUsuario == 3)
+            {
+                Response.Redirect("Error.aspx");
+            }
+
+            PacienteNegocio pacienteNegocio = new PacienteNegocio();
                 listaPacientes = pacienteNegocio.listar();
             try
             {

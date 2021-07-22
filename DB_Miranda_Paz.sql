@@ -21,10 +21,11 @@ CREATE TABLE Medicos(
 	Pass VARCHAR (100) NOT NULL,
 	Dni VARCHAR (15) NOT NULL UNIQUE,
 	Telefono VARCHAR (20) NULL,
-	Estado BIT DEFAULT(1)
+	Estado BIT DEFAULT(1),
+	Tipo INT DEFAULT(3),
 )
 GO
-INSERT INTO Medicos
+INSERT INTO Medicos(Nombre,Apellido,Matricula,Email,Pass,Dni,Telefono,Estado)
 VALUES ('Joaquin', 'Achaval Duria', 'M116688' , 'AchavalDuria@Joaquin.com', 'joacoduria', '98975462', '(387) 962-2847','1'),
 ('Isidoro', 'Arostegui', 'M115544','Aros@Isidoro.com', 'isidorotegui', '54782136','(695) 920-0076','1'),
 ('Elizabeth Carolina', 'Ayala', 'M112244', 'eayala@google.com', 'eliaya', '33225588', '(695) 920-0054','1'),
@@ -119,7 +120,7 @@ VALUES(1,1),
 (17,16)
 GO
 CREATE TABLE Dias(
-	Id SMALLINT IDENTITY(1,1) PRIMARY KEY NOT NULL,
+	Id INT IDENTITY(1,1) PRIMARY KEY NOT NULL,
 	Nombre VARCHAR (15) NOT NULL UNIQUE
 )
 GO
@@ -142,10 +143,11 @@ CREATE TABLE Recepcionistas(
 	Pass VARCHAR (100) NOT NULL,
 	Dni VARCHAR (15) NOT NULL UNIQUE,
 	Telefono VARCHAR (20) NULL,
-	Estado BIT DEFAULT(1)
+	Estado BIT DEFAULT(1),
+	Tipo INT DEFAULT(2),
 )
 GO
-INSERT INTO Recepcionistas
+INSERT INTO Recepcionistas(Nombre,Apellido,Email,Pass,Dni,Telefono,Estado)
 VALUES ('Florencia', 'Rodriguez', 'flor-rodriguez@mail.com', '123456', '37059672', '1144558899','1'),
 ('Agustina', 'Perez', 'aguspe@mail.com', '789456', '37059678', '1155447788','1'),
 ('Rodrigo', 'Alsina', 'rodrial@mail.com', '159753', '35789877', '1122554477','1')
@@ -158,10 +160,11 @@ CREATE TABLE Administradores(
 	Pass VARCHAR (100) NOT NULL,
 	Dni VARCHAR (15) NOT NULL UNIQUE,
 	Telefono VARCHAR (20) NULL,
-	Estado BIT DEFAULT(1)
+	Estado BIT DEFAULT(1),
+	Tipo INT DEFAULT(1),
 )
 GO
-INSERT INTO Administradores
+INSERT INTO Administradores(Nombre,Apellido,Email,Pass,Dni,Telefono,Estado)
 VALUES ('Gastón', 'Paz', 'gastonpaz@mail.com', 'gaspaz', '38013023', '1165656565','1'),
 ('Maximiliano', 'Miranda','maximiranda@mail.com', 'mirama', '38014024', '1145454545','1')
 GO
@@ -188,7 +191,7 @@ CREATE TABLE Turnos(
 	Id INT PRIMARY KEY IDENTITY(1,1),
 	IdPaciente INT FOREIGN KEY REFERENCES Pacientes (Id) NOT NULL,
 	IdMedico INT FOREIGN KEY REFERENCES Medicos (Id) NOT NULL,
-	FechaHora DATETIME NOT NULL CHECK(FechaHora >= GETDATE()),
+	FechaHora DATETIME NOT NULL,
 	IdEstado INT FOREIGN KEY REFERENCES EstadosTurnos (Id) NOT NULL,
 	IdEspecialidad INT FOREIGN KEY REFERENCES Especialidades (Id) NOT NULL
 )
