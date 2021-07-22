@@ -32,6 +32,11 @@ namespace Presentación
                     TurnoNegocio turnoNegocio = new TurnoNegocio();
                     listaTurnos = new List<Turno>();
 
+                    DropEstados.DataSource = turnoNegocio.listarEstados();
+                    DropEstados.DataTextField = "Nombre";
+                    DropEstados.DataValueField = "Id";
+                    DropEstados.DataBind();
+
                     listaTurnos = turnoNegocio.listar_turnos_ocupados();
 
                     listaTurnos = listaTurnos.OrderBy(x => x.Horario).OrderBy(i => i.Fecha).ToList();
@@ -221,6 +226,7 @@ namespace Presentación
             {
                 DropFechas.Visible = true;
                 List<DateTime> fechas = new List<DateTime>();
+                List<DateTime> fechasAux = new List<DateTime>();
                 DisponibilidadMedicoNegocio disponibilidadMedicoNegocio = new DisponibilidadMedicoNegocio();
                 List<DisponibilidadMedico> diasDisponibles = disponibilidadMedicoNegocio.listar(int.Parse(DropMedicos.SelectedValue));
                 
@@ -352,11 +358,13 @@ namespace Presentación
                     }
                    
                 }
-                    
 
-                 ///ORDENAR LA LISTA DE FECHAS
+
+                ///ORDENAR LA LISTA DE FECHAS
+
                 fechas = fechas.OrderBy(x => x.Date).ToList();
 
+                                
                 bool bandera = true;
 
                 foreach (DateTime item in fechas)
@@ -366,8 +374,8 @@ namespace Presentación
                         DropFechas.Items.Add("*Seleccionar");
                         bandera = false;
                     }
-
-                    DropFechas.Items.Add(item.ToShortDateString());
+                    if(item.Date >= DateTime.Now.Date)
+                        DropFechas.Items.Add(item.ToShortDateString());
                     
                 }
 
@@ -760,7 +768,18 @@ namespace Presentación
 
                 string id = devuelto.Cells[0].Text;
 
-                LblTurno.Text = LblTurno.Text + id;
+                TurnoNegocio turnoNegocio = new TurnoNegocio();
+                List<Turno> turno = new List<Turno>();
+                turno = turnoNegocio.listar_turnos_ocupados();
+
+                foreach (Turno item in turno)
+                {
+                    if(item.Id.ToString() == id)
+                    {
+                        LblTurno.Text = LblTurno.Text + id;
+                        DropEstados.SelectedValue = item.Estado.Id.ToString();
+                    }
+                }
 
 
             }
@@ -779,9 +798,10 @@ namespace Presentación
 
                 int id = int.Parse(devuelto.Cells[0].Text);
 
+                string observacion = "-";
                 int estadoSeleccionado = int.Parse(DropEstados.SelectedValue);
                 TurnoNegocio turnoNegocio = new TurnoNegocio();
-                turnoNegocio.modificar(id, estadoSeleccionado);
+                turnoNegocio.Modificar(id, estadoSeleccionado, observacion);
 
             }
             catch (Exception ex)
@@ -789,6 +809,8 @@ namespace Presentación
 
                 throw;
             }
+            Response.Redirect("Turnos.aspx");
         }
+
     }
 }

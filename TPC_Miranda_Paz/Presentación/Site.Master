@@ -89,7 +89,7 @@
                     else
                     { %>
                 <a class="nav-link active text-body" href="Default.aspx">Inicio</a>
-                <a class="nav-link active text-body" href="">Mis Turnos</a>
+                <a class="nav-link active text-body" href="MisTurnos.aspx">Mis Turnos</a>
                 <%  }
 
 

@@ -28,13 +28,15 @@ namespace Negocio
                     Turno aux = new Turno();
                     aux.Id = (int)datos.Lector["Id"];
                     aux.Paciente = new Paciente();
-                    aux.Paciente.Id = (int)datos.Lector.GetInt32(9);
-                    aux.Paciente.Nombre = (string)datos.Lector.GetString(10);
-                    aux.Paciente.Apellido = (string)datos.Lector.GetString(11);
+                    aux.Paciente.Id = (int)datos.Lector.GetInt32(10);
+                    aux.Paciente.Nombre = (string)datos.Lector.GetString(11);
+                    aux.Paciente.Apellido = (string)datos.Lector.GetString(12);
+                    aux.Paciente.Dni = (string)datos.Lector.GetString(13);
                     aux.Medico = new Medico();
-                    aux.Medico.Id = (int)datos.Lector.GetInt32(17);
-                    aux.Medico.Nombre = (string)datos.Lector.GetString(18);
-                    aux.Medico.Apellido = (string)datos.Lector.GetString(19);
+                    aux.Medico.Id = (int)datos.Lector.GetInt32(18);
+                    aux.Medico.Nombre = (string)datos.Lector.GetString(19);
+                    aux.Medico.Apellido = (string)datos.Lector.GetString(20);
+                    aux.Medico.Email = (string)datos.Lector.GetString(22);
                     aux.Fecha = (DateTime)datos.Lector["FechaHora"];
                     aux.Horario = (int)datos.Lector["Horario"];
                     aux.Estado = new EstadoTurno();
@@ -42,7 +44,8 @@ namespace Negocio
                     aux.Estado.Nombre = (string)datos.Lector["Nombre"];
                     aux.Especialidad = new Especialidad();
                     aux.Especialidad.Id = (int)datos.Lector["IdEspecialidad"];
-                    aux.Especialidad.Nombre = (string)datos.Lector.GetString(27);
+                    aux.Especialidad.Nombre = (string)datos.Lector.GetString(29);
+                    aux.Observacion = (string)datos.Lector["Observacion"];
 
                     lista.Add(aux);
                 }
@@ -88,13 +91,13 @@ namespace Negocio
             }
         }
 
-        public void modificar(int id, int estado)
+        public void Modificar(int id, int estado, string observacion)
         {
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("UPDATE Turnos SET IdEstado = @estado WHERE Id = @id");
-                
+                datos.setearConsulta("UPDATE Turnos SET IdEstado = @estado, Observacion = @observacion WHERE Id = @id");
+                datos.setearParametro("@observacion", observacion);
                 datos.setearParametro("@estado", estado);
                 datos.setearParametro("@id", id);
 
@@ -170,6 +173,38 @@ namespace Negocio
             {
 
                 throw;
+            }
+        }
+
+        public List<EstadoTurno> listarEstados()
+        {
+                AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                List<EstadoTurno> estadoTurnos = new List<EstadoTurno>();
+
+                string consulta = "Select * from EstadosTurnos";
+                datos.setearConsulta(consulta);
+                datos.ejecutarLectura();
+
+                while(datos.Lector.Read())
+                {
+                    EstadoTurno estadoTurno = new EstadoTurno();
+                    estadoTurno.Id = (int)datos.Lector["Id"];
+                    estadoTurno.Nombre = (string)datos.Lector["Nombre"];
+                    estadoTurnos.Add(estadoTurno);
+                       
+                }
+                return estadoTurnos;
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+            finally
+            {
+                datos.cerrarConexion();
             }
         }
 

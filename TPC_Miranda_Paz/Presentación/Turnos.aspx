@@ -88,7 +88,7 @@
                             <div class="card-body ">
                                 <div class="test-overflow">
                                     <table class="table table-bordered table-hover">
-                                        <asp:GridView ID="GridTurnos" AutoGenerateColumns="false" OnSelectedIndexChanged="GridTurnos_SelectedIndexChanged" OnLoad="GridTurnos_Load" runat="server">
+                                        <asp:GridView ID="GridTurnos" AutoGenerateColumns="false" OnLoad="GridTurnos_Load" OnSelectedIndexChanged="GridTurnos_SelectedIndexChanged" runat="server">
                                             <Columns>
                                                 <asp:BoundField DataField="Id" Visible="true" HeaderText="Id" SortExpression="IdTurno" />
                                                 <asp:BoundField DataField="Medico.Apellido" HeaderText="Médico" SortExpression="ApellidoMedico" />
@@ -137,7 +137,7 @@
           </div>
       <div>
           <asp:Label ID="LblEstado" runat="server" Text="Estado: "></asp:Label>
-          <asp:DropDownList ID="DropEstados" runat="server"></asp:DropDownList>
+          <asp:DropDownList ID="DropEstados" CssClass="form-control" runat="server"></asp:DropDownList>
       </div>
       </div>
       <div class="modal-footer">

@@ -179,6 +179,12 @@ CREATE TABLE Pacientes(
 	Estado BIT DEFAULT(1)
 )
 GO
+INSERT INTO Pacientes
+VALUES('Cristina','Batista','12478987', 'cristi@mail.com','03327448578','06/09/1964','1'),
+('Alfredo','Robertone','45741963', 'alfred@mail.com','03327112547','25/09/2004','1'),
+('Rodolfo','Arrugavarrena','20458952', 'rodo@mail.com','1147124587','22/07/1975','1'),
+('Paula','Pareto','25498231', 'paula@mail.com','03327448578','16/01/1986','1')
+GO
 CREATE TABLE EstadosTurnos(
 	Id INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
 	Nombre VARCHAR (30) NOT NULL UNIQUE
@@ -192,6 +198,8 @@ CREATE TABLE Turnos(
 	IdPaciente INT FOREIGN KEY REFERENCES Pacientes (Id) NOT NULL,
 	IdMedico INT FOREIGN KEY REFERENCES Medicos (Id) NOT NULL,
 	FechaHora DATETIME NOT NULL,
+	Horario INT NOT NULL,
 	IdEstado INT FOREIGN KEY REFERENCES EstadosTurnos (Id) NOT NULL,
-	IdEspecialidad INT FOREIGN KEY REFERENCES Especialidades (Id) NOT NULL
+	IdEspecialidad INT FOREIGN KEY REFERENCES Especialidades (Id) NOT NULL,
+	Observacion varchar(400) NULL
 )

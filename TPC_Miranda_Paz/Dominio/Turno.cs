@@ -22,5 +22,7 @@ namespace Dominio
         public int Horario { get; set; }
 
         public string Fechas { get; set; }
+
+        public string Observacion { get; set; }
     }
 }

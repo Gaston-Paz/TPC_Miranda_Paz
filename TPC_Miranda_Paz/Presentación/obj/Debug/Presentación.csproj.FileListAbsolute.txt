@@ -74,6 +74,10 @@ C:\Users\Max\Documents\GitHub\TPC_Miranda_Paz\TPC_Miranda_Paz\Presentación\obj\
 C:\Users\Max\Documents\GitHub\TPC_Miranda_Paz\TPC_Miranda_Paz\Presentación\obj\Debug\Presentación.csproj.CopyComplete
 C:\Users\Max\Documents\GitHub\TPC_Miranda_Paz\TPC_Miranda_Paz\Presentación\obj\Debug\Presentación.dll
 C:\Users\Max\Documents\GitHub\TPC_Miranda_Paz\TPC_Miranda_Paz\Presentación\obj\Debug\Presentación.pdb
+C:\Users\Max\Documents\GitHub\TPC_Miranda_Paz\TPC_Miranda_Paz\Presentación\bin\Dominio.dll
+C:\Users\Max\Documents\GitHub\TPC_Miranda_Paz\TPC_Miranda_Paz\Presentación\bin\Negocio.dll
+C:\Users\Max\Documents\GitHub\TPC_Miranda_Paz\TPC_Miranda_Paz\Presentación\bin\Dominio.pdb
+C:\Users\Max\Documents\GitHub\TPC_Miranda_Paz\TPC_Miranda_Paz\Presentación\bin\Negocio.pdb
 C:\Users\Gastón\Documents\GitHub\TPC_Miranda_Paz\TPC_Miranda_Paz\Presentación\bin\Presentación.dll.config
 C:\Users\Gastón\Documents\GitHub\TPC_Miranda_Paz\TPC_Miranda_Paz\Presentación\bin\Presentación.dll
 C:\Users\Gastón\Documents\GitHub\TPC_Miranda_Paz\TPC_Miranda_Paz\Presentación\bin\Presentación.pdb
@@ -149,12 +153,8 @@ C:\Users\Gastón\Documents\GitHub\TPC_Miranda_Paz\TPC_Miranda_Paz\Presentación\
 C:\Users\Gastón\Documents\GitHub\TPC_Miranda_Paz\TPC_Miranda_Paz\Presentación\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 C:\Users\Gastón\Documents\GitHub\TPC_Miranda_Paz\TPC_Miranda_Paz\Presentación\bin\es\System.Web.Optimization.resources.dll
 C:\Users\Gastón\Documents\GitHub\TPC_Miranda_Paz\TPC_Miranda_Paz\Presentación\bin\es\Microsoft.AspNet.FriendlyUrls.resources.dll
+C:\Users\Gastón\Documents\GitHub\TPC_Miranda_Paz\TPC_Miranda_Paz\Presentación\obj\Debug\Presentación.csproj.AssemblyReference.cache
 C:\Users\Gastón\Documents\GitHub\TPC_Miranda_Paz\TPC_Miranda_Paz\Presentación\obj\Debug\Presentación.csproj.CoreCompileInputs.cache
 C:\Users\Gastón\Documents\GitHub\TPC_Miranda_Paz\TPC_Miranda_Paz\Presentación\obj\Debug\Presentación.csproj.CopyComplete
 C:\Users\Gastón\Documents\GitHub\TPC_Miranda_Paz\TPC_Miranda_Paz\Presentación\obj\Debug\Presentación.dll
 C:\Users\Gastón\Documents\GitHub\TPC_Miranda_Paz\TPC_Miranda_Paz\Presentación\obj\Debug\Presentación.pdb
-C:\Users\Gastón\Documents\GitHub\TPC_Miranda_Paz\TPC_Miranda_Paz\Presentación\obj\Debug\Presentación.csproj.AssemblyReference.cache
-C:\Users\Max\Documents\GitHub\TPC_Miranda_Paz\TPC_Miranda_Paz\Presentación\bin\Dominio.dll
-C:\Users\Max\Documents\GitHub\TPC_Miranda_Paz\TPC_Miranda_Paz\Presentación\bin\Negocio.dll
-C:\Users\Max\Documents\GitHub\TPC_Miranda_Paz\TPC_Miranda_Paz\Presentación\bin\Dominio.pdb
-C:\Users\Max\Documents\GitHub\TPC_Miranda_Paz\TPC_Miranda_Paz\Presentación\bin\Negocio.pdb
