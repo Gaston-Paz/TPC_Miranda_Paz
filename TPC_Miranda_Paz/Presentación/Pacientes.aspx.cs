@@ -128,7 +128,7 @@ namespace Presentación
             catch (Exception ex)
             {
 
-                throw;
+                Response.Redirect("Error.aspx");
             }
             Response.Redirect("Pacientes.aspx");
 

@@ -42,7 +42,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control" id="pass_admin" name="pass_admin" placeholder="*Contraseña" runat="server" />
+                                    <input type="password" class="form-control" id="pass_admin" name="pass_admin" placeholder="*Contraseña" runat="server" />
                                 </div>
                             </form>
                             <asp:Button ID="Btn_Registar_admin" runat="server" Text="Registrar" CssClass="btn btn-primary" OnClientClick="return validarVacioAdmin()" OnClick="Btn_Registar_admin_Click" />

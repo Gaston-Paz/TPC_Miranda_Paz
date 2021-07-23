@@ -7,7 +7,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%: Page.Title %> - Mi aplicación ASP.NET</title>
+    <title>AppTurn GAMA</title>
 
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
@@ -53,7 +53,7 @@
 			<nav class="navbar navbar-light color-primary">
 				<a class="navbar-brand" href="#">
 					<img
-						src="https://laslomas.com.ar/wp-content/uploads/2020/10/logo_header.png"
+						src="/gama.png"
 						width="50%"
 						alt=""
 					/>
@@ -108,7 +108,7 @@
            <%-- footer--%>
             <footer class="color-primary py-2 fixed-bottom">
                 <p class="text-center mb-0">
-                    &copy; <%: DateTime.Now.Year %> - Mi aplicación ASP.NET "Turnero" by
+                    &copy; <%: DateTime.Now.Year %> - AppTurn GAMA by
 				<a href="https://github.com/Gaston-Paz">Gaston Paz</a> -
 				<a href="https://github.com/Maxi-rpc">Maximiliano Miranda</a>
                 </p>
