@@ -8,7 +8,7 @@ namespace Dominio
 {
     public class DisponibilidadMedico
     {
-        public Medico Medico { get; set; }
+        public int IdMedico { get; set; }
 
         public int Entrada { get; set; }
 

@@ -19,6 +19,10 @@ namespace Dominio
         public string Apellido { get; set; }
 
         public string Dni { get; set; }
+        // props agregadas para verificar user y tipo
+        public int TipoUsuario { get; set; }
+
+        public bool Estado { get; set; }
 
     }
 }

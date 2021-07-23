@@ -16,10 +16,17 @@ namespace Presentación
         public string prueba;
         protected void Page_Load(object sender, EventArgs e)
         {
-                PacienteNegocio pacienteNegocio = new PacienteNegocio();
+            
+
+            PacienteNegocio pacienteNegocio = new PacienteNegocio();
                 listaPacientes = pacienteNegocio.listar();
             try
             {
+
+                if (((Dominio.Usuario)Session["user"]).TipoUsuario == 3)
+                {
+                    Response.Redirect("Error.aspx");
+                }
 
                 if (!IsPostBack)
                 {
@@ -27,14 +34,14 @@ namespace Presentación
                     GridPacientes.DataSource = listaPacientes;
                     GridPacientes.DataBind();
 
-                    Session.Add("Pacientes", listaPacientes);
+                    
                 }
 
             }
             catch (Exception ex)
             {
 
-                throw;
+                Response.Redirect("Login.aspx");
             }
 
         }

@@ -26,8 +26,12 @@ namespace Dominio
 
             Martricula = matricula;
         }
+
+
      
         public Medico() { }
+
+        public List<DisponibilidadMedico> DiasLaborables { get; set; }
 
     }
 }

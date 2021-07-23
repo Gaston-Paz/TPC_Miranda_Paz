@@ -14,70 +14,102 @@ namespace Presentación
         public List<Medico> listaMedicos;
         public List<Medico> listaFiltrada;
         public List<Especialidad> listaEspecialidades;
+        public List<Especialidad> listaEspecialidades2;
+        public List<int> horarios;
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (((Dominio.Usuario)Session["user"]).TipoUsuario == 3)
+            {
+                Response.Redirect("Error.aspx");
+            }
+
             try
             {
+
+                if (((Dominio.Usuario)Session["user"]).TipoUsuario == 3)
+                {
+                    Response.Redirect("Error.aspx");
+                }
+
                 MedicoNegocio medicoNegocio = new MedicoNegocio();
                 listaMedicos = medicoNegocio.listar();
                 EspecialidadNegocio especialidadNegocio = new EspecialidadNegocio();
                 listaEspecialidades = new List<Especialidad>();
+                listaEspecialidades2 = new List<Especialidad>();
+                horarios = new List<int>();
 
                 List<Especialidad> listaEspecialidadesAux = new List<Especialidad>();
 
                 listaEspecialidadesAux = especialidadNegocio.listar();
                 listaEspecialidades.Add(new Especialidad("*Seleccionar", 0));
+                listaEspecialidades2 = especialidadNegocio.listar();
 
                 foreach (Especialidad item in listaEspecialidadesAux)
                 {
                     listaEspecialidades.Add(item);
                 }
 
+                for (int i = 7; i < 22; i++)
+                {
+                    horarios.Add(i);
+                }
+
                 if (!IsPostBack) { 
-                ///CARGO LA GRILLA
-                GridMedicos.DataSource = listaMedicos;
-                GridMedicos.DataBind();
+                    ///CARGO LA GRILLA
+                    GridMedicos.DataSource = listaMedicos;
+                    GridMedicos.DataBind();
                 
-                ///CARGO LOS DROPS DEL MODAL
-                DDModalEspecialidades.DataSource = listaEspecialidades;
-                DDModalEspecialidades.DataTextField = "Nombre";
-                DDModalEspecialidades.DataValueField = "Id";
-                DDModalEspecialidades.DataBind();
+                    ///CARGO LOS DROPS DEL FORM DE REGISTRO
+                    ListEspecialidades.DataSource = listaEspecialidades;
+                    ListEspecialidades.DataTextField = "Nombre";
+                    ListEspecialidades.DataValueField = "Id";
+                    ListEspecialidades.DataBind();
 
-                DDModalEspecialidades2.DataSource = listaEspecialidades;
-                DDModalEspecialidades2.DataTextField = "Nombre";
-                DDModalEspecialidades2.DataValueField = "Id";
-                DDModalEspecialidades2.DataBind();
+                    ListEspecialidades2.DataSource = listaEspecialidades;
+                    ListEspecialidades2.DataTextField = "Nombre";
+                    ListEspecialidades2.DataValueField = "Id";
+                    ListEspecialidades2.DataBind();
 
-                DDModalEspecialidades3.DataSource = listaEspecialidades;
-                DDModalEspecialidades3.DataTextField = "Nombre";
-                DDModalEspecialidades3.DataValueField = "Id";
-                DDModalEspecialidades3.DataBind();
+                    ListEspecialidades3.DataSource = listaEspecialidades;
+                    ListEspecialidades3.DataTextField = "Nombre";
+                    ListEspecialidades3.DataValueField = "Id";
+                    ListEspecialidades3.DataBind();
 
-                ///CARGO LOS DROPS DEL FORM DE REGISTRO
-                ListEspecialidades.DataSource = listaEspecialidades;
-                ListEspecialidades.DataTextField = "Nombre";
-                ListEspecialidades.DataValueField = "Id";
-                ListEspecialidades.DataBind();
+                    ListEspecialidadesGrid.DataSource = listaEspecialidades;
+                    ListEspecialidadesGrid.DataTextField = "Nombre";
+                    ListEspecialidadesGrid.DataValueField = "Id";
+                    ListEspecialidadesGrid.DataBind();
 
-                ListEspecialidades2.DataSource = listaEspecialidades;
-                ListEspecialidades2.DataTextField = "Nombre";
-                ListEspecialidades2.DataValueField = "Id";
-                ListEspecialidades2.DataBind();
+                    ChecEspecialidades.DataSource = listaEspecialidades2;
+                    ChecEspecialidades.DataTextField = "Nombre";
+                    ChecEspecialidades.DataValueField = "Id";
+                    ChecEspecialidades.DataBind();
 
-                ListEspecialidades3.DataSource = listaEspecialidades;
-                ListEspecialidades3.DataTextField = "Nombre";
-                ListEspecialidades3.DataValueField = "Id";
-                ListEspecialidades3.DataBind();
-
-                ListEspecialidadesGrid.DataSource = listaEspecialidades;
-                ListEspecialidadesGrid.DataTextField = "Nombre";
-                ListEspecialidadesGrid.DataValueField = "Id";
-                ListEspecialidadesGrid.DataBind();
-
-                ///GUARDO EN SESION MEDICOS Y ESPECIALIDADES
-                Session.Add("Especialidades", listaEspecialidades);
-                Session.Add("Medicos", listaMedicos);
+                    DropDownList1.DataSource = horarios;
+                    DropDownList1.DataBind();
+                    DropDownList2.DataSource = horarios;
+                    DropDownList2.DataBind();
+                    DropDownList3.DataSource = horarios;
+                    DropDownList3.DataBind();
+                    DropDownList4.DataSource = horarios;
+                    DropDownList4.DataBind();
+                    DropDownList5.DataSource = horarios;
+                    DropDownList5.DataBind();
+                    DropDownList6.DataSource = horarios;
+                    DropDownList6.DataBind();
+                    DropDownList7.DataSource = horarios;
+                    DropDownList7.DataBind();
+                    DropDownList8.DataSource = horarios;
+                    DropDownList8.DataBind();
+                    DropDownList9.DataSource = horarios;
+                    DropDownList9.DataBind();
+                    DropDownList10.DataSource = horarios;
+                    DropDownList10.DataBind();
+                    DropDownList11.DataSource = horarios;
+                    DropDownList11.DataBind();
+                    DropDownList12.DataSource = horarios;
+                    DropDownList12.DataBind();
+                    
                 }
 
             }
@@ -88,7 +120,6 @@ namespace Presentación
             }
           
         }
-
 
         protected void BtnAgregarEspecialidad_Click(object sender, EventArgs e)
         {
@@ -215,16 +246,9 @@ namespace Presentación
             ///SE TRAE EL MEDICO SELECCIONADO PARA CARGAR EN EL MODAL
             int index = GridMedicos.SelectedIndex;
 
-            int aux = 0;
-
             GridViewRow devuelto = GridMedicos.SelectedRow;
 
             string dni = devuelto.Cells[2].Text;
-
-            DDModalEspecialidades2.Visible = false;
-            DDModalEspecialidades3.Visible = false;
-            Label1.Visible = false;
-            Label2.Visible = false;
 
             foreach (Medico item in listaMedicos)
             {
@@ -240,35 +264,70 @@ namespace Presentación
                     TxtMatricula.Text = item.Martricula;
                     TxtPass.Text = item.Password;
 
-                    foreach (Especialidad items in item.Especialidades)
+                    foreach (Especialidad especialidads in item.Especialidades)
                     {
-                        if(aux == 0) { 
-                        DDModalEspecialidades.SelectedValue = items.Id.ToString();
-                            aux++;
-                        }
-                        else
+                        foreach (ListItem items in ChecEspecialidades.Items)
                         {
-                            if(aux == 1)
+                            if(especialidads.Id.ToString() == items.Value)
                             {
-                                DDModalEspecialidades2.SelectedValue = items.Id.ToString();
-                                aux++;
-                                DDModalEspecialidades2.Visible = true;
-                                Label1.Visible = true;
-                            }
-                            else
-                            {
-                                if (aux == 1)
-                                {
-                                    DDModalEspecialidades3.SelectedValue = items.Id.ToString();
-                                    aux++;
-                                    DDModalEspecialidades3.Visible = true;
-                                    Label2.Visible = true;
-                                }
+                                items.Selected = true;
                             }
                         }
                     }
+
                 }
             }
+            Medico nuevo = new Medico();
+            DisponibilidadMedicoNegocio disponibilidadMedicoNegocio = new DisponibilidadMedicoNegocio();
+            nuevo.DiasLaborables = disponibilidadMedicoNegocio.listar(int.Parse(TxtId.Text));
+
+            foreach (DisponibilidadMedico item in nuevo.DiasLaborables)
+            {
+                if(item.Dia.Id == 1)
+                {
+                    CheckLunes.Checked = true;
+                    DropDownList1.SelectedValue = item.Entrada.ToString();
+                    DropDownList2.SelectedValue = item.Salida.ToString();
+                }
+
+                if (item.Dia.Id == 2)
+                {
+                    CheckMartes.Checked = true;
+                    DropDownList3.SelectedValue = item.Entrada.ToString();
+                    DropDownList4.SelectedValue = item.Salida.ToString();
+                }
+
+                if (item.Dia.Id == 3)
+                {
+                    CheckMiercoles.Checked = true;
+                    DropDownList5.SelectedValue = item.Entrada.ToString();
+                    DropDownList6.SelectedValue = item.Salida.ToString();
+                }
+
+                if (item.Dia.Id == 4)
+                {
+                    CheckJueves.Checked = true;
+                    DropDownList7.SelectedValue = item.Entrada.ToString();
+                    DropDownList8.SelectedValue = item.Salida.ToString();
+                }
+
+                if (item.Dia.Id == 5)
+                {
+                    CheckViernes.Checked = true;
+                    DropDownList9.SelectedValue = item.Entrada.ToString();
+                    DropDownList10.SelectedValue = item.Salida.ToString();
+                }
+
+                if (item.Dia.Id == 6)
+                {
+                    CheckSabado.Checked = true;
+                    DropDownList11.SelectedValue = item.Entrada.ToString();
+                    DropDownList12.SelectedValue = item.Salida.ToString();
+                }
+            }
+
+
+
         }
 
         protected void TxtBuscar_TextChanged(object sender, EventArgs e)
@@ -342,11 +401,16 @@ namespace Presentación
             try
             {
                 ///SE GUARDA UN MEDICO NUEVO AUX
-                bool agregar = true;
+     
                 Medico nuevo = new Medico();
+
                 EspecialidadesMedicoNegocio especialidadesMedicoNegocio = new EspecialidadesMedicoNegocio();
                 MedicoNegocio medicoNegocio = new MedicoNegocio();
                 List<Especialidad> nueva = new List<Especialidad>();
+
+                List<Especialidad> borrar = new List<Especialidad>();
+                List<Especialidad> aux = new List<Especialidad>();
+
 
                 ///ASIGNO TODAS LAS PROP
                 nuevo.Id = int.Parse(TxtId.Text);
@@ -360,39 +424,47 @@ namespace Presentación
                 nuevo.Estado = true;
                 nuevo.Especialidades = new List<Especialidad>();
 
-                foreach (Especialidad item in listaEspecialidades)
+                foreach (ListItem items in ChecEspecialidades.Items)
                 {
-                    if (item.Nombre == ListEspecialidades.SelectedItem.Text)
+                    foreach (Especialidad item in listaEspecialidades)
                     {
-                        nuevo.Especialidades.Add(item);
+                        if (items.Selected){
+                            if(items.Value == item.Id.ToString()) {
+                            nuevo.Especialidades.Add(item);
+                            }
+                        }
                     }
-                    if (ListEspecialidades2.Visible == true && item.Nombre == ListEspecialidades2.SelectedItem.Text)
-                    {
-                        nuevo.Especialidades.Add(item);
-                    }
-                    if (ListEspecialidades3.Visible == true && item.Nombre == ListEspecialidades3.SelectedItem.Text)
-                    {
-                        nuevo.Especialidades.Add(item);
-                    }
-
                 }
-
 
                 if (medicoNegocio.chequear_email(nuevo.Email) > 0)
                 {
                     /// EMAIL REPETIDO
                     TxtEmail.CssClass = "form-control is-invalid";
-                    agregar = false;
+
                 }
 
-                if (agregar == true)
-                {
                     ///GUARDO EN LA DB
-                    medicoNegocio.modificar(nuevo);
-                    //nuevo.Especialidades = especialidadesMedicoNegocio.chequearEspecialidad(nuevo.Especialidades, nuevo.Id);
-                    //especialidadesMedicoNegocio.agregar(nuevo.Especialidades, nuevo.Id);
+                medicoNegocio.modificar(nuevo);
 
+                foreach (Medico item in listaMedicos)
+                {
+                    if (item.Id == nuevo.Id)
+                    {
+                        borrar = item.Especialidades;
+                    }
                 }
+
+                foreach (Especialidad item in nuevo.Especialidades)
+                {
+                    borrar.Remove(borrar.Find(x => x.Id == item.Id));
+                }
+
+
+                especialidadesMedicoNegocio.eliminar(borrar, nuevo.Id);
+
+                especialidadesMedicoNegocio.agregar(especialidadesMedicoNegocio.chequear_existencia(nuevo), nuevo.Id);
+
+
 
             }
             catch (Exception ex)
@@ -422,6 +494,92 @@ namespace Presentación
             Response.Redirect("Medicos.aspx");
         }
 
+        protected void BtnGuardarHorario_Click(object sender, EventArgs e)
+        {
+            DisponibilidadMedicoNegocio disponibilidadMedicoNegocio = new DisponibilidadMedicoNegocio();
+            List<DisponibilidadMedico> disponibilidades = new List<DisponibilidadMedico>();
+            try
+            {
+                if (CheckLunes.Checked)
+                {
+                    DisponibilidadMedico disponibilidadMedico = new DisponibilidadMedico();
+                    disponibilidadMedico.Dia = new Dia();
+                    disponibilidadMedico.Dia.Id = 1;
+                    disponibilidadMedico.Entrada = int.Parse(DropDownList1.SelectedValue);
+                    disponibilidadMedico.Salida = int.Parse(DropDownList2.SelectedValue);
+                    disponibilidadMedico.IdMedico = int.Parse(TxtId.Text);
+                    disponibilidades.Add(disponibilidadMedico);
+                }
 
+                if (CheckMartes.Checked)
+                {
+                    DisponibilidadMedico disponibilidadMedico = new DisponibilidadMedico();
+                    disponibilidadMedico.Dia = new Dia();
+                    disponibilidadMedico.Dia.Id = 2;
+                    disponibilidadMedico.Entrada = int.Parse(DropDownList3.SelectedValue);
+                    disponibilidadMedico.Salida = int.Parse(DropDownList4.SelectedValue);
+                    disponibilidadMedico.IdMedico = int.Parse(TxtId.Text);
+                    disponibilidades.Add(disponibilidadMedico);
+                }
+
+                if (CheckMiercoles.Checked)
+                {
+                    DisponibilidadMedico disponibilidadMedico = new DisponibilidadMedico();
+                    disponibilidadMedico.Dia = new Dia();
+                    disponibilidadMedico.Dia.Id = 3;
+                    disponibilidadMedico.Entrada = int.Parse(DropDownList5.SelectedValue);
+                    disponibilidadMedico.Salida = int.Parse(DropDownList6.SelectedValue);
+                    disponibilidadMedico.IdMedico = int.Parse(TxtId.Text);
+                    disponibilidades.Add(disponibilidadMedico);
+                }
+
+                if (CheckJueves.Checked)
+                {
+                    DisponibilidadMedico disponibilidadMedico = new DisponibilidadMedico();
+                    disponibilidadMedico.Dia = new Dia();
+                    disponibilidadMedico.Dia.Id = 4;
+                    disponibilidadMedico.Entrada = int.Parse(DropDownList7.SelectedValue);
+                    disponibilidadMedico.Salida = int.Parse(DropDownList8.SelectedValue);
+                    disponibilidadMedico.IdMedico = int.Parse(TxtId.Text);
+                    disponibilidades.Add(disponibilidadMedico);
+                }
+
+                if (CheckViernes.Checked)
+                {
+                    DisponibilidadMedico disponibilidadMedico = new DisponibilidadMedico();
+                    disponibilidadMedico.Dia = new Dia();
+                    disponibilidadMedico.Dia.Id = 5;
+                    disponibilidadMedico.Entrada = int.Parse(DropDownList9.SelectedValue);
+                    disponibilidadMedico.Salida = int.Parse(DropDownList10.SelectedValue);
+                    disponibilidadMedico.IdMedico = int.Parse(TxtId.Text);
+                    disponibilidades.Add(disponibilidadMedico);
+                }
+
+                if (CheckSabado.Checked)
+                {
+                    DisponibilidadMedico disponibilidadMedico = new DisponibilidadMedico();
+                    disponibilidadMedico.Dia = new Dia();
+                    disponibilidadMedico.Dia.Id = 6;
+                    disponibilidadMedico.Entrada = int.Parse(DropDownList11.SelectedValue);
+                    disponibilidadMedico.Salida = int.Parse(DropDownList12.SelectedValue);
+                    disponibilidadMedico.IdMedico = int.Parse(TxtId.Text);
+                    disponibilidades.Add(disponibilidadMedico);
+                }
+
+                disponibilidadMedicoNegocio.eliminar(int.Parse(TxtId.Text));
+                disponibilidadMedicoNegocio.agregar(disponibilidades);
+
+            }
+            catch (Exception es)
+            {
+
+                throw;
+            }
+            finally
+            {
+                Response.Redirect("Medicos.aspx");
+
+            }
+        }
     }
 }

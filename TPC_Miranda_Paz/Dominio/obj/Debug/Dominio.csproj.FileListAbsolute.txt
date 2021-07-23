@@ -1,3 +1,9 @@
+C:\Users\Max\Documents\GitHub\TPC_Miranda_Paz\TPC_Miranda_Paz\Dominio\bin\Debug\Dominio.dll
+C:\Users\Max\Documents\GitHub\TPC_Miranda_Paz\TPC_Miranda_Paz\Dominio\bin\Debug\Dominio.pdb
+C:\Users\Max\Documents\GitHub\TPC_Miranda_Paz\TPC_Miranda_Paz\Dominio\obj\Debug\Dominio.csprojAssemblyReference.cache
+C:\Users\Max\Documents\GitHub\TPC_Miranda_Paz\TPC_Miranda_Paz\Dominio\obj\Debug\Dominio.csproj.CoreCompileInputs.cache
+C:\Users\Max\Documents\GitHub\TPC_Miranda_Paz\TPC_Miranda_Paz\Dominio\obj\Debug\Dominio.dll
+C:\Users\Max\Documents\GitHub\TPC_Miranda_Paz\TPC_Miranda_Paz\Dominio\obj\Debug\Dominio.pdb
 C:\Users\Gastón\Documents\GitHub\TPC_Miranda_Paz\TPC_Miranda_Paz\Dominio\bin\Debug\Dominio.dll
 C:\Users\Gastón\Documents\GitHub\TPC_Miranda_Paz\TPC_Miranda_Paz\Dominio\bin\Debug\Dominio.pdb
 C:\Users\Gastón\Documents\GitHub\TPC_Miranda_Paz\TPC_Miranda_Paz\Dominio\obj\Debug\Dominio.csproj.CoreCompileInputs.cache

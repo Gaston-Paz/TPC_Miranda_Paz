@@ -18,5 +18,11 @@ namespace Dominio
         public Especialidad Especialidad { get; set; }
 
         public DateTime Fecha { get; set; }
+
+        public int Horario { get; set; }
+
+        public string Fechas { get; set; }
+
+        public string Observacion { get; set; }
     }
 }

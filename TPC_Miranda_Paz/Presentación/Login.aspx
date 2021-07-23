@@ -19,40 +19,27 @@
                 <form id="formLogin" runat="server">
                     <div class="text-center pb-3">
                         <img
-                            src="https://laslomas.com.ar/wp-content/uploads/2020/10/logo_header.png"
+                            src="/gama.png"
                             alt=""
                             width="80%" />
                     </div>
+
                     <div class="text-center">
                         <h1 class="h3">Iniciar Sesion</h1>
                     </div>
                     <div class="form-group">
-                        <input
-                            type="email"
-                            class="form-control"
-                            id="email"
-                            aria-describedby="emailHelp"
-                            placeholder="Email"
-                            required />
+                        <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control"></asp:TextBox>
                         <div class="invalid-feedback">
                             El campo no puede estar vacio.
                         </div>
                     </div>
                     <div class="form-group">
-                        <input
-                            type="password"
-                            class="form-control"
-                            id="password"
-                            placeholder="Password"
-                            required />
+                        <asp:TextBox ID="txtPass" runat="server" CssClass="form-control" TextMode="Password"></asp:TextBox>
                         <div class="invalid-feedback">
                             El campo no puede estar vacio.
                         </div>
                     </div>
-                    <asp:Button ID="btnLogin" runat="server" Text="Iniciar" autopostback="false" OnClientClick="return validar()" CssClass="btn btn-outline-primary btn-block" />
-                    <%--<button type="submit" class="btn btn-outline-primary btn-block">
-							Iniciar
-						</button>--%>
+                    <asp:Button ID="btnLogin" runat="server" Text="Iniciar" autopostback="false" OnClientClick="return validar()" CssClass="btn btn-outline-primary btn-block" OnClick="btnLogin_Click" />
                 </form>
             </div>
         </div>
@@ -65,8 +52,8 @@
             var formLogin = document.getElementById("formLogin");
             console.log(formLogin); // trae el form
 
-            var email = document.getElementById("email");
-            var pass = document.getElementById("password");
+            var email = document.getElementById("txtEmail");
+            var pass = document.getElementById("txtPass");
             console.log(email.value + pass.value); // trae inputs
 
             if (email.value == "" || pass.value == "") {
@@ -92,8 +79,8 @@
         }
 
         window.addEventListener("load", function (e) {
-            var email = document.getElementById("email");
-            var pass = document.getElementById("password");
+            var email = document.getElementById("txtEmail");
+            var pass = document.getElementById("txtPass");
 
             email.addEventListener("keypress", function (e) {
                 email.classList.remove("is-invalid");
