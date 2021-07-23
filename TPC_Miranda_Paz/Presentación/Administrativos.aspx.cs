@@ -17,16 +17,16 @@ namespace Presentación
         public List<Administrador> adminBusqueda;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (((Dominio.Usuario)Session["user"]).TipoUsuario != 1)
-            {
-                Response.Redirect("Error.aspx");
-            }
-
+            
                 listaAdmin = new List<Administrador>();
                 
                 AdministradoNegocio administradoNegocio = new AdministradoNegocio();
             try
             {
+                if (((Dominio.Usuario)Session["user"]).TipoUsuario != 1)
+                {
+                    Response.Redirect("Error.aspx");
+                }
 
                 listaAdmin = administradoNegocio.listar();
                 
@@ -43,12 +43,11 @@ namespace Presentación
                 }
 
 
-
             }
             catch (Exception ex)
             {
 
-                Response.Redirect("Error.aspx");
+                Response.Redirect("Login.aspx");
             }
         }
 

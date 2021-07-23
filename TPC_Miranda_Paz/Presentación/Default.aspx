@@ -11,17 +11,7 @@
                             <i class="far fa-calendar-alt"></i>
                             <span><%=DateTime.Now.Date.ToString("dd/MM/yyyy") %></span>
                           <h5 class="card-title text-center">Turnos Ocupados</h5>
-                          <p class="card-text text-center">50</p>
-                        </div>
-                      </div>
-                </div>
-                <div class="col-3">
-                    <div class="card bg-success text-light">
-                        <div class="card-body">
-                            <i class="far fa-calendar-alt"></i>
-                            <span><%=DateTime.Now.Date.ToString("dd/MM/yyyy") %></span>
-                          <h5 class="card-title text-center">Turnos Disponibles</h5>
-                          <p class="card-text text-center">10</p>
+                          <p class="card-text text-center"><%=cantTurnosDia %></p>
                         </div>
                       </div>
                 </div>
@@ -29,9 +19,19 @@
                     <div class="card bg-secondary text-light">
                         <div class="card-body">
                             <i class="far fa-calendar-alt"></i>
-                            <span>Junio</span>
+                            <span><%=DateTime.Now.Date.ToString("MMMM").ToUpper() %></span>
+                          <h5 class="card-title text-center">Turnos Repogramados</h5>
+                          <p class="card-text text-center">10</p>
+                        </div>
+                      </div>
+                </div>
+                <div class="col-3">
+                    <div class="card bg-success text-light">
+                        <div class="card-body">
+                            <i class="far fa-calendar-alt"></i>
+                            <span><%=DateTime.Now.Date.ToString("MMMM").ToUpper() %></span>
                           <h5 class="card-title text-center">Turnos Otorgados</h5>
-                          <p class="card-text text-center">60</p>
+                          <p class="card-text text-center"><%=cantTurnosMes %></p>
                         </div>
                       </div>
                 </div>
@@ -39,9 +39,9 @@
                     <div class="card bg-danger text-light">
                         <div class="card-body">
                             <i class="far fa-calendar-alt"></i>
-                            <span>Junio</span>
+                            <span><%=DateTime.Now.Date.ToString("MMMM").ToUpper() %></span>
                           <h5 class="card-title text-center">Turnos Cancelados</h5>
-                          <p class="card-text text-center">30</p>
+                          <p class="card-text text-center"><%=cantTurnosCanceladosMes %></p>
                         </div>
                       </div>
                 </div>

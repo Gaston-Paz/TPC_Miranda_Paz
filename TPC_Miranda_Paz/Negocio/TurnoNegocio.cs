@@ -27,6 +27,7 @@ namespace Negocio
                 {
                     Turno aux = new Turno();
                     aux.Id = (int)datos.Lector["Id"];
+                    aux.Observacion = (string)datos.Lector["Observacion"];
                     aux.Paciente = new Paciente();
                     aux.Paciente.Id = (int)datos.Lector.GetInt32(10);
                     aux.Paciente.Nombre = (string)datos.Lector.GetString(11);
@@ -45,7 +46,6 @@ namespace Negocio
                     aux.Especialidad = new Especialidad();
                     aux.Especialidad.Id = (int)datos.Lector["IdEspecialidad"];
                     aux.Especialidad.Nombre = (string)datos.Lector.GetString(29);
-                    aux.Observacion = (string)datos.Lector["Observacion"];
 
                     lista.Add(aux);
                 }

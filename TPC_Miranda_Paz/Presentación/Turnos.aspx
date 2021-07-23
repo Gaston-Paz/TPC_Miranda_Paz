@@ -3,7 +3,7 @@
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
 
-            <div class="row">
+            <div class="row flex-nowrap">
 
                 <div class="col-2">
                     <div class="card">
@@ -35,24 +35,20 @@
 
                                     <asp:DropDownList ID="DropFechas" CssClass="form-control" Visible="false" AutoPostBack="true" OnSelectedIndexChanged="DropFechas_SelectedIndexChanged" runat="server"></asp:DropDownList>
                                 </div>
-                                <asp:DropDownList ID="DropHorarios" Visible="false" CssClass="form-control" runat="server"></asp:DropDownList>
+                                <asp:DropDownList ID="DropHorarios" OnSelectedIndexChanged="DropHorarios_SelectedIndexChanged" AutoPostBack="true" Visible="false" CssClass="form-control" runat="server"></asp:DropDownList>
 
-                                <asp:Button ID="BtnAgendar" runat="server" Text="Agendar turno" CssClass="btn btn-primary mt-2" OnClick="BtnAgendar_Click" />
+                                <asp:Button ID="BtnAgendar" runat="server" Enabled="false" Text="Agendar turno" CssClass="btn btn-primary mt-2" OnClick="BtnAgendar_Click" />
 
                             </div>
                         </div>
                     </div>
                 </div>
 
-
-                <div class="col-5">
+                  <div class="col-5">
                         <div class="card">
                             <div
                                 class="card-header d-flex justify-content-between align-items-center ">
                                 <div>Turnos disponibles</div>
-                                <div class="form-inline my-2 my-lg-0">
-                                    <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search" />
-                                </div>
                             </div>
                             <div class="card-body ">
                                 <div class="test-overflow">
@@ -76,13 +72,14 @@
                         </div>
                     </div>
 
+
                 <div class="col-5">
                         <div class="card">
                             <div
                                 class="card-header d-flex justify-content-between align-items-center ">
                                 <div>Turnos registrados</div>
                                 <div class="form-inline my-2 my-lg-0">
-                                    <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search" />
+                                    <asp:TextBox ID="TxtBuscar" CssClass="form-control mr-sm-2" AutoPostBack="true" runat="server" Text="Buscar" OnTextChanged="TxtBuscar_TextChanged"></asp:TextBox>
                                 </div>
                             </div>
                             <div class="card-body ">
@@ -114,6 +111,7 @@
                     </div>
 
 
+              
 
 
 
@@ -135,8 +133,8 @@
        <div class="mb-2">
            <asp:Label ID="LblTurno" runat="server" Text="Turno N°"></asp:Label>
           </div>
-      <div>
-          <asp:Label ID="LblEstado" runat="server" Text="Estado: "></asp:Label>
+      <div class="row justify-content-around">
+          <asp:Label ID="LblEstado" runat="server" CssClass="col-form-label" Text="Estado: "></asp:Label>
           <asp:DropDownList ID="DropEstados" CssClass="form-control" runat="server"></asp:DropDownList>
       </div>
       </div>

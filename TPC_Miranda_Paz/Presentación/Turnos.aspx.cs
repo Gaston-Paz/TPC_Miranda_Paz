@@ -18,13 +18,14 @@ namespace Presentación
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (((Dominio.Usuario)Session["user"]).TipoUsuario == 3)
-            {
-                Response.Redirect("Error.aspx");
-            }
 
             try
             {
+                if (((Dominio.Usuario)Session["user"]).TipoUsuario == 3)
+                {
+                    Response.Redirect("Error.aspx");
+                }
+
                 if (!IsPostBack) {
                     
                     List<Especialidad> aux = new List<Especialidad>();
@@ -66,7 +67,7 @@ namespace Presentación
             catch (Exception ex)
             {
 
-                throw;
+                Response.Redirect("Login.aspx");
             }
         }
 
@@ -524,7 +525,7 @@ namespace Presentación
             try
             {
                 GridViewRow devuelto = GridTurnosPredictivo.SelectedRow;
-
+                BtnAgendar.Enabled = true;
                 string id = devuelto.Cells[0].Text;
                 string fecha = devuelto.Cells[3].Text;
                 string hora = devuelto.Cells[4].Text;
@@ -812,5 +813,43 @@ namespace Presentación
             Response.Redirect("Turnos.aspx");
         }
 
+        protected void TxtBuscar_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                TurnoNegocio turnoNegocio = new TurnoNegocio();
+                List<Turno> turnos = new List<Turno>();
+                List<Turno> listafiltrada = new List<Turno>();
+
+                turnos = turnoNegocio.listar_turnos_ocupados();
+
+                foreach (Turno item in turnos)
+                {
+                    if (System.Text.RegularExpressions.Regex.IsMatch(item.Paciente.Apellido, TxtBuscar.Text, System.Text.RegularExpressions.RegexOptions.IgnoreCase))
+                    {
+                        if (item.Estado.Id == 5)
+                        {
+                            listafiltrada.Add(item);
+
+                        }
+                    }
+
+                }
+
+                GridTurnos.DataSource = listafiltrada;
+                GridTurnos.DataBind();
+
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+        }
+
+        protected void DropHorarios_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            BtnAgendar.Enabled = true;
+        }
     }
 }

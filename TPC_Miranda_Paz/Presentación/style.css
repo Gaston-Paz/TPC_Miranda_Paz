@@ -40,3 +40,8 @@ body{
 a{
     color: black;
 }
+
+.grid-3 {
+    display: inline-grid;
+    grid-template-columns: 10% 45% 45%;
+}

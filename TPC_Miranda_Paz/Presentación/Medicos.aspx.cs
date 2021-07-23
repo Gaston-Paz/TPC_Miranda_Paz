@@ -25,6 +25,12 @@ namespace Presentación
 
             try
             {
+
+                if (((Dominio.Usuario)Session["user"]).TipoUsuario == 3)
+                {
+                    Response.Redirect("Error.aspx");
+                }
+
                 MedicoNegocio medicoNegocio = new MedicoNegocio();
                 listaMedicos = medicoNegocio.listar();
                 EspecialidadNegocio especialidadNegocio = new EspecialidadNegocio();

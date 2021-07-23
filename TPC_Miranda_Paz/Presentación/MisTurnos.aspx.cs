@@ -23,8 +23,16 @@ namespace Presentación
             listaTurnosAux = turnoNegocio.listar_turnos_ocupados();
             ///DateTime prueba = DateTime.Now.AddDays(4);
             DateTime prueba = DateTime.Now;
+
+
             try
             {
+
+                if (((Usuario)Session["user"]).TipoUsuario != 3)
+                {
+                    Response.Redirect("Error.aspx");
+                }
+
                 foreach (Turno item in listaTurnosAux)
                 {
                     if ((item.Medico.Email == ((Usuario)Session["user"]).Email) && (item.Fecha == prueba.Date))
@@ -40,7 +48,7 @@ namespace Presentación
             catch (Exception ex)
             {
 
-                throw;
+                Response.Redirect("Login.aspx");
             }
         }
 
@@ -133,7 +141,10 @@ namespace Presentación
                 {
                     if (item.Medico.Email == ((Usuario)Session["user"]).Email)
                     {
-                        listaTurnosAux.Add(item);
+                        if (item.Estado.Id == 5)
+                        {
+                            listaTurnosAux.Add(item);
+                        }
                     }
                 }
 
@@ -164,7 +175,11 @@ namespace Presentación
                     {
                         if (System.Text.RegularExpressions.Regex.IsMatch(item.Paciente.Apellido, TxtBuscar.Text, System.Text.RegularExpressions.RegexOptions.IgnoreCase))
                         {
-                            listaFiltrada.Add(item);
+                            if (item.Estado.Id == 5)
+                            {
+                                listaFiltrada.Add(item);
+
+                            }
                         }
                         
                     }

@@ -16,15 +16,17 @@ namespace Presentación
         public string prueba;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (((Dominio.Usuario)Session["user"]).TipoUsuario == 3)
-            {
-                Response.Redirect("Error.aspx");
-            }
+            
 
             PacienteNegocio pacienteNegocio = new PacienteNegocio();
                 listaPacientes = pacienteNegocio.listar();
             try
             {
+
+                if (((Dominio.Usuario)Session["user"]).TipoUsuario == 3)
+                {
+                    Response.Redirect("Error.aspx");
+                }
 
                 if (!IsPostBack)
                 {
@@ -39,7 +41,7 @@ namespace Presentación
             catch (Exception ex)
             {
 
-                throw;
+                Response.Redirect("Login.aspx");
             }
 
         }

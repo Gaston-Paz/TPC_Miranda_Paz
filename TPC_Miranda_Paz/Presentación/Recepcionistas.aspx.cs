@@ -16,15 +16,18 @@ namespace Presentación
         public List<Recepcionista> listaRecepcionista;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (((Dominio.Usuario)Session["user"]).TipoUsuario == 3)
-            {
-                Response.Redirect("Error.aspx");
-            }
+            
 
             listaRecepcionista = new List<Recepcionista>();
             RecepcionistaNegocio recepcionistaNegocio = new RecepcionistaNegocio();
             try
             {
+
+                if (((Dominio.Usuario)Session["user"]).TipoUsuario == 3)
+                {
+                    Response.Redirect("Error.aspx");
+                }
+
                 listaRecepcionista = recepcionistaNegocio.listar();
                 if (!IsPostBack)
                 {
@@ -37,7 +40,7 @@ namespace Presentación
             catch (Exception ex)
             {
 
-                throw;
+                Response.Redirect("Login.aspx");
             }
         }
         protected void BtnRegistrar_Recepcionista_Click(object sender, EventArgs e)
