@@ -120,7 +120,8 @@
     <Content Include="Content\Site.css" />
     <Content Include="Default.aspx" />
     <Content Include="Error.aspx" />
-    <Content Include="favicon.ico" />
+    <Content Include="favicon1.ico" />
+    <Content Include="gama.png" />
     <Content Include="Global.asax" />
     <Content Include="Login.aspx" />
     <Content Include="Medicos.aspx" />
@@ -250,6 +251,8 @@
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <Content Include="Site.Master" />
     <Content Include="style.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="svgGAMA.svg" />
     <Content Include="Turnos.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />

@@ -19,7 +19,7 @@
                 <form id="formLogin" runat="server">
                     <div class="text-center pb-3">
                         <img
-                            src="https://laslomas.com.ar/wp-content/uploads/2020/10/logo_header.png"
+                            src="/gama.png"
                             alt=""
                             width="80%" />
                     </div>
