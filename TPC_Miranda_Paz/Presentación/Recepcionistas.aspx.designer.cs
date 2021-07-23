@@ -75,7 +75,7 @@ namespace Presentación
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText pass_recep;
+        protected global::System.Web.UI.HtmlControls.HtmlInputPassword pass_recep;
 
         /// <summary>
         /// Control BtnRegistrar_Recepcionista.

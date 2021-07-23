@@ -18,11 +18,7 @@ namespace Presentación
         public List<int> horarios;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (((Dominio.Usuario)Session["user"]).TipoUsuario == 3)
-            {
-                Response.Redirect("Error.aspx");
-            }
-
+            
             try
             {
 
@@ -140,72 +136,81 @@ namespace Presentación
 
         protected void BtnRegistrar_Click(object sender, EventArgs e)
         {
-            ///SE GUARDA UN MEDICO NUEVO
+            try
+            {
+                ///SE GUARDA UN MEDICO NUEVO
 
-            Medico nuevo = new Medico();
-            MedicoNegocio medicoNegocio = new MedicoNegocio();
-            EspecialidadesMedicoNegocio especialidadesMedicoNegocio = new EspecialidadesMedicoNegocio();
-            bool agregar = true;
+                Medico nuevo = new Medico();
+                MedicoNegocio medicoNegocio = new MedicoNegocio();
+                EspecialidadesMedicoNegocio especialidadesMedicoNegocio = new EspecialidadesMedicoNegocio();
+                bool agregar = true;
+
+
+                ///ASIGNO TODAS LAS PROP
+                nuevo.Nombre = nombre.Value;
+                nuevo.Apellido = apellido.Value;
+                nuevo.Dni = dni.Value;
+                nuevo.Email = email.Value;
+                nuevo.Password = password.Value;
+                nuevo.Telefono = telefono.Value;
+                nuevo.Martricula = matricula.Value;
+                nuevo.Estado = true;
+                nuevo.Especialidades = new List<Especialidad>();
+
+                foreach (Especialidad item in listaEspecialidades)
+                {
+                    if (item.Nombre == ListEspecialidades.SelectedItem.Text)
+                    {
+                        nuevo.Especialidades.Add(item);
+                    }
+                    if (ListEspecialidades2.Visible == true && item.Nombre == ListEspecialidades2.SelectedItem.Text)
+                    {
+                        nuevo.Especialidades.Add(item);
+                    }
+                    if (ListEspecialidades3.Visible == true && item.Nombre == ListEspecialidades3.SelectedItem.Text)
+                    {
+                        nuevo.Especialidades.Add(item);
+                    }
+
+                }
+
+                if (medicoNegocio.chequear_dni(nuevo.Dni) > 0)
+                {
+                    /// DNI REPETIDO
+                    dni.Attributes.Add("class", "form-control is-invalid");
+                    agregar = false;
+                }
+
+                if (medicoNegocio.chequear_email(nuevo.Email) > 0)
+                {
+                    /// EMAIL REPETIDO
+                    email.Attributes.Add("class", "form-control is-invalid");
+                    agregar = false;
+                }
+
+                if (medicoNegocio.chequear_matricula(nuevo.Martricula) > 0)
+                {
+                    /// MATRICULA REPETIDO
+                    matricula.Attributes.Add("class", "form-control is-invalid");
+                    agregar = false;
+                }
+
+                if (agregar == true)
+                {
+                    ///GUARDO EN LA DB
+                    medicoNegocio.agregar(nuevo);
+                    nuevo.Id = medicoNegocio.buscarMedico(nuevo);
+                    especialidadesMedicoNegocio.agregar(nuevo.Especialidades, nuevo.Id);
+
+                    Response.Redirect("Medicos.aspx");
+                }
+            }
+            catch (Exception ex)
+            {
+
+                Response.Redirect("Error.aspx");
+            }
             
-
-            ///ASIGNO TODAS LAS PROP
-            nuevo.Nombre = nombre.Value;
-            nuevo.Apellido = apellido.Value;
-            nuevo.Dni = dni.Value;
-            nuevo.Email = email.Value;
-            nuevo.Password = password.Value;
-            nuevo.Telefono = telefono.Value;
-            nuevo.Martricula = matricula.Value;
-            nuevo.Estado = true;
-            nuevo.Especialidades = new List<Especialidad>();
-
-            foreach (Especialidad item in listaEspecialidades)
-            {
-                if(item.Nombre == ListEspecialidades.SelectedItem.Text)
-                {
-                    nuevo.Especialidades.Add(item);
-                }
-                if(ListEspecialidades2.Visible == true && item.Nombre == ListEspecialidades2.SelectedItem.Text) 
-                {
-                    nuevo.Especialidades.Add(item);
-                }
-                if (ListEspecialidades3.Visible == true && item.Nombre == ListEspecialidades3.SelectedItem.Text)
-                {
-                    nuevo.Especialidades.Add(item);
-                }
-
-            }
-
-            if (medicoNegocio.chequear_dni(nuevo.Dni) > 0)
-            {
-                /// DNI REPETIDO
-                dni.Attributes.Add("class", "form-control is-invalid");
-                agregar = false;
-            }
-
-            if (medicoNegocio.chequear_email(nuevo.Email) > 0)
-            {
-                /// EMAIL REPETIDO
-                email.Attributes.Add("class", "form-control is-invalid");
-                agregar = false;
-            }
-
-            if (medicoNegocio.chequear_matricula(nuevo.Martricula) > 0)
-            {
-                /// MATRICULA REPETIDO
-                matricula.Attributes.Add("class", "form-control is-invalid");
-                agregar = false;
-            }
-
-            if(agregar == true)
-            {
-                ///GUARDO EN LA DB
-                medicoNegocio.agregar(nuevo);
-                nuevo.Id = medicoNegocio.buscarMedico(nuevo);
-                especialidadesMedicoNegocio.agregar(nuevo.Especialidades, nuevo.Id);
-
-                formClear();
-            }
             
         }
 
@@ -394,6 +399,7 @@ namespace Presentación
             password.Value = "";
             telefono.Value = "";
             matricula.Value = "";
+            ListEspecialidades.SelectedValue = "0";
         }
 
         protected void BtnModificar_Click(object sender, EventArgs e)

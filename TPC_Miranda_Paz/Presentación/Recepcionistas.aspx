@@ -36,7 +36,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control" id="pass_recep" name="pass_recep" placeholder="*Contraseña" runat="server" />
+                                    <input type="password" class="form-control" id="pass_recep" name="pass_recep" placeholder="*Contraseña" runat="server" />
                                 </div>
                                 <asp:Button ID="BtnRegistrar_Recepcionista" runat="server" Text="Registrar" CssClass="btn btn-primary" OnClientClick="return validarVacioRecep()" OnClick="BtnRegistrar_Recepcionista_Click" />
                             </form>

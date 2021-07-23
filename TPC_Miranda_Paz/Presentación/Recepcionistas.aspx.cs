@@ -77,13 +77,13 @@ namespace Presentación
             catch (Exception ex)
             {
 
-                throw;
+                Response.Redirect("Error.aspx");
             }
             if (agregar == true)
             {
                 recepcionistaNegocio.agregar(nuevo);
                 Session.Remove("Recepcionista");
-                Response.Redirect("Administrativos.aspx");
+                Response.Redirect("Recepcionista.aspx");
 
             }
         }

@@ -41,7 +41,7 @@ namespace Presentación
                     }
                     
                 }
-                string msj = "Erro Usuario/password incorrectos.";
+                string msj = "Error: Usuario/password incorrectos.";
                 //Session.Add("Error", msj);
                 //ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "Alert('" + msj + "');",true);
                 MessageBox.Show(msj);
