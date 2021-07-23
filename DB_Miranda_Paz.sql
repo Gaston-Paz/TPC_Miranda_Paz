@@ -253,23 +253,6 @@ VALUES
 (27,6,17,19),
 (28,1,7,13),
 (28,6,15,20),
-29,1,7,13),
-(29,2,7,13),
-(29,4,7,13),
-(29,5,7,13),
-(29,6,7,13),
-(30,1,13,17),
-(30,2,13,17),
-(30,4,13,17),
-(30,5,13,17),
-(30,6,13,17),
-(31,1,17,19),
-(31,2,17,19),
-(32,4,17,19),
-(33,5,17,19),
-(34,6,17,19),
-(35,6,7,13),
-(36,6,15,20),
 (29,1,7,13),
 (29,2,7,13),
 (29,4,7,13),
@@ -336,11 +319,11 @@ CREATE TABLE Pacientes(
 	Estado BIT DEFAULT(1)
 )
 GO
-INSERT INTO Pacientes
-VALUES('Cristina','Batista','12478987', 'cristi@mail.com','03327448578','06/09/1964','1'),
-('Alfredo','Robertone','45741963', 'alfred@mail.com','03327112547','25/09/2004','1'),
-('Rodolfo','Arrugavarrena','20458952', 'rodo@mail.com','1147124587','22/07/1975','1'),
-('Paula','Pareto','25498231', 'paula@mail.com','03327448578','16/01/1986','1')
+INSERT INTO Pacientes(Nombre,Apellido,Dni,Email,Telefono,FechaNac,Estado)
+VALUES('Cristina','Batista','12478987', 'cristi@mail.com','03327448578','1964/09/06','1'),
+('Alfredo','Robertone','45741963', 'alfred@mail.com','03327112547','2004/09/25','1'),
+('Rodolfo','Arrugavarrena','20458952', 'rodo@mail.com','1147124587','1975/07/22','1'),
+('Paula','Pareto','25498231', 'paula@mail.com','03327448578','1986/01/16','1')
 GO
 CREATE TABLE EstadosTurnos(
 	Id INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
