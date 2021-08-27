@@ -27,29 +27,29 @@ Este proyecto fue creado por [Gaston Paz](https://github.com/Gaston-Paz) [Maximi
 
 ## Login
 
-![menu](/readme/Login.png)
+![menu](/Readme/Login2.png)
 
 ## Home
 
-![menu](/readme/Home.png)
+![menu](/Readme/Home2.png)
 
 ## Alta de médico
 
-![menu](/readme/Alta.png)
+![menu](/Readme/Alta2.png)
 
 ## Modificación y eliminación de paciente
 
-![menu](/readme/ModificacionMedico.png)
+![menu](/Readme/ModificacionMedico2.png)
 
 ## Vista de médico
 
-![menu](/readme/VistaMedico.png)
+![menu](/Readme/VistaMedico2.png)
 
 ## Registro de consulta
 
-![menu](/readme/Registro.png)
+![menu](/Readme/Registro2.png)
 
 ## Modificación y eliminación de paciente
 
-![menu](/readme/Modificacion.png)
+![menu](/Readme/Modificacion2.png)
 
