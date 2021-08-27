@@ -48,7 +48,7 @@ namespace Presentación
             catch (Exception ex)
             {
 
-                Response.Redirect("Login.aspx");
+                Response.Redirect("Error.aspx");
             }
         }
 

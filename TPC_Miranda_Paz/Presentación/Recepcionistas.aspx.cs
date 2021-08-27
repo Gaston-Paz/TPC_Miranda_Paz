@@ -40,7 +40,7 @@ namespace Presentación
             catch (Exception ex)
             {
 
-                Response.Redirect("Login.aspx");
+                Response.Redirect("Error.aspx");
             }
         }
         protected void BtnRegistrar_Recepcionista_Click(object sender, EventArgs e)

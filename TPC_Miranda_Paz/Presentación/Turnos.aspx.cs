@@ -67,7 +67,7 @@ namespace Presentación
             catch (Exception ex)
             {
 
-                Response.Redirect("Login.aspx");
+                Response.Redirect("Error.aspx");
             }
         }
 
@@ -499,8 +499,8 @@ namespace Presentación
 
                 turnoNegocio.agregar(turno);
                 int cantidadTurnos = turnoNegocio.listar_turnos_ocupados().Count;
-                emailService.armarCorreo(turno, cantidadTurnos);
-                emailService.enviarEmail();
+                //emailService.armarCorreo(turno, cantidadTurnos);
+                //emailService.enviarEmail();
                                 
             }
             catch (Exception ex)
