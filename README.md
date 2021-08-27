@@ -37,7 +37,7 @@ Este proyecto fue creado por [Gaston Paz](https://github.com/Gaston-Paz) [Maximi
 
 ![menu](/Readme/Alta2.png)
 
-## Modificación y eliminación de paciente
+## Modificación y eliminación de médico
 
 ![menu](/Readme/ModificacionMedico2.png)
 
